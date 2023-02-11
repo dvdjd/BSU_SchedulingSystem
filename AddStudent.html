@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="initial-scale=1, width=device-width" />
+
+    <link rel="stylesheet" href="./global.css" />
+    <link rel="stylesheet" href="./AddStudent.css" />
+
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;600&display=swap"
+    />
+  </head>
+  <body>
+    <div class="add-student15">
+      <div class="nav-menu-parent8">
+        <div class="nav-menu10">
+          <div class="nav-menu-child8"></div>
+          <div class="menu10">MENU</div>
+          <div class="home-btn10">
+            <div class="home-btn-child8"></div>
+            <div class="home10">Home</div>
+          </div>
+          <div class="fs-btn10">
+            <div class="home-btn-child8"></div>
+            <div class="home10">Faculty Schedule</div>
+          </div>
+          <div class="ss-btn10">
+            <div class="home-btn-child8"></div>
+            <div class="home10">Student Schedule</div>
+          </div>
+          <div class="rs-btn10">
+            <div class="home-btn-child8"></div>
+            <div class="home10">Room Schedule</div>
+          </div>
+          <div class="mes-btn10">
+            <div class="home-btn-child8"></div>
+            <div class="home10">Major Exam Schedule</div>
+          </div>
+        </div>
+        <div class="nav10">
+          <div class="nav-child8"></div>
+          <div class="batangas-state-university10">
+            BATANGAS STATE UNIVERSITY
+          </div>
+          <div class="cp10">
+            <div class="change-password10">Change Password</div>
+          </div>
+          <div class="lo10"><div class="change-password10">Logout</div></div>
+        </div>
+        <div class="admin-pf10">
+          <img
+            class="profile-removebg-preview-2-icon10"
+            alt=""
+            src="public/profileremovebgpreview-2@2x.png"
+          />
+          <div class="admin10">Admin</div>
+        </div>
+        <div class="add-student16">Add Student</div>
+        <div class="add-student-container">
+          <div class="add-student17">Add Student</div>
+          <div class="add-new-faculty-wrapper" id="frameContainer">
+            <div class="add-new-faculty">Add New Faculty</div>
+          </div>
+          <div class="frame-parent10" id="frameContainer17">
+            <div class="sr-code-frame"><div class="sr-code2">SR Code</div></div>
+            <div class="j18-68465-wrapper">
+              <div class="sr-code2">J18-68465</div>
+            </div>
+            <div class="j18-68467-wrapper">
+              <div class="sr-code2">J18-68467</div>
+            </div>
+            <div class="name-frame"><div class="sr-code2">Name</div></div>
+            <div class="princess-dianne-l-lopez-wrapper">
+              <div class="princess-dianne-l">Princess Dianne L. Lopez</div>
+            </div>
+            <div class="mary-joy-cervantes-wrapper">
+              <div class="princess-dianne-l">Mary Joy Cervantes</div>
+            </div>
+            <div class="section-wrapper1">
+              <div class="sr-code2">Section</div>
+            </div>
+            <div class="cs-4101-wrapper">
+              <div class="princess-dianne-l">CS 4101</div>
+            </div>
+            <div class="cs-4101-container">
+              <div class="princess-dianne-l">CS 4101</div>
+            </div>
+            <div class="action-frame"><div class="sr-code2">Action</div></div>
+            <div class="frame-parent11">
+              <div class="rectangle-parent20" id="frameContainer11">
+                <div class="frame-child60"></div>
+                <img
+                  class="material-symbolsedit-icon4"
+                  alt=""
+                  src="public/materialsymbolsedit4.svg"
+                />
+              </div>
+              <div class="rectangle-parent20" id="frameContainer12">
+                <div class="frame-child61"></div>
+                <img class="frame-child62" alt="" src="public/frame-1271.svg" />
+              </div>
+            </div>
+            <div class="frame-parent12">
+              <div class="rectangle-parent20" id="frameContainer14">
+                <div class="frame-child60"></div>
+                <img
+                  class="material-symbolsedit-icon4"
+                  alt=""
+                  src="public/materialsymbolsedit5.svg"
+                />
+              </div>
+              <div class="rectangle-parent20" id="frameContainer15">
+                <div class="frame-child61"></div>
+                <img class="frame-child62" alt="" src="public/frame-1272.svg" />
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="c-btn10">
+          <div class="home-btn-child8"></div>
+          <div class="home10">Curriculum</div>
+        </div>
+        <div class="co-btn10">
+          <div class="home-btn-child8"></div>
+          <div class="home10">Course Offering</div>
+        </div>
+        <div class="cs-btn10">
+          <div class="home-btn-child8"></div>
+          <div class="home10">Course Scheduling</div>
+        </div>
+        <div class="ai-btn10">
+          <div class="home-btn-child8"></div>
+          <div class="home10">Add Instructor</div>
+        </div>
+        <div class="as-btn10">
+          <div class="home-btn-child8"></div>
+          <div class="home10">Add Student</div>
+        </div>
+      </div>
+    </div>
+
+    <div id="unloadNotifContainer" class="popup-overlay" style="display: none">
+      <div class="unload-notif1">
+        <div class="by-clicking-the-container1">
+          <p class="by-clicking-the1">
+            By clicking the OK button will unload all the subject from
+            instructor.
+          </p>
+          <p class="do-you-wish1">Do you wish to continue?</p>
+        </div>
+        <div class="frame-group" id="popupgroupContainer">
+          <div class="ok-container" id="popupframeContainer">
+            <div class="ok1">OK</div>
+          </div>
+          <div class="cancel-container" id="popupframeContainer1">
+            <div class="ok1">CANCEL</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      var popupframeContainer = document.getElementById("popupframeContainer");
+      if (popupframeContainer) {
+        popupframeContainer.addEventListener("click", function (e) {
+          window.location.href = "./FacultySchedule1.html";
+        });
+      }
+      
+      var popupframeContainer1 = document.getElementById("popupframeContainer1");
+      if (popupframeContainer1) {
+        popupframeContainer1.addEventListener("click", function (e) {
+          window.location.href = "./FacultySchedule2.html";
+        });
+      }
+      
+      var popupgroupContainer = document.getElementById("popupgroupContainer");
+      if (popupgroupContainer) {
+        popupgroupContainer.addEventListener("click", function (e) {
+          window.location.href = "./FacultySchedule1.html";
+        });
+      }
+      
+      var frameContainer = document.getElementById("frameContainer");
+      if (frameContainer) {
+        frameContainer.addEventListener("click", function (e) {
+          window.location.href = "./AddCurriculum.html";
+        });
+      }
+      
+      var frameContainer11 = document.getElementById("frameContainer11");
+      if (frameContainer11) {
+        frameContainer11.addEventListener("click", function (e) {
+          window.location.href = "./AddCurriculum.html";
+        });
+      }
+      
+      var frameContainer12 = document.getElementById("frameContainer12");
+      if (frameContainer12) {
+        frameContainer12.addEventListener("click", function (e) {
+          window.location.href = "./CourseOffering2.html";
+        });
+      }
+      
+      var frameContainer14 = document.getElementById("frameContainer14");
+      if (frameContainer14) {
+        frameContainer14.addEventListener("click", function (e) {
+          window.location.href = "./AddCurriculum.html";
+        });
+      }
+      
+      var frameContainer15 = document.getElementById("frameContainer15");
+      if (frameContainer15) {
+        frameContainer15.addEventListener("click", function (e) {
+          window.location.href = "./CourseOffering2.html";
+        });
+      }
+      
+      var frameContainer17 = document.getElementById("frameContainer17");
+      if (frameContainer17) {
+        frameContainer17.addEventListener("click", function () {
+          var popup = document.getElementById("unloadNotifContainer");
+          if (!popup) return;
+          var popupStyle = popup.style;
+          if (popupStyle) {
+            popupStyle.display = "flex";
+            popupStyle.zIndex = 100;
+            popupStyle.backgroundColor = "rgba(113, 113, 113, 0.3)";
+            popupStyle.alignItems = "center";
+            popupStyle.justifyContent = "center";
+          }
+          popup.setAttribute("closable", "");
+      
+          var onClick =
+            popup.onClick ||
+            function (e) {
+              if (e.target === popup && popup.hasAttribute("closable")) {
+                popupStyle.display = "none";
+              }
+            };
+          popup.addEventListener("click", onClick);
+        });
+      }
+      </script>
+  </body>
+</html>

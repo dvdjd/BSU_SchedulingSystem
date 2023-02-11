@@ -1,0 +1,389 @@
+body {
+  margin: 0;
+  line-height: normal;
+}
+.popup-overlay {
+  display: flex;
+  flex-direction: column;
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+}
+.nav-menu-child24 {
+  position: absolute;
+  top: 0;
+  left: 0;
+  background-color: var(--white);
+  width: 291px;
+  height: 1000px;
+}
+.menu26 {
+  position: absolute;
+  top: 91px;
+  left: 10px;
+  font-size: var(--font-size-28xl);
+  font-weight: 500;
+  color: var(--color-dimgray);
+  text-align: center;
+}
+.home-btn-child24 {
+  position: absolute;
+  top: 0;
+  left: 0;
+  background-color: var(--white);
+  width: 290px;
+  height: 80px;
+}
+.home26 {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  line-height: 40px;
+  font-weight: 500;
+}
+.c-btn26,
+.fs-btn26,
+.home-btn26,
+.rs-btn26,
+.ss-btn26 {
+  position: absolute;
+  top: 114px;
+  left: 0;
+  width: 290px;
+  height: 80px;
+}
+.c-btn26,
+.fs-btn26,
+.rs-btn26,
+.ss-btn26 {
+  top: 194px;
+}
+.c-btn26,
+.rs-btn26,
+.ss-btn26 {
+  top: 274px;
+}
+.c-btn26,
+.rs-btn26 {
+  top: 354px;
+}
+.c-btn26 {
+  top: 514px;
+}
+.ai-btn26,
+.as-btn26,
+.co-btn26,
+.cs-btn26,
+.mes-btn26 {
+  position: absolute;
+  top: 594px;
+  left: 0;
+  width: 290px;
+  height: 80px;
+}
+.ai-btn26,
+.as-btn26,
+.cs-btn26,
+.mes-btn26 {
+  top: 674px;
+}
+.ai-btn26,
+.as-btn26,
+.mes-btn26 {
+  top: 754px;
+}
+.as-btn26,
+.mes-btn26 {
+  top: 834px;
+}
+.mes-btn26 {
+  top: 434px;
+}
+.nav-child24,
+.nav-menu26 {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+.nav-menu26 {
+  width: 290px;
+  height: 1000px;
+  font-size: var(--font-size-47xl);
+}
+.nav-child24 {
+  background-color: var(--white);
+  width: 1169px;
+  height: 80px;
+}
+.batangas-state-university26 {
+  position: absolute;
+  top: 20px;
+  left: 86px;
+  font-size: var(--font-size-51xl);
+  letter-spacing: 0.4em;
+  font-weight: 500;
+  color: var(--color-black);
+}
+.change-password26 {
+  position: relative;
+  line-height: 40px;
+  font-weight: 500;
+}
+.cp26 {
+  position: absolute;
+  top: 2px;
+  left: 844px;
+  background-color: var(--white);
+  display: flex;
+  flex-direction: row;
+  padding: var(--padding-11xl);
+  align-items: center;
+  justify-content: center;
+}
+.lo26,
+.nav26 {
+  position: absolute;
+  top: 0;
+  height: 80px;
+}
+.lo26 {
+  left: 1069px;
+  background-color: var(--white);
+  width: 100px;
+  display: flex;
+  flex-direction: row;
+  padding: var(--padding-11xl);
+  box-sizing: border-box;
+  align-items: center;
+  justify-content: center;
+}
+.nav26 {
+  left: 291px;
+  width: 1169px;
+  text-align: center;
+  font-size: var(--font-size-47xl);
+  color: var(--color-darkred);
+}
+.profile-removebg-preview-2-icon26 {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 70px;
+  height: 70.35px;
+  object-fit: cover;
+}
+.admin26 {
+  position: absolute;
+  top: 16px;
+  left: 103px;
+  font-weight: 500;
+}
+.admin-pf26 {
+  position: absolute;
+  top: 10px;
+  left: 20px;
+  width: 187px;
+  height: 70.35px;
+  text-align: center;
+}
+.bachelor-of-science5,
+.list-of-curriculum {
+  position: absolute;
+  top: 130px;
+  left: 340px;
+  font-weight: 500;
+}
+.bachelor-of-science5 {
+  top: 10px;
+  left: 20px;
+}
+.course-name6 {
+  position: relative;
+  line-height: 29.49px;
+  font-weight: 600;
+}
+.course-code-wrapper4,
+.course-name-wrapper4,
+.lab-frame,
+.lec-frame,
+.units-wrapper1 {
+  position: absolute;
+  top: 29.15px;
+  left: 237.32px;
+  background-color: var(--color-darkred);
+  border: 1px solid var(--color-black);
+  box-sizing: border-box;
+  width: 436.57px;
+  height: 38.75px;
+  display: flex;
+  flex-direction: row;
+  padding: var(--padding-25xs) var(--padding-17xl);
+  align-items: center;
+  justify-content: center;
+  color: var(--white);
+}
+.course-code-wrapper4,
+.lab-frame,
+.lec-frame,
+.units-wrapper1 {
+  left: 758.13px;
+  width: 86.16px;
+}
+.course-code-wrapper4,
+.lec-frame,
+.units-wrapper1 {
+  left: -0.48px;
+  width: 238.77px;
+}
+.lec-frame,
+.units-wrapper1 {
+  left: 672.93px;
+  width: 86.16px;
+}
+.units-wrapper1 {
+  left: 843.32px;
+}
+.st-semester {
+  position: absolute;
+  top: 0;
+  left: 0;
+  line-height: 29.49px;
+  font-weight: 600;
+  text-align: left;
+}
+.computer-networking-1-wrapper2,
+.it-212-wrapper2,
+.linear-algebra-wrapper5,
+.math-111-wrapper9,
+.wrapper86,
+.wrapper87,
+.wrapper88,
+.wrapper89,
+.wrapper90,
+.wrapper91 {
+  position: absolute;
+  top: 66.93px;
+  left: 237.32px;
+  background-color: var(--white);
+  border: 1px solid var(--color-black);
+  box-sizing: border-box;
+  width: 436.57px;
+  height: 39.49px;
+  display: flex;
+  flex-direction: row;
+  padding: var(--padding-25xs) var(--padding-17xl);
+  align-items: center;
+  justify-content: center;
+}
+.computer-networking-1-wrapper2,
+.it-212-wrapper2,
+.math-111-wrapper9,
+.wrapper86,
+.wrapper87,
+.wrapper88,
+.wrapper89,
+.wrapper90,
+.wrapper91 {
+  left: 758.13px;
+  width: 86.16px;
+}
+.computer-networking-1-wrapper2,
+.it-212-wrapper2,
+.math-111-wrapper9,
+.wrapper87,
+.wrapper88,
+.wrapper89,
+.wrapper90,
+.wrapper91 {
+  left: -0.48px;
+  width: 238.77px;
+}
+.computer-networking-1-wrapper2,
+.it-212-wrapper2,
+.wrapper87,
+.wrapper88,
+.wrapper89,
+.wrapper90,
+.wrapper91 {
+  left: 672.93px;
+  width: 86.16px;
+}
+.computer-networking-1-wrapper2,
+.it-212-wrapper2,
+.wrapper88,
+.wrapper89,
+.wrapper90,
+.wrapper91 {
+  left: 843.32px;
+}
+.computer-networking-1-wrapper2,
+.it-212-wrapper2,
+.wrapper89,
+.wrapper90,
+.wrapper91 {
+  top: 105.46px;
+  left: 237.32px;
+  width: 436.57px;
+  height: 38.75px;
+}
+.it-212-wrapper2,
+.wrapper89,
+.wrapper90,
+.wrapper91 {
+  left: 758.13px;
+  width: 86.16px;
+}
+.it-212-wrapper2,
+.wrapper90,
+.wrapper91 {
+  left: -0.48px;
+  width: 238.77px;
+}
+.wrapper90,
+.wrapper91 {
+  left: 672.93px;
+  width: 86.16px;
+}
+.wrapper91 {
+  left: 843.32px;
+}
+.frame-parent24 {
+  position: absolute;
+  top: 38px;
+  left: 48px;
+  width: 929px;
+  height: 143.72px;
+  text-align: center;
+  font-size: var(--font-size-16xl);
+}
+.bachelor-of-science-in-compute-parent {
+  position: absolute;
+  top: 167px;
+  left: 430px;
+  background-color: var(--white);
+  border: 1px solid var(--color-dimgray);
+  box-sizing: border-box;
+  width: 994px;
+  height: 248px;
+  overflow: hidden;
+}
+.nav-menu-parent24 {
+  position: absolute;
+  top: 40px;
+  left: 60px;
+  background-color: var(--color-whitesmoke);
+  width: 1435px;
+  height: 1000px;
+}
+.list-curriculum {
+  position: relative;
+  background-color: var(--white);
+  width: 100%;
+  height: 1080px;
+  text-align: left;
+  font-size: var(--font-size-50xl);
+  color: var(--color-black);
+  font-family: var(--drop-menu-menu);
+}

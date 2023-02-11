@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="initial-scale=1, width=device-width" />
+
+    <link rel="stylesheet" href="./global.css" />
+    <link rel="stylesheet" href="./AdminLogin.css" />
+
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;600&display=swap"
+    />
+  </head>
+  <body>
+    <div class="admin-login">
+      <img class="admin-login-child" alt="" src="public/rectangle-1.svg" /><img
+        class="profile-removebg-preview-1-icon"
+        alt=""
+        src="public/profileremovebgpreview-1@2x.png"
+      /><img
+        class="received-704140150881574-remov-icon1"
+        alt=""
+        src="public/received-704140150881574removebgpreview-1-2@2x.png"
+      />
+      <div class="login-wrapper" id="frameContainer">
+        <div class="login">LOGIN</div>
+      </div>
+      <div class="login-form">
+        <input class="login-form-child" type="text" />
+        <div class="login-form-item"></div>
+        <img
+          class="healthiconsui-user-profile"
+          alt=""
+          src="public/healthiconsuiuserprofile.svg"
+        /><img
+          class="material-symbolslock-person-icon"
+          alt=""
+          src="public/materialsymbolslockperson.svg"
+        />
+        <div class="username">Username</div>
+        <div class="password">Password</div>
+      </div>
+      <div class="scheduling-system1">Scheduling System</div>
+    </div>
+
+    <script>
+      var frameContainer = document.getElementById("frameContainer");
+      if (frameContainer) {
+        frameContainer.addEventListener("click", function (e) {
+          window.location.href = "./Home.html";
+        });
+      }
+      </script>
+  </body>
+</html>

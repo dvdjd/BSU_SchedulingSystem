@@ -1,0 +1,467 @@
+body {
+  margin: 0;
+  line-height: normal;
+}
+.popup-overlay {
+  display: flex;
+  flex-direction: column;
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+}
+.nav-menu-child4 {
+  position: absolute;
+  top: 0;
+  left: 0;
+  background-color: var(--white);
+  width: 291px;
+  height: 1000px;
+}
+.menu6 {
+  position: absolute;
+  top: 91px;
+  left: 10px;
+  font-size: var(--font-size-28xl);
+  font-weight: 500;
+  color: var(--color-dimgray);
+  text-align: center;
+}
+.home-btn-child4 {
+  position: absolute;
+  top: 0;
+  left: 0;
+  background-color: var(--white);
+  width: 290px;
+  height: 80px;
+}
+.home6 {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  line-height: 40px;
+  font-weight: 500;
+}
+.home-btn6 {
+  position: absolute;
+  top: 114px;
+  left: 0;
+  width: 290px;
+  height: 80px;
+}
+.c-btn6,
+.co-btn6,
+.fs-btn6,
+.mes-btn6,
+.rs-btn6,
+.ss-btn6 {
+  position: absolute;
+  top: 194px;
+  left: 0;
+  width: 290px;
+  height: 80px;
+}
+.c-btn6,
+.co-btn6,
+.mes-btn6,
+.rs-btn6,
+.ss-btn6 {
+  top: 274px;
+}
+.c-btn6,
+.co-btn6,
+.mes-btn6,
+.rs-btn6 {
+  top: 354px;
+}
+.c-btn6,
+.co-btn6,
+.mes-btn6 {
+  top: 434px;
+}
+.c-btn6,
+.co-btn6 {
+  top: 514px;
+}
+.co-btn6 {
+  top: 594px;
+}
+.ai-btn6,
+.as-btn6,
+.cs-btn6,
+.nav-child4,
+.nav-menu6 {
+  position: absolute;
+  top: 674px;
+  left: 0;
+  width: 290px;
+  height: 80px;
+}
+.ai-btn6,
+.as-btn6,
+.nav-child4,
+.nav-menu6 {
+  top: 754px;
+}
+.as-btn6,
+.nav-child4,
+.nav-menu6 {
+  top: 834px;
+}
+.nav-child4,
+.nav-menu6 {
+  top: 0;
+  height: 1000px;
+}
+.nav-child4 {
+  background-color: var(--white);
+  width: 1169px;
+  height: 80px;
+}
+.batangas-state-university6 {
+  position: absolute;
+  top: 20px;
+  left: 86px;
+  font-size: var(--font-size-51xl);
+  letter-spacing: 0.4em;
+  font-weight: 500;
+  color: var(--color-black);
+}
+.change-password6 {
+  position: relative;
+  line-height: 40px;
+  font-weight: 500;
+}
+.cp6,
+.lo6,
+.nav6 {
+  position: absolute;
+  top: 0;
+}
+.cp6 {
+  left: 844px;
+  background-color: var(--white);
+  display: flex;
+  flex-direction: row;
+  padding: var(--padding-11xl);
+  align-items: center;
+  justify-content: center;
+}
+.lo6,
+.nav6 {
+  height: 80px;
+}
+.lo6 {
+  left: 1069px;
+  background-color: var(--white);
+  width: 100px;
+  display: flex;
+  flex-direction: row;
+  padding: var(--padding-11xl);
+  box-sizing: border-box;
+  align-items: center;
+  justify-content: center;
+}
+.nav6 {
+  left: 291px;
+  width: 1169px;
+  text-align: center;
+  color: var(--color-darkred);
+}
+.profile-removebg-preview-2-icon6 {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 70px;
+  height: 70.35px;
+  object-fit: cover;
+}
+.admin6 {
+  position: absolute;
+  top: 16px;
+  left: 103px;
+  font-weight: 500;
+}
+.admin-pf6 {
+  position: absolute;
+  top: 10px;
+  left: 20px;
+  width: 187px;
+  height: 70.35px;
+  text-align: center;
+  font-size: var(--font-size-50xl);
+}
+.academic-programs2,
+.major-exam-scheduling3 {
+  position: absolute;
+  top: 130px;
+  left: 340px;
+  font-size: var(--font-size-50xl);
+  font-weight: 500;
+}
+.academic-programs2 {
+  top: 7.65px;
+  left: 15.3px;
+  font-size: var(--font-size-45xl);
+  color: var(--color-black);
+}
+.iconsregularplus120 {
+  position: relative;
+  width: 15.3px;
+  height: 15.3px;
+  flex-shrink: 0;
+  display: none;
+}
+.st-year66 {
+  position: absolute;
+  top: -7.26%;
+  left: 0;
+  letter-spacing: 0.03em;
+  line-height: 13.77px;
+  font-weight: 500;
+}
+.label1120,
+.label2120,
+.label4120 {
+  position: relative;
+  width: 34.42px;
+  height: 13.77px;
+  flex-shrink: 0;
+  display: none;
+}
+.label2120,
+.label4120 {
+  width: 37.48px;
+}
+.label4120 {
+  width: 38.24px;
+}
+.iconsregularchevron-down-s120 {
+  position: relative;
+  width: 15.3px;
+  height: 15.3px;
+  flex-shrink: 0;
+}
+.header20 {
+  align-self: stretch;
+  border-radius: var(--br-xs);
+  background-color: var(--white);
+  border: 1px solid var(--blues-gray2);
+  display: flex;
+  flex-direction: row;
+  padding: var(--padding-13xs) var(--padding-4xs);
+  align-items: center;
+  justify-content: space-between;
+  z-index: 1;
+}
+.iconsregularchevron-down-s121,
+.label1121 {
+  position: relative;
+  width: 34.42px;
+  height: 13.77px;
+  flex-shrink: 0;
+}
+.iconsregularchevron-down-s121 {
+  width: 15.3px;
+  height: 15.3px;
+  opacity: 0;
+}
+.item-hover100 {
+  align-self: stretch;
+  background-color: var(--white);
+  height: 32.12px;
+  flex-shrink: 0;
+  display: flex;
+  flex-direction: row;
+  padding: var(--padding-13xs) var(--padding-8xl);
+  box-sizing: border-box;
+  align-items: center;
+  justify-content: space-between;
+  z-index: 4;
+}
+.label2122 {
+  position: relative;
+  width: 37.48px;
+  height: 13.77px;
+  flex-shrink: 0;
+}
+.item-hover101,
+.item-hover102 {
+  align-self: stretch;
+  background-color: var(--white);
+  height: 32.12px;
+  flex-shrink: 0;
+  display: flex;
+  flex-direction: row;
+  padding: var(--padding-13xs) var(--padding-8xl);
+  box-sizing: border-box;
+  align-items: center;
+  justify-content: space-between;
+  z-index: 3;
+}
+.item-hover102 {
+  z-index: 2;
+}
+.label4124 {
+  position: relative;
+  width: 38.24px;
+  height: 13.77px;
+  flex-shrink: 0;
+}
+.item-hover103 {
+  align-self: stretch;
+  height: 32.12px;
+  flex-shrink: 0;
+  flex-direction: row;
+  padding: var(--padding-13xs) var(--padding-8xl);
+  box-sizing: border-box;
+  justify-content: space-between;
+  z-index: 1;
+}
+.item-hover103,
+.item-hover104,
+.items-list20 {
+  background-color: var(--white);
+  display: flex;
+  align-items: center;
+}
+.item-hover104 {
+  align-self: stretch;
+  flex-direction: row;
+  padding: var(--padding-13xs) var(--padding-8xl);
+  justify-content: space-between;
+  z-index: 0;
+}
+.items-list20 {
+  position: absolute;
+  width: 100%;
+  right: 0;
+  bottom: -166.74px;
+  left: 0;
+  border-radius: 0 0 var(--br-xs) var(--br-xs);
+  height: 166.74px;
+  overflow: hidden;
+  flex-direction: column;
+  justify-content: flex-end;
+}
+.items-frame20 {
+  align-self: stretch;
+  position: relative;
+  height: 0.76px;
+  flex-shrink: 0;
+  overflow: hidden;
+  z-index: 0;
+}
+.dropdown-box20 {
+  position: absolute;
+  top: 71.13px;
+  left: 510.15px;
+  width: 198.86px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: var(--font-size-base);
+  color: var(--black);
+}
+.level4,
+.search10,
+.section5 {
+  position: absolute;
+  top: 53.54px;
+  left: 510.15px;
+  font-weight: 500;
+}
+.search10,
+.section5 {
+  left: 273.05px;
+}
+.search10 {
+  left: 734.25px;
+}
+.dropdown-box21 {
+  position: absolute;
+  top: 71.13px;
+  left: 273.05px;
+  width: 198.86px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: var(--font-size-base);
+  color: var(--black);
+}
+.search11 {
+  position: relative;
+  line-height: 30.59px;
+  font-weight: 600;
+}
+.search-wrapper3 {
+  position: absolute;
+  top: 71.13px;
+  left: 734.25px;
+  border-radius: var(--br-lg);
+  background-color: var(--color-forestgreen);
+  width: 229.45px;
+  height: 32.89px;
+  display: flex;
+  flex-direction: row;
+  padding: 0 var(--padding-29xl);
+  box-sizing: border-box;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  text-align: center;
+  font-size: var(--font-size-29xl);
+  color: var(--white);
+}
+.academic-program2 {
+  position: absolute;
+  top: 53.54px;
+  left: 35.95px;
+  font-weight: 500;
+}
+.dropdown-box22 {
+  position: absolute;
+  top: 71.13px;
+  left: 35.95px;
+  width: 198.86px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: var(--font-size-base);
+  color: var(--black);
+}
+.academic-programs-container {
+  position: absolute;
+  top: 167.24px;
+  left: 430.24px;
+  background-color: var(--white);
+  border: 0.8px solid var(--color-dimgray);
+  box-sizing: border-box;
+  width: 980.53px;
+  height: 120.08px;
+  overflow: hidden;
+  font-size: var(--font-size-9xl);
+  color: var(--color-dimgray);
+}
+.nav-menu-parent4 {
+  position: absolute;
+  top: 40px;
+  left: 60px;
+  background-color: var(--color-whitesmoke);
+  width: 1435px;
+  height: 1000px;
+}
+.majorexam-schedule {
+  position: relative;
+  background-color: var(--white);
+  width: 100%;
+  height: 1080px;
+  text-align: left;
+  font-size: var(--font-size-47xl);
+  color: var(--color-black);
+  font-family: var(--drop-menu-menu);
+}

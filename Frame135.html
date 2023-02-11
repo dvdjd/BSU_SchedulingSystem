@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="initial-scale=1, width=device-width" />
+
+    <link rel="stylesheet" href="./global.css" />
+    <link rel="stylesheet" href="./Frame135.css" />
+
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;600&display=swap"
+    />
+  </head>
+  <body>
+    <div class="rectangle-parent">
+      <div class="frame-child"></div>
+      <div class="frame-item"></div>
+      <div class="available-rooms">Available Rooms</div>
+      <img
+        class="vector-icon"
+        alt=""
+        src="public/vector.svg"
+        id="popupvectorIcon"
+      />
+      <div class="dropdown-box">
+        <div class="header">
+          <img
+            class="iconsregularplus"
+            alt=""
+            src="public/iconsregularplus.svg"
+          />
+          <div></div>
+          <div class="label1"><div class="st-year">1st Year</div></div>
+          <div class="label2"><div class="st-year">2nd Year</div></div>
+          <div class="label2"><div class="st-year">3rd Year</div></div>
+          <div class="label4"><div class="st-year">4th Year</div></div>
+          <div class="label2"></div>
+          <img
+            class="iconsregularchevron-down-s"
+            alt=""
+            src="public/iconsregularchevrondowns.svg"
+          />
+        </div>
+        <div class="items-frame">
+          <div class="items-list">
+            <div class="item-hover">
+              <img class="iconsregularplus" alt="" />
+              <div class="label11"><div class="st-year">1st Year</div></div>
+              <div class="label2"><div class="st-year">2nd Year</div></div>
+              <div class="label2"><div class="st-year">3rd Year</div></div>
+              <div class="label4"><div class="st-year">4th Year</div></div>
+              <div class="label2"></div>
+              <img class="iconsregularchevron-down-s1" alt="" />
+            </div>
+            <div class="item-hover1">
+              <img class="iconsregularplus" alt="" />
+              <div class="label1"><div class="st-year">1st Year</div></div>
+              <div class="label22"><div class="st-year">2nd Year</div></div>
+              <div class="label2"><div class="st-year">3rd Year</div></div>
+              <div class="label4"><div class="st-year">4th Year</div></div>
+              <div class="label2"></div>
+              <img class="iconsregularchevron-down-s1" alt="" />
+            </div>
+            <div class="item-hover2">
+              <img class="iconsregularplus" alt="" />
+              <div class="label1"><div class="st-year">1st Year</div></div>
+              <div class="label2"><div class="st-year">2nd Year</div></div>
+              <div class="label22"><div class="st-year">3rd Year</div></div>
+              <div class="label4"><div class="st-year">4th Year</div></div>
+              <div class="label2"></div>
+              <img class="iconsregularchevron-down-s1" alt="" />
+            </div>
+            <div class="item-hover3">
+              <img class="iconsregularplus" alt="" />
+              <div class="label1"><div class="st-year">1st Year</div></div>
+              <div class="label2"><div class="st-year">2nd Year</div></div>
+              <div class="label2"><div class="st-year">3rd Year</div></div>
+              <div class="label44"><div class="st-year">4th Year</div></div>
+              <div class="label2"></div>
+              <img class="iconsregularchevron-down-s1" alt="" />
+            </div>
+            <div class="item-hover4">
+              <img class="iconsregularplus" alt="" />
+              <div class="label1"><div class="st-year">1st Year</div></div>
+              <div class="label2"><div class="st-year">2nd Year</div></div>
+              <div class="label2"><div class="st-year">3rd Year</div></div>
+              <div class="label4"><div class="st-year">4th Year</div></div>
+              <div class="label22"></div>
+              <img class="iconsregularchevron-down-s1" alt="" />
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="available-rooms1">Available Rooms</div>
+      <div class="save-and-submit-wrapper" id="popupframeContainer1">
+        <div class="save-and-submit">Save and Submit</div>
+      </div>
+    </div>
+
+    <script>
+      var popupvectorIcon = document.getElementById("popupvectorIcon");
+      if (popupvectorIcon) {
+        popupvectorIcon.addEventListener("click", function (e) {
+          window.location.href = "./CourseSchedule21.html";
+        });
+      }
+      
+      var popupframeContainer1 = document.getElementById("popupframeContainer1");
+      if (popupframeContainer1) {
+        popupframeContainer1.addEventListener("click", function (e) {
+          window.location.href = "./CourseSchedule2.html";
+        });
+      }
+      </script>
+  </body>
+</html>

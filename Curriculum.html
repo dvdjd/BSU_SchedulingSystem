@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="initial-scale=1, width=device-width" />
+
+    <link rel="stylesheet" href="./global.css" />
+    <link rel="stylesheet" href="./Curriculum32.css" />
+
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;600&display=swap"
+    />
+  </head>
+  <body>
+    <div class="curriculum30">
+      <div class="nav-menu-parent28">
+        <div class="nav-menu30">
+          <div class="nav-menu-child28"></div>
+          <div class="menu30">MENU</div>
+          <div class="home-btn30">
+            <div class="home-btn-child28"></div>
+            <div class="home30">Home</div>
+          </div>
+          <div class="fs-btn30">
+            <div class="home-btn-child28"></div>
+            <div class="home30">Faculty Schedule</div>
+          </div>
+          <div class="ss-btn30">
+            <div class="home-btn-child28"></div>
+            <div class="home30">Student Schedule</div>
+          </div>
+          <div class="rs-btn30">
+            <div class="home-btn-child28"></div>
+            <div class="home30">Room Schedule</div>
+          </div>
+          <div class="c-btn30">
+            <div class="home-btn-child28"></div>
+            <div class="home30">Curriculum</div>
+          </div>
+          <div class="co-btn30">
+            <div class="home-btn-child28"></div>
+            <div class="home30">Course Offering</div>
+          </div>
+          <div class="cs-btn30">
+            <div class="home-btn-child28"></div>
+            <div class="home30">Course Scheduling</div>
+          </div>
+          <div class="ai-btn30">
+            <div class="home-btn-child28"></div>
+            <div class="home30">Add Instructor</div>
+          </div>
+          <div class="as-btn30">
+            <div class="home-btn-child28"></div>
+            <div class="home30">Add Student</div>
+          </div>
+          <div class="mes-btn30">
+            <div class="home-btn-child28"></div>
+            <div class="home30">Major Exam Schedule</div>
+          </div>
+        </div>
+        <div class="nav30">
+          <div class="nav-child28"></div>
+          <div class="batangas-state-university30">
+            BATANGAS STATE UNIVERSITY
+          </div>
+          <div class="cp30">
+            <div class="change-password30">Change Password</div>
+          </div>
+          <div class="lo30"><div class="change-password30">Logout</div></div>
+        </div>
+        <div class="admin-pf30">
+          <img
+            class="profile-removebg-preview-2-icon30"
+            alt=""
+            src="public/profileremovebgpreview-2@2x.png"
+          />
+          <div class="admin30">Admin</div>
+        </div>
+        <div class="view-curriculum1">View Curriculum</div>
+        <div class="academic-program-parent2">
+          <div class="academic-program10">Academic Program</div>
+          <div class="frame-parent29" id="frameContainer11">
+            <div class="program-code-wrapper1">
+              <div class="view">Program Code</div>
+            </div>
+            <div class="bscs-container"><div class="view">BSCS</div></div>
+            <div class="bsit-container"><div class="view">BSIT</div></div>
+            <div class="program-name-container">
+              <div class="view">Program Name</div>
+            </div>
+            <div class="bachelor-of-science-in-compute-container">
+              <div class="bachelor-of-science6">
+                Bachelor of Science in Computer Science
+              </div>
+            </div>
+            <div class="bachelor-of-science-in-informa-container">
+              <div class="bachelor-of-science6">
+                Bachelor of Science in Information Technology
+              </div>
+            </div>
+            <div class="view-wrapper"><div class="view">View</div></div>
+            <div class="frame-wrapper15">
+              <div class="rectangle-parent63" id="frameContainer7">
+                <div class="frame-child142"></div>
+                <img class="mdieye-icon1" alt="" src="public/mdieye1.svg" />
+              </div>
+            </div>
+            <div class="frame-wrapper16">
+              <div class="rectangle-parent64">
+                <div class="frame-child142"></div>
+                <img class="mdieye-icon2" alt="" src="public/mdieye2.svg" />
+              </div>
+            </div>
+          </div>
+          <div class="new-curriculum-wrapper" id="frameContainer12">
+            <div class="new-curriculum">New Curriculum</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div id="unloadNotifContainer" class="popup-overlay" style="display: none">
+      <div class="unload-notif1">
+        <div class="by-clicking-the-container1">
+          <p class="by-clicking-the1">
+            By clicking the OK button will unload all the subject from
+            instructor.
+          </p>
+          <p class="do-you-wish1">Do you wish to continue?</p>
+        </div>
+        <div class="frame-group" id="popupgroupContainer">
+          <div class="ok-container" id="popupframeContainer">
+            <div class="ok1">OK</div>
+          </div>
+          <div class="cancel-container" id="popupframeContainer1">
+            <div class="ok1">CANCEL</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      var popupframeContainer = document.getElementById("popupframeContainer");
+      if (popupframeContainer) {
+        popupframeContainer.addEventListener("click", function (e) {
+          window.location.href = "./FacultySchedule1.html";
+        });
+      }
+      
+      var popupframeContainer1 = document.getElementById("popupframeContainer1");
+      if (popupframeContainer1) {
+        popupframeContainer1.addEventListener("click", function (e) {
+          window.location.href = "./FacultySchedule2.html";
+        });
+      }
+      
+      var popupgroupContainer = document.getElementById("popupgroupContainer");
+      if (popupgroupContainer) {
+        popupgroupContainer.addEventListener("click", function (e) {
+          window.location.href = "./FacultySchedule1.html";
+        });
+      }
+      
+      var frameContainer7 = document.getElementById("frameContainer7");
+      if (frameContainer7) {
+        frameContainer7.addEventListener("click", function (e) {
+          window.location.href = "./Curriculum1.html";
+        });
+      }
+      
+      var frameContainer11 = document.getElementById("frameContainer11");
+      if (frameContainer11) {
+        frameContainer11.addEventListener("click", function () {
+          var popup = document.getElementById("unloadNotifContainer");
+          if (!popup) return;
+          var popupStyle = popup.style;
+          if (popupStyle) {
+            popupStyle.display = "flex";
+            popupStyle.zIndex = 100;
+            popupStyle.backgroundColor = "rgba(113, 113, 113, 0.3)";
+            popupStyle.alignItems = "center";
+            popupStyle.justifyContent = "center";
+          }
+          popup.setAttribute("closable", "");
+      
+          var onClick =
+            popup.onClick ||
+            function (e) {
+              if (e.target === popup && popup.hasAttribute("closable")) {
+                popupStyle.display = "none";
+              }
+            };
+          popup.addEventListener("click", onClick);
+        });
+      }
+      
+      var frameContainer12 = document.getElementById("frameContainer12");
+      if (frameContainer12) {
+        frameContainer12.addEventListener("click", function (e) {
+          window.location.href = "./AddCurriculum.html";
+        });
+      }
+      </script>
+  </body>
+</html>
