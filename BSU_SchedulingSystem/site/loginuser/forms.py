@@ -1,12 +1,9 @@
-from django.forms import forms
+from django import forms
 from .models import LoginUser
 
-class LoginUserForm(forms.ModelForm):
-    
+class LoginUserAdminForm(forms.ModelForm):
+    password = forms.CharField(widget=forms.PasswordInput)
+
     class Meta:
         model = LoginUser
-        fields = ['userid', 'username', 'password', 'firstname', 'middlename', 'lastname', 'usertype']
-        widgets = {
-            'password': forms.PasswordInput()
-        }
-    
+        fields = '__all__'
