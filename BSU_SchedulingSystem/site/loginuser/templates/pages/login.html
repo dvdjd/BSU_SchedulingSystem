@@ -1,0 +1,41 @@
+{% extends 'loginLayout.html' %}
+{% load static %}
+{% block title %}Login Page{% endblock title %}
+{% block content %}
+<div class="admin-login">
+    <img class="admin-login-child" alt="" src="{% static 'public/rectangle-1.svg' %}" /><img
+    class="profile-removebg-preview-1-icon"
+    alt=""
+    src="{% static 'public/profileremovebgpreview-1@2x.png' %}"
+    /><img
+    class="received-704140150881574-remov-icon1"
+    alt=""
+    src="{% static 'public/received-704140150881574removebgpreview-1-2@2x.png' %}"
+    />
+    <form action="" method="POST" novalidate>
+    <input type="submit" value="LOGIN" class="login-wrapper" id="frameContainer" />
+    <div class="login-form">
+    <input class="username" name="username" type="text" placeholder="Username" required />
+    <div class="login-form-item"></div>
+    <img
+        class="healthiconsui-user-profile"
+        alt=""
+        src="{% static 'public/healthiconsuiuserprofile.svg' %}"
+    /><img
+        class="material-symbolslock-person-icon"
+        alt=""
+        src="{% static 'public/materialsymbolslockperson.svg' %}"
+    />
+    <input class="password" name="password" type="password" placeholder="Password" required />
+    </div>
+    {% csrf_token %}
+    </form>
+    <div class="scheduling-system1">Scheduling System</div>
+    {% if error %}
+        <div class="error-login">Wrong username or password</div>
+    {% endif %}
+    {% if blank %}
+        <div class="error-login1">Please enter username and password</div>
+    {% endif %}
+</div>
+{% endblock content %}

@@ -1,0 +1,82 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="initial-scale=1, width=device-width" />
+
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;600&display=swap"
+    />
+    {% include 'css.html' %}
+    <title>BSU - {% block title %}{% endblock title %}</title>
+  </head>
+  <body>
+    <div class="room-schedule">
+      <div class="nav-menu-parent">
+        <div class="nav-menu">
+          <div class="nav-menu-child"></div>
+          <div class="menu">MENU</div>
+          <div class="home-btn">
+            <div class="home-btn-child"></div>
+            <div class="home">Home</div>
+          </div>
+          <div class="fs-btn">
+            <div class="home-btn-child"></div>
+            <div class="home">Faculty Schedule</div>
+          </div>
+          <div class="ss-btn">
+            <div class="home-btn-child"></div>
+            <div class="home">Student Schedule</div>
+          </div>
+          <div class="rs-btn">
+            <div class="home-btn-child"></div>
+            <div class="home">Room Schedule</div>
+          </div>
+          <div class="mes-btn">
+            <div class="home-btn-child"></div>
+            <div class="home">Major Exam Schedule</div>
+          </div>
+          <div class="c-btn">
+            <div class="home-btn-child"></div>
+            <div class="home">Curriculum</div>
+          </div>
+          <div class="co-btn">
+            <div class="home-btn-child"></div>
+            <div class="home">Course Offering</div>
+          </div>
+          <div class="cs-btn">
+            <div class="home-btn-child"></div>
+            <div class="home">Course Scheduling</div>
+          </div>
+          <div class="ai-btn">
+            <div class="home-btn-child"></div>
+            <div class="home">Add Instructor</div>
+          </div>
+          <div class="as-btn">
+            <div class="home-btn-child"></div>
+            <div class="home">Add Student</div>
+          </div>
+        </div>
+        <div class="nav">
+          <div class="nav-child"></div>
+          <div class="batangas-state-university">BATANGAS STATE UNIVERSITY</div>
+          <div class="cp">
+            <div class="change-password">Change Password</div>
+          </div>
+          <div class="lo"><div class="change-password">Logout</div></div>
+        </div>
+        <div class="admin-pf">
+          <img
+            class="profile-removebg-preview-2-icon"
+            alt=""
+            src="{% static 'public/profileremovebgpreview-2@2x.png' %}"
+          />
+          <div class="admin">Admin</div>
+        </div>
+        {% block content %}{% endblock content %}
+      </div>
+    </div>
+  </body>
+</html>

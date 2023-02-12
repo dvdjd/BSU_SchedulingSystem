@@ -1,0 +1,249 @@
+body {
+  margin: 0;
+  line-height: normal;
+}
+.nav-menu-child {
+  position: absolute;
+  top: 0;
+  left: 0;
+  background-color: var(--white);
+  width: 291px;
+  height: 1000px;
+}
+.menu {
+  position: absolute;
+  top: 91px;
+  left: 10px;
+  font-size: var(--font-size-28xl);
+  font-weight: 500;
+  color: var(--color-dimgray);
+  text-align: center;
+}
+.home-btn-child {
+  background-color: var(--white);
+}
+.home-btn,
+.home-btn-child {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 290px;
+  height: 80px;
+}
+.faculty-schedule {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  line-height: 40px;
+  font-weight: 500;
+}
+.fs-btn {
+  position: absolute;
+  top: 80px;
+  left: 0;
+  width: 290px;
+  height: 80px;
+}
+.ai-btn,
+.as-btn,
+.c-btn,
+.co-btn,
+.cs-btn,
+.rs-btn,
+.ss-btn {
+  position: absolute;
+  top: 160px;
+  left: 0;
+  width: 290px;
+  height: 80px;
+}
+.ai-btn,
+.as-btn,
+.c-btn,
+.co-btn,
+.cs-btn,
+.rs-btn {
+  top: 240px;
+}
+.ai-btn,
+.as-btn,
+.c-btn,
+.co-btn,
+.cs-btn {
+  top: 400px;
+}
+.ai-btn,
+.as-btn,
+.co-btn,
+.cs-btn {
+  top: 480px;
+}
+.ai-btn,
+.as-btn,
+.cs-btn {
+  top: 560px;
+}
+.ai-btn,
+.as-btn {
+  top: 640px;
+}
+.as-btn {
+  top: 720px;
+  left: 1px;
+}
+.home-btn-parent,
+.mes-btn,
+.nav-menu {
+  position: absolute;
+  top: 114px;
+  left: 0;
+  width: 291px;
+  height: 800px;
+}
+.mes-btn,
+.nav-menu {
+  top: 434px;
+  width: 290px;
+  height: 80px;
+}
+.nav-menu {
+  top: 0;
+  height: 1000px;
+}
+.profile-removebg-preview-2-icon {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 70px;
+  height: 70.35px;
+  object-fit: cover;
+}
+.admin {
+  position: absolute;
+  top: 16px;
+  left: 103px;
+  font-weight: 500;
+}
+.admin-pf {
+  position: absolute;
+  top: 10px;
+  left: 20px;
+  width: 187px;
+  height: 70.35px;
+  text-align: center;
+  font-size: var(--font-size-50xl);
+}
+.scheduling-system {
+  position: absolute;
+  top: 470px;
+  left: 340px;
+  font-size: 70px;
+  font-weight: 500;
+  display: inline-block;
+  width: 406px;
+}
+.received-704140150881574-remov-icon {
+  position: absolute;
+  top: 220px;
+  left: 220px;
+  width: 389.68px;
+  height: 369px;
+  object-fit: cover;
+}
+.profile-pic-icon,
+.profile-pic1-icon,
+.profile-pic2-icon,
+.profile-pic3-icon {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 150px;
+  height: 150px;
+  object-fit: cover;
+}
+.profile-pic1-icon,
+.profile-pic2-icon,
+.profile-pic3-icon {
+  top: 200px;
+}
+.profile-pic2-icon,
+.profile-pic3-icon {
+  top: 400px;
+}
+.profile-pic3-icon {
+  top: 600px;
+}
+.frame-child,
+.img {
+  position: absolute;
+  top: 154px;
+  left: 825px;
+  width: 609.68px;
+  height: 750px;
+}
+.frame-child {
+  top: 0;
+  left: 0;
+  background-color: var(--white);
+  width: 1169px;
+  height: 80px;
+}
+.change-password {
+  position: relative;
+  line-height: 40px;
+  font-weight: 500;
+}
+.cp,
+.lo {
+  position: absolute;
+  top: 0;
+  left: 862px;
+  background-color: var(--white);
+  display: flex;
+  flex-direction: row;
+  padding: var(--padding-11xl);
+  align-items: center;
+  justify-content: center;
+}
+.lo {
+  left: 1087px;
+  width: 100px;
+  height: 80px;
+  box-sizing: border-box;
+}
+.batangas-state-university {
+  position: absolute;
+  top: 20px;
+  left: 86px;
+  font-size: var(--font-size-51xl);
+  letter-spacing: 0.4em;
+  font-weight: 500;
+  color: var(--color-black);
+}
+.rectangle-parent {
+  position: absolute;
+  top: 0;
+  left: 291px;
+  width: 1187px;
+  height: 80px;
+  text-align: center;
+  color: var(--color-darkred);
+}
+.nav-menu-parent {
+  position: absolute;
+  top: 40px;
+  left: 42px;
+  background-color: var(--color-whitesmoke);
+  width: 1435px;
+  height: 1000px;
+}
+.home {
+  position: relative;
+  background-color: var(--white);
+  width: 100%;
+  height: 1080px;
+  text-align: left;
+  font-size: var(--font-size-47xl);
+  color: var(--color-black);
+  font-family: var(--drop-menu-menu);
+}
