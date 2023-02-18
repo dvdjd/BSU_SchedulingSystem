@@ -7,81 +7,38 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;600&display=swap"/>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;600&display=swap"/>
-    <style>
-        *{
-            font-family: -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
-        }
-        .parent{
-            margin-top : 130px;
-            width : 1230px;
-            height : 500px;
-            margin-right : auto;
-            margin-left : auto;
-        }
-        h5{
-            font-size : 26px;
-        }
-        .child{
-            border : 1px solid black;
-            margin-right : auto;
-            margin-left : auto;
-            width : 85%;
-            padding-top : 10px;
-            padding-bottom : 15px;
-        }
-        h6{
-            font-size : 20px;
-        }
-        small{
-            color : #5c5c5c;
-        }
-        .grandChild{
-            margin-right : auto;
-            margin-left : auto;
-            width : 96%;
-        }
-        .select{
-            border-radius : 5px;
-        }
-        .search{
-            width : 220px;
-            height : 30px;
-            text-align : center;
-            padding-top : 0px;
-        }
-    </style>
 </head>
 <body>
-    <div class="row parent">
+    <div class="row" style="margin-top : 130px; width : 1230px; height : 500px; margin-right : auto; margin-left : auto;">
         <div class="col-md-12">
-            <h5>Major Exam Scheduling</h5>
-            <div class="row child">
+            <h5 style="font-size : 26px;">Major Exam Scheduling</h5>
+            <div class="row" style="border : 1px solid black; margin-right : auto; margin-left : auto; width : 85%; padding-top : 10px; padding-bottom : 15px;">
                 <div class="col-md-12">
-                    <h6>Academic Programs</h6>
+                    <h6 style="font-size : 20px;">Academic Programs</h6>
                 </div>
-                <div class="row grandChild">
+                <div class="row" style="margin-right : auto; margin-left : auto; width : 96%;">
                     <div class="col-md-3">
-                        <small>Academic Program</small>
-                        <select class="form-control form-control-sm select">
+                        <small style="color : #5c5c5c;">Academic Program</small>
+                        <select class="form-control form-control-sm" style="border-radius : 5px;">
                             <option></option>
                         </select>
                     </div>
                     <div class="col-md-3">
-                        <small>Section</small>
-                        <select class="form-control form-control-sm select">
+                        <small style="color : #5c5c5c;">Section</small>
+                        <select class="form-control form-control-sm" style="border-radius : 5px;">
                             <option></option>
                         </select>
                     </div>
                     <div class="col-md-3">
-                        <small>Level</small>
-                        <select class="form-control form-control-sm select">
+                        <small style="color : #5c5c5c;">Level</small>
+                        <select class="form-control form-control-sm" style="border-radius : 5px;">
                             <option></option>
                         </select>
                     </div>
                     <div class="col-md-3">
-                        <small>Search</small>
+                        <small style="color : #5c5c5c;">Search</small>
                         <br>
-                        <button type="button" id="frameContainer" class="btn btn-success search">Search</button>
+                        <button type="button" id="frameContainer" class="btn btn-success" style="width : 220px; height : 30px; text-align : center; padding-top : 0px;">Search</button>
                     </div>
                 </div>
             </div>

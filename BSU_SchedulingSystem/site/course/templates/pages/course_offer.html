@@ -5,32 +5,33 @@
 <div class="row justify-content-md-center">
   <div class="col-md-10 mt-4">
     {% comment %} Ito ang pattern {% endcomment %}
-    <h3>Student Schedule</h3>
+    <h3>Course Offering</h3>
         <div class="row justify-content-md-center">
           <div class="col-md-10 py-3 bg-light" style="border: 1px solid black; border-radius: 5px;">
-            <h4>Search by Section</h4>
+            <h4>Academic Program</h4>
             <div class="row">
-              <div class="col-md-3">
-                <small style="color : #5c5c5c;">Level</small>
-                <select class="form-control form-control-sm">
-                    <option></option>
-                </select>
-              </div>
-              <div class="col-md-3">
-                <small style="color : #5c5c5c;">Section</small>
-                <select class="form-control form-control-sm">
-                    <option></option>
-                </select>
-              </div>
-              <div class="col-md-3">
-                <small style="color : #5c5c5c;">Status</small>
-                <select class="form-control form-control-sm">
-                    <option></option>
-                </select>
-              </div>
-              <div class="col-md-3">
-                <small style="color : #5c5c5c;">Search</small>
-                <button type="button" id="frameContainer" class="btn btn-success btn-block">Search</button>
+              <div class="col-md-12">
+                <table class="table table-bordered table-hover text-center">
+                  <thead>
+                    <tr>
+                      <th scope="col" style="color:#fff; background:#8b1001;">Program</th>
+                      <th scope="col" style="color:#fff; background:#8b1001;">Program Name</th>
+                      <th scope="col" class="bg-success" style="color:#fff;">Offerings</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <th scope="row">BSCS</th>
+                      <td>Bachelor of Science in Computer Science</td>
+                      <td><button class="btn btn-success"><i class="fa fa-chevron-right" aria-hidden="true"></i></button></td>
+                    </tr>
+                    <tr>
+                      <th scope="row">BSIT</th>
+                      <td>Bachelor of Science in Information Technology</td>
+                      <td><button class="btn btn-success"><i class="fa fa-chevron-right" aria-hidden="true"></i></button></td>
+                    </tr>
+                  </tbody>
+                </table>
               </div>
             </div>
           </div>
