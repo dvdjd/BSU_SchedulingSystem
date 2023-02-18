@@ -1,854 +1,158 @@
 <!DOCTYPE html>
-<html>
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="initial-scale=1, width=device-width" />
-
-    <link rel="stylesheet" href="css/global.css" />
-    <link rel="stylesheet" href="css/CourseOffering1.css" />
-
-    <link
-      rel="stylesheet"
-      href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;600&display=swap"
-    />
-  </head>
-  <body>
-    <div class="course-offering110">
-      <div class="course-offering28">Course Offering</div>
-        <div class="search-course-container">
-          <div class="search-course2">Search Course</div>
-          <div class="search-wrapper12" id="frameContainer">
-            <div class="search26">Search</div>
-          </div>
-          <div class="dropdown-box68">
-            <div class="header68">
-              <img
-                class="iconsregularplus408"
-                alt=""
-                src="public/iconsregularplus68.svg"
-              />
-              <div></div>
-              <div class="label1408">
-                <div class="st-year210">1st Year</div>
-              </div>
-              <div class="label2408">
-                <div class="st-year210">2nd Year</div>
-              </div>
-              <div class="label2408">
-                <div class="st-year210">3rd Year</div>
-              </div>
-              <div class="label4408">
-                <div class="st-year210">4th Year</div>
-              </div>
-              <div class="label2408"></div>
-              <img
-                class="iconsregularchevron-down-s408"
-                alt=""
-                src="public/iconsregularchevrondowns68.svg"
-              />
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;600&display=swap"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;600&display=swap"/>
+    <style>
+        *{
+            font-family: -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
+        }
+        .parent{
+            margin-top : 130px;
+            width : 1230px;
+            height : 500px;
+            margin-right : auto;
+            margin-left : auto;
+        }
+        h5{
+            font-size : 26px;
+        }
+        .greatChild{
+            margin-left : auto;
+            margin-right : auto;
+            width : 91%;
+        }
+        .child{
+            border : 1px solid black;
+            margin-right : auto;
+            margin-left : auto;
+            width : 100%;
+            padding-top : 10px;
+            padding-bottom : 15px;
+        }
+        h6{
+            font-size : 20px;
+        }
+        small{
+            color : #5c5c5c;
+        }
+        .grandChild{
+            margin-right : auto;
+            margin-left : auto;
+            width : 96%;
+        }
+        .select{
+            border-radius : 5px;
+        }
+        .search{
+            width : 400px;
+            height : 35px;
+            text-align : center;
+            padding-top : 0px;
+        }
+        .rowSearch{
+            margin-left : auto;
+            margin-right : auto;
+            margin-top : 20px;
+        }
+        .col-md-4, .col-md-8{
+            padding-right : 5px;
+            padding-left : 5px;
+        }
+        .right{
+            background : #8b1001;
+            color : #fff;
+            margin-left : 0px;
+        }
+        .rightParent{
+            margin-left : 0px;
+            margin-right : 0px;
+        }
+    </style>
+</head>
+<body>
+    <div class="row parent">
+        <div class="col-md-12">
+            <h5>Course Offering</h5>
+            <div class="row greatChild">
+                <div class="col-md-4">
+                    <div class="row rightParent">
+                        <div class="col-md-12 right">
+                            <p class="mb-1"><b>Bachelor of Science in Computer Science</b></p>
+                        </div>
+                        <div class="row grandChild">
+                            <div class="col-md-12">
+                                <small>Curriculum Year</small>
+                                <select class="form-control form-control-sm">
+                                    <option></option>
+                                </select>
+                            </div>  
+                            <div class="col-md-12">
+                                <small>Section</small>
+                                <select class="form-control form-control-sm">
+                                    <option></option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-8">
+                    <div class="row child">
+                        <div class="col-md-12">
+                            <h6>Search Course</h6>
+                        </div>
+                        <div class="row grandChild">
+                            <div class="col-md-3">
+                                <small>Curriculum Year</small>
+                                <select class="form-control form-control-sm select">
+                                    <option></option>
+                                </select>
+                            </div>
+                            <div class="col-md-3">
+                                <small>Level</small>
+                                <select class="form-control form-control-sm select">
+                                    <option></option>
+                                </select>
+                            </div>
+                            <div class="col-md-3">
+                                <small>Period</small>
+                                <select class="form-control form-control-sm select">
+                                    <option></option>
+                                </select>
+                            </div>
+                            <div class="col-md-3">
+                                <small>Status</small>
+                                <select class="form-control form-control-sm select">
+                                    <option></option>
+                                </select>
+                            </div>
+                        </div>
+                        <br>
+                        <div class="row rowSearch">
+                            <div class="col-md-12">
+                                <button type="button" id="frameContainer" class="btn btn-success search">Search</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
             </div>
-            <div class="items-frame68">
-              <div class="items-list68">
-                <div class="item-hover340">
-                  <img class="iconsregularplus408" alt="" />
-                  <div class="label1409">
-                    <div class="st-year210">1st Year</div>
-                  </div>
-                  <div class="label2408">
-                    <div class="st-year210">2nd Year</div>
-                  </div>
-                  <div class="label2408">
-                    <div class="st-year210">3rd Year</div>
-                  </div>
-                  <div class="label4408">
-                    <div class="st-year210">4th Year</div>
-                  </div>
-                  <div class="label2408"></div>
-                  <img class="iconsregularchevron-down-s409" alt="" />
-                </div>
-                <div class="item-hover341">
-                  <img class="iconsregularplus408" alt="" />
-                  <div class="label1408">
-                    <div class="st-year210">1st Year</div>
-                  </div>
-                  <div class="label2410">
-                    <div class="st-year210">2nd Year</div>
-                  </div>
-                  <div class="label2408">
-                    <div class="st-year210">3rd Year</div>
-                  </div>
-                  <div class="label4408">
-                    <div class="st-year210">4th Year</div>
-                  </div>
-                  <div class="label2408"></div>
-                  <img class="iconsregularchevron-down-s409" alt="" />
-                </div>
-                <div class="item-hover342">
-                  <img class="iconsregularplus408" alt="" />
-                  <div class="label1408">
-                    <div class="st-year210">1st Year</div>
-                  </div>
-                  <div class="label2408">
-                    <div class="st-year210">2nd Year</div>
-                  </div>
-                  <div class="label2410">
-                    <div class="st-year210">3rd Year</div>
-                  </div>
-                  <div class="label4408">
-                    <div class="st-year210">4th Year</div>
-                  </div>
-                  <div class="label2408"></div>
-                  <img class="iconsregularchevron-down-s409" alt="" />
-                </div>
-                <div class="item-hover343">
-                  <img class="iconsregularplus408" alt="" />
-                  <div class="label1408">
-                    <div class="st-year210">1st Year</div>
-                  </div>
-                  <div class="label2408">
-                    <div class="st-year210">2nd Year</div>
-                  </div>
-                  <div class="label2408">
-                    <div class="st-year210">3rd Year</div>
-                  </div>
-                  <div class="label4412">
-                    <div class="st-year210">4th Year</div>
-                  </div>
-                  <div class="label2408"></div>
-                  <img class="iconsregularchevron-down-s409" alt="" />
-                </div>
-                <div class="item-hover344">
-                  <img class="iconsregularplus408" alt="" />
-                  <div class="label1408">
-                    <div class="st-year210">1st Year</div>
-                  </div>
-                  <div class="label2408">
-                    <div class="st-year210">2nd Year</div>
-                  </div>
-                  <div class="label2408">
-                    <div class="st-year210">3rd Year</div>
-                  </div>
-                  <div class="label4408">
-                    <div class="st-year210">4th Year</div>
-                  </div>
-                  <div class="label2410"></div>
-                  <img class="iconsregularchevron-down-s409" alt="" />
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="level15">Level</div>
-          <div class="curriculum-year2">Curriculum Year</div>
-          <div class="period2">Period</div>
-          <div class="status7">Status</div>
-          <div class="dropdown-box69">
-            <div class="header68">
-              <img
-                class="iconsregularplus408"
-                alt=""
-                src="public/iconsregularplus69.svg"
-              />
-              <div></div>
-              <div class="label1408">
-                <div class="st-year210">Mr. Homer Castillo</div>
-              </div>
-              <div class="label2408">
-                <div class="st-year210">Ms. Shiela Marie Garcia</div>
-              </div>
-              <div class="label2408">
-                <div class="st-year210">Mr. Joseph Rizalde Guillo</div>
-              </div>
-              <div class="label4408">
-                <div class="st-year210">Mr. Johnrey Manzanal</div>
-              </div>
-              <div class="label2408">
-                <div class="st-year210">Mr. Jessie Montalbo</div>
-              </div>
-              <img
-                class="iconsregularchevron-down-s408"
-                alt=""
-                src="public/iconsregularchevrondowns69.svg"
-              />
-            </div>
-            <div class="items-frame68">
-              <div class="items-list68">
-                <div class="item-hover340">
-                  <img class="iconsregularplus408" alt="" />
-                  <div class="label1409">
-                    <div class="st-year210">Mr. Homer Castillo</div>
-                  </div>
-                  <div class="label2408">
-                    <div class="st-year210">Ms. Shiela Marie Garcia</div>
-                  </div>
-                  <div class="label2408">
-                    <div class="st-year210">Mr. Joseph Rizalde Guillo</div>
-                  </div>
-                  <div class="label4408">
-                    <div class="st-year210">Mr. Johnrey Manzanal</div>
-                  </div>
-                  <div class="label2408">
-                    <div class="st-year210">Mr. Jessie Montalbo</div>
-                  </div>
-                  <img class="iconsregularchevron-down-s409" alt="" />
-                </div>
-                <div class="item-hover341">
-                  <img class="iconsregularplus408" alt="" />
-                  <div class="label1408">
-                    <div class="st-year210">Mr. Homer Castillo</div>
-                  </div>
-                  <div class="label2410">
-                    <div class="st-year210">Ms. Shiela Marie Garcia</div>
-                  </div>
-                  <div class="label2408">
-                    <div class="st-year210">Mr. Joseph Rizalde Guillo</div>
-                  </div>
-                  <div class="label4408">
-                    <div class="st-year210">Mr. Johnrey Manzanal</div>
-                  </div>
-                  <div class="label2408">
-                    <div class="st-year210">Mr. Jessie Montalbo</div>
-                  </div>
-                  <img class="iconsregularchevron-down-s409" alt="" />
-                </div>
-                <div class="item-hover342">
-                  <img class="iconsregularplus408" alt="" />
-                  <div class="label1408">
-                    <div class="st-year210">Mr. Homer Castillo</div>
-                  </div>
-                  <div class="label2408">
-                    <div class="st-year210">Ms. Shiela Marie Garcia</div>
-                  </div>
-                  <div class="label2410">
-                    <div class="st-year210">Mr. Joseph Rizalde Guillo</div>
-                  </div>
-                  <div class="label4408">
-                    <div class="st-year210">Mr. Johnrey Manzanal</div>
-                  </div>
-                  <div class="label2408">
-                    <div class="st-year210">Mr. Jessie Montalbo</div>
-                  </div>
-                  <img class="iconsregularchevron-down-s409" alt="" />
-                </div>
-                <div class="item-hover343">
-                  <img class="iconsregularplus408" alt="" />
-                  <div class="label1408">
-                    <div class="st-year210">Mr. Homer Castillo</div>
-                  </div>
-                  <div class="label2408">
-                    <div class="st-year210">Ms. Shiela Marie Garcia</div>
-                  </div>
-                  <div class="label2408">
-                    <div class="st-year210">Mr. Joseph Rizalde Guillo</div>
-                  </div>
-                  <div class="label4412">
-                    <div class="st-year210">Mr. Johnrey Manzanal</div>
-                  </div>
-                  <div class="label2408">
-                    <div class="st-year210">Mr. Jessie Montalbo</div>
-                  </div>
-                  <img class="iconsregularchevron-down-s409" alt="" />
-                </div>
-                <div class="item-hover344">
-                  <img class="iconsregularplus408" alt="" />
-                  <div class="label1408">
-                    <div class="st-year210">Mr. Homer Castillo</div>
-                  </div>
-                  <div class="label2408">
-                    <div class="st-year210">Ms. Shiela Marie Garcia</div>
-                  </div>
-                  <div class="label2408">
-                    <div class="st-year210">Mr. Joseph Rizalde Guillo</div>
-                  </div>
-                  <div class="label4408">
-                    <div class="st-year210">Mr. Johnrey Manzanal</div>
-                  </div>
-                  <div class="label2410">
-                    <div class="st-year210">Mr. Jessie Montalbo</div>
-                  </div>
-                  <img class="iconsregularchevron-down-s409" alt="" />
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="dropdown-box70">
-            <div class="header68">
-              <img
-                class="iconsregularplus408"
-                alt=""
-                src="public/iconsregularplus70.svg"
-              />
-              <div></div>
-              <div class="label1408">
-                <div class="st-year210">Mr. Homer Castillo</div>
-              </div>
-              <div class="label2408">
-                <div class="st-year210">Ms. Shiela Marie Garcia</div>
-              </div>
-              <div class="label2408">
-                <div class="st-year210">Mr. Joseph Rizalde Guillo</div>
-              </div>
-              <div class="label4408">
-                <div class="st-year210">Mr. Johnrey Manzanal</div>
-              </div>
-              <div class="label2408">
-                <div class="st-year210">Mr. Jessie Montalbo</div>
-              </div>
-              <img
-                class="iconsregularchevron-down-s408"
-                alt=""
-                src="public/iconsregularchevrondowns60.svg"
-              />
-            </div>
-            <div class="items-frame68">
-              <div class="items-list68">
-                <div class="item-hover340">
-                  <img class="iconsregularplus408" alt="" />
-                  <div class="label1409">
-                    <div class="st-year210">Mr. Homer Castillo</div>
-                  </div>
-                  <div class="label2408">
-                    <div class="st-year210">Ms. Shiela Marie Garcia</div>
-                  </div>
-                  <div class="label2408">
-                    <div class="st-year210">Mr. Joseph Rizalde Guillo</div>
-                  </div>
-                  <div class="label4408">
-                    <div class="st-year210">Mr. Johnrey Manzanal</div>
-                  </div>
-                  <div class="label2408">
-                    <div class="st-year210">Mr. Jessie Montalbo</div>
-                  </div>
-                  <img class="iconsregularchevron-down-s409" alt="" />
-                </div>
-                <div class="item-hover341">
-                  <img class="iconsregularplus408" alt="" />
-                  <div class="label1408">
-                    <div class="st-year210">Mr. Homer Castillo</div>
-                  </div>
-                  <div class="label2410">
-                    <div class="st-year210">Ms. Shiela Marie Garcia</div>
-                  </div>
-                  <div class="label2408">
-                    <div class="st-year210">Mr. Joseph Rizalde Guillo</div>
-                  </div>
-                  <div class="label4408">
-                    <div class="st-year210">Mr. Johnrey Manzanal</div>
-                  </div>
-                  <div class="label2408">
-                    <div class="st-year210">Mr. Jessie Montalbo</div>
-                  </div>
-                  <img class="iconsregularchevron-down-s409" alt="" />
-                </div>
-                <div class="item-hover342">
-                  <img class="iconsregularplus408" alt="" />
-                  <div class="label1408">
-                    <div class="st-year210">Mr. Homer Castillo</div>
-                  </div>
-                  <div class="label2408">
-                    <div class="st-year210">Ms. Shiela Marie Garcia</div>
-                  </div>
-                  <div class="label2410">
-                    <div class="st-year210">Mr. Joseph Rizalde Guillo</div>
-                  </div>
-                  <div class="label4408">
-                    <div class="st-year210">Mr. Johnrey Manzanal</div>
-                  </div>
-                  <div class="label2408">
-                    <div class="st-year210">Mr. Jessie Montalbo</div>
-                  </div>
-                  <img class="iconsregularchevron-down-s409" alt="" />
-                </div>
-                <div class="item-hover343">
-                  <img class="iconsregularplus408" alt="" />
-                  <div class="label1408">
-                    <div class="st-year210">Mr. Homer Castillo</div>
-                  </div>
-                  <div class="label2408">
-                    <div class="st-year210">Ms. Shiela Marie Garcia</div>
-                  </div>
-                  <div class="label2408">
-                    <div class="st-year210">Mr. Joseph Rizalde Guillo</div>
-                  </div>
-                  <div class="label4412">
-                    <div class="st-year210">Mr. Johnrey Manzanal</div>
-                  </div>
-                  <div class="label2408">
-                    <div class="st-year210">Mr. Jessie Montalbo</div>
-                  </div>
-                  <img class="iconsregularchevron-down-s409" alt="" />
-                </div>
-                <div class="item-hover344">
-                  <img class="iconsregularplus408" alt="" />
-                  <div class="label1408">
-                    <div class="st-year210">Mr. Homer Castillo</div>
-                  </div>
-                  <div class="label2408">
-                    <div class="st-year210">Ms. Shiela Marie Garcia</div>
-                  </div>
-                  <div class="label2408">
-                    <div class="st-year210">Mr. Joseph Rizalde Guillo</div>
-                  </div>
-                  <div class="label4408">
-                    <div class="st-year210">Mr. Johnrey Manzanal</div>
-                  </div>
-                  <div class="label2410">
-                    <div class="st-year210">Mr. Jessie Montalbo</div>
-                  </div>
-                  <img class="iconsregularchevron-down-s409" alt="" />
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="dropdown-box71">
-            <div class="header68">
-              <img
-                class="iconsregularplus408"
-                alt=""
-                src="public/iconsregularplus71.svg"
-              />
-              <div></div>
-              <div class="label1408">
-                <div class="st-year210">Mr. Homer Castillo</div>
-              </div>
-              <div class="label2408">
-                <div class="st-year210">Ms. Shiela Marie Garcia</div>
-              </div>
-              <div class="label2408">
-                <div class="st-year210">Mr. Joseph Rizalde Guillo</div>
-              </div>
-              <div class="label4408">
-                <div class="st-year210">Mr. Johnrey Manzanal</div>
-              </div>
-              <div class="label2408">
-                <div class="st-year210">Mr. Jessie Montalbo</div>
-              </div>
-              <img
-                class="iconsregularchevron-down-s408"
-                alt=""
-                src="public/iconsregularchevrondowns71.svg"
-              />
-            </div>
-            <div class="items-frame68">
-              <div class="items-list68">
-                <div class="item-hover340">
-                  <img class="iconsregularplus408" alt="" />
-                  <div class="label1409">
-                    <div class="st-year210">Mr. Homer Castillo</div>
-                  </div>
-                  <div class="label2408">
-                    <div class="st-year210">Ms. Shiela Marie Garcia</div>
-                  </div>
-                  <div class="label2408">
-                    <div class="st-year210">Mr. Joseph Rizalde Guillo</div>
-                  </div>
-                  <div class="label4408">
-                    <div class="st-year210">Mr. Johnrey Manzanal</div>
-                  </div>
-                  <div class="label2408">
-                    <div class="st-year210">Mr. Jessie Montalbo</div>
-                  </div>
-                  <img class="iconsregularchevron-down-s409" alt="" />
-                </div>
-                <div class="item-hover341">
-                  <img class="iconsregularplus408" alt="" />
-                  <div class="label1408">
-                    <div class="st-year210">Mr. Homer Castillo</div>
-                  </div>
-                  <div class="label2410">
-                    <div class="st-year210">Ms. Shiela Marie Garcia</div>
-                  </div>
-                  <div class="label2408">
-                    <div class="st-year210">Mr. Joseph Rizalde Guillo</div>
-                  </div>
-                  <div class="label4408">
-                    <div class="st-year210">Mr. Johnrey Manzanal</div>
-                  </div>
-                  <div class="label2408">
-                    <div class="st-year210">Mr. Jessie Montalbo</div>
-                  </div>
-                  <img class="iconsregularchevron-down-s409" alt="" />
-                </div>
-                <div class="item-hover342">
-                  <img class="iconsregularplus408" alt="" />
-                  <div class="label1408">
-                    <div class="st-year210">Mr. Homer Castillo</div>
-                  </div>
-                  <div class="label2408">
-                    <div class="st-year210">Ms. Shiela Marie Garcia</div>
-                  </div>
-                  <div class="label2410">
-                    <div class="st-year210">Mr. Joseph Rizalde Guillo</div>
-                  </div>
-                  <div class="label4408">
-                    <div class="st-year210">Mr. Johnrey Manzanal</div>
-                  </div>
-                  <div class="label2408">
-                    <div class="st-year210">Mr. Jessie Montalbo</div>
-                  </div>
-                  <img class="iconsregularchevron-down-s409" alt="" />
-                </div>
-                <div class="item-hover343">
-                  <img class="iconsregularplus408" alt="" />
-                  <div class="label1408">
-                    <div class="st-year210">Mr. Homer Castillo</div>
-                  </div>
-                  <div class="label2408">
-                    <div class="st-year210">Ms. Shiela Marie Garcia</div>
-                  </div>
-                  <div class="label2408">
-                    <div class="st-year210">Mr. Joseph Rizalde Guillo</div>
-                  </div>
-                  <div class="label4412">
-                    <div class="st-year210">Mr. Johnrey Manzanal</div>
-                  </div>
-                  <div class="label2408">
-                    <div class="st-year210">Mr. Jessie Montalbo</div>
-                  </div>
-                  <img class="iconsregularchevron-down-s409" alt="" />
-                </div>
-                <div class="item-hover344">
-                  <img class="iconsregularplus408" alt="" />
-                  <div class="label1408">
-                    <div class="st-year210">Mr. Homer Castillo</div>
-                  </div>
-                  <div class="label2408">
-                    <div class="st-year210">Ms. Shiela Marie Garcia</div>
-                  </div>
-                  <div class="label2408">
-                    <div class="st-year210">Mr. Joseph Rizalde Guillo</div>
-                  </div>
-                  <div class="label4408">
-                    <div class="st-year210">Mr. Johnrey Manzanal</div>
-                  </div>
-                  <div class="label2410">
-                    <div class="st-year210">Mr. Jessie Montalbo</div>
-                  </div>
-                  <img class="iconsregularchevron-down-s409" alt="" />
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="rectangle-parent55">
-          <div class="frame-child129"></div>
-          <div class="frame-child130"></div>
-          <div class="bachelor-of-science2">
-            Bachelor of Science in Computer Science
-          </div>
-          <div class="dropdown-box72">
-            <div class="header72">
-              <img
-                class="iconsregularplus432"
-                alt=""
-                src="public/iconsregularplus72.svg"
-              />
-              <div></div>
-              <div class="label1432">
-                <div class="mr-homer-castillo216">Mr. Homer Castillo</div>
-              </div>
-              <div class="label2432">
-                <div class="mr-homer-castillo216">Ms. Shiela Marie Garcia</div>
-              </div>
-              <div class="label2432">
-                <div class="mr-homer-castillo216">
-                  Mr. Joseph Rizalde Guillo
-                </div>
-              </div>
-              <div class="label4432">
-                <div class="mr-homer-castillo216">Mr. Johnrey Manzanal</div>
-              </div>
-              <div class="label2432">
-                <div class="mr-homer-castillo216">Mr. Jessie Montalbo</div>
-              </div>
-              <img
-                class="iconsregularchevron-down-s432"
-                alt=""
-                src="public/iconsregularchevrondowns56.svg"
-              />
-            </div>
-            <div class="items-frame72">
-              <div class="items-list72">
-                <div class="item-hover360">
-                  <img class="iconsregularplus432" alt="" />
-                  <div class="label1433">
-                    <div class="mr-homer-castillo216">Mr. Homer Castillo</div>
-                  </div>
-                  <div class="label2432">
-                    <div class="mr-homer-castillo216">
-                      Ms. Shiela Marie Garcia
-                    </div>
-                  </div>
-                  <div class="label2432">
-                    <div class="mr-homer-castillo216">
-                      Mr. Joseph Rizalde Guillo
-                    </div>
-                  </div>
-                  <div class="label4432">
-                    <div class="mr-homer-castillo216">Mr. Johnrey Manzanal</div>
-                  </div>
-                  <div class="label2432">
-                    <div class="mr-homer-castillo216">Mr. Jessie Montalbo</div>
-                  </div>
-                  <img class="iconsregularchevron-down-s433" alt="" />
-                </div>
-                <div class="item-hover361">
-                  <img class="iconsregularplus432" alt="" />
-                  <div class="label1432">
-                    <div class="mr-homer-castillo216">Mr. Homer Castillo</div>
-                  </div>
-                  <div class="label2434">
-                    <div class="mr-homer-castillo216">
-                      Ms. Shiela Marie Garcia
-                    </div>
-                  </div>
-                  <div class="label2432">
-                    <div class="mr-homer-castillo216">
-                      Mr. Joseph Rizalde Guillo
-                    </div>
-                  </div>
-                  <div class="label4432">
-                    <div class="mr-homer-castillo216">Mr. Johnrey Manzanal</div>
-                  </div>
-                  <div class="label2432">
-                    <div class="mr-homer-castillo216">Mr. Jessie Montalbo</div>
-                  </div>
-                  <img class="iconsregularchevron-down-s433" alt="" />
-                </div>
-                <div class="item-hover362">
-                  <img class="iconsregularplus432" alt="" />
-                  <div class="label1432">
-                    <div class="mr-homer-castillo216">Mr. Homer Castillo</div>
-                  </div>
-                  <div class="label2432">
-                    <div class="mr-homer-castillo216">
-                      Ms. Shiela Marie Garcia
-                    </div>
-                  </div>
-                  <div class="label2434">
-                    <div class="mr-homer-castillo216">
-                      Mr. Joseph Rizalde Guillo
-                    </div>
-                  </div>
-                  <div class="label4432">
-                    <div class="mr-homer-castillo216">Mr. Johnrey Manzanal</div>
-                  </div>
-                  <div class="label2432">
-                    <div class="mr-homer-castillo216">Mr. Jessie Montalbo</div>
-                  </div>
-                  <img class="iconsregularchevron-down-s433" alt="" />
-                </div>
-                <div class="item-hover363">
-                  <img class="iconsregularplus432" alt="" />
-                  <div class="label1432">
-                    <div class="mr-homer-castillo216">Mr. Homer Castillo</div>
-                  </div>
-                  <div class="label2432">
-                    <div class="mr-homer-castillo216">
-                      Ms. Shiela Marie Garcia
-                    </div>
-                  </div>
-                  <div class="label2432">
-                    <div class="mr-homer-castillo216">
-                      Mr. Joseph Rizalde Guillo
-                    </div>
-                  </div>
-                  <div class="label4436">
-                    <div class="mr-homer-castillo216">Mr. Johnrey Manzanal</div>
-                  </div>
-                  <div class="label2432">
-                    <div class="mr-homer-castillo216">Mr. Jessie Montalbo</div>
-                  </div>
-                  <img class="iconsregularchevron-down-s433" alt="" />
-                </div>
-                <div class="item-hover364">
-                  <img class="iconsregularplus432" alt="" />
-                  <div class="label1432">
-                    <div class="mr-homer-castillo216">Mr. Homer Castillo</div>
-                  </div>
-                  <div class="label2432">
-                    <div class="mr-homer-castillo216">
-                      Ms. Shiela Marie Garcia
-                    </div>
-                  </div>
-                  <div class="label2432">
-                    <div class="mr-homer-castillo216">
-                      Mr. Joseph Rizalde Guillo
-                    </div>
-                  </div>
-                  <div class="label4432">
-                    <div class="mr-homer-castillo216">Mr. Johnrey Manzanal</div>
-                  </div>
-                  <div class="label2434">
-                    <div class="mr-homer-castillo216">Mr. Jessie Montalbo</div>
-                  </div>
-                  <img class="iconsregularchevron-down-s433" alt="" />
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="dropdown-box73">
-            <div class="header72">
-              <img
-                class="iconsregularplus432"
-                alt=""
-                src="public/iconsregularplus73.svg"
-              />
-              <div></div>
-              <div class="label1432">
-                <div class="mr-homer-castillo216">Mr. Homer Castillo</div>
-              </div>
-              <div class="label2432">
-                <div class="mr-homer-castillo216">Ms. Shiela Marie Garcia</div>
-              </div>
-              <div class="label2432">
-                <div class="mr-homer-castillo216">
-                  Mr. Joseph Rizalde Guillo
-                </div>
-              </div>
-              <div class="label4432">
-                <div class="mr-homer-castillo216">Mr. Johnrey Manzanal</div>
-              </div>
-              <div class="label2432">
-                <div class="mr-homer-castillo216">Mr. Jessie Montalbo</div>
-              </div>
-              <img
-                class="iconsregularchevron-down-s432"
-                alt=""
-                src="public/iconsregularchevrondowns57.svg"
-              />
-            </div>
-            <div class="items-frame72">
-              <div class="items-list72">
-                <div class="item-hover360">
-                  <img class="iconsregularplus432" alt="" />
-                  <div class="label1433">
-                    <div class="mr-homer-castillo216">Mr. Homer Castillo</div>
-                  </div>
-                  <div class="label2432">
-                    <div class="mr-homer-castillo216">
-                      Ms. Shiela Marie Garcia
-                    </div>
-                  </div>
-                  <div class="label2432">
-                    <div class="mr-homer-castillo216">
-                      Mr. Joseph Rizalde Guillo
-                    </div>
-                  </div>
-                  <div class="label4432">
-                    <div class="mr-homer-castillo216">Mr. Johnrey Manzanal</div>
-                  </div>
-                  <div class="label2432">
-                    <div class="mr-homer-castillo216">Mr. Jessie Montalbo</div>
-                  </div>
-                  <img class="iconsregularchevron-down-s433" alt="" />
-                </div>
-                <div class="item-hover361">
-                  <img class="iconsregularplus432" alt="" />
-                  <div class="label1432">
-                    <div class="mr-homer-castillo216">Mr. Homer Castillo</div>
-                  </div>
-                  <div class="label2434">
-                    <div class="mr-homer-castillo216">
-                      Ms. Shiela Marie Garcia
-                    </div>
-                  </div>
-                  <div class="label2432">
-                    <div class="mr-homer-castillo216">
-                      Mr. Joseph Rizalde Guillo
-                    </div>
-                  </div>
-                  <div class="label4432">
-                    <div class="mr-homer-castillo216">Mr. Johnrey Manzanal</div>
-                  </div>
-                  <div class="label2432">
-                    <div class="mr-homer-castillo216">Mr. Jessie Montalbo</div>
-                  </div>
-                  <img class="iconsregularchevron-down-s433" alt="" />
-                </div>
-                <div class="item-hover362">
-                  <img class="iconsregularplus432" alt="" />
-                  <div class="label1432">
-                    <div class="mr-homer-castillo216">Mr. Homer Castillo</div>
-                  </div>
-                  <div class="label2432">
-                    <div class="mr-homer-castillo216">
-                      Ms. Shiela Marie Garcia
-                    </div>
-                  </div>
-                  <div class="label2434">
-                    <div class="mr-homer-castillo216">
-                      Mr. Joseph Rizalde Guillo
-                    </div>
-                  </div>
-                  <div class="label4432">
-                    <div class="mr-homer-castillo216">Mr. Johnrey Manzanal</div>
-                  </div>
-                  <div class="label2432">
-                    <div class="mr-homer-castillo216">Mr. Jessie Montalbo</div>
-                  </div>
-                  <img class="iconsregularchevron-down-s433" alt="" />
-                </div>
-                <div class="item-hover363">
-                  <img class="iconsregularplus432" alt="" />
-                  <div class="label1432">
-                    <div class="mr-homer-castillo216">Mr. Homer Castillo</div>
-                  </div>
-                  <div class="label2432">
-                    <div class="mr-homer-castillo216">
-                      Ms. Shiela Marie Garcia
-                    </div>
-                  </div>
-                  <div class="label2432">
-                    <div class="mr-homer-castillo216">
-                      Mr. Joseph Rizalde Guillo
-                    </div>
-                  </div>
-                  <div class="label4436">
-                    <div class="mr-homer-castillo216">Mr. Johnrey Manzanal</div>
-                  </div>
-                  <div class="label2432">
-                    <div class="mr-homer-castillo216">Mr. Jessie Montalbo</div>
-                  </div>
-                  <img class="iconsregularchevron-down-s433" alt="" />
-                </div>
-                <div class="item-hover364">
-                  <img class="iconsregularplus432" alt="" />
-                  <div class="label1432">
-                    <div class="mr-homer-castillo216">Mr. Homer Castillo</div>
-                  </div>
-                  <div class="label2432">
-                    <div class="mr-homer-castillo216">
-                      Ms. Shiela Marie Garcia
-                    </div>
-                  </div>
-                  <div class="label2432">
-                    <div class="mr-homer-castillo216">
-                      Mr. Joseph Rizalde Guillo
-                    </div>
-                  </div>
-                  <div class="label4432">
-                    <div class="mr-homer-castillo216">Mr. Johnrey Manzanal</div>
-                  </div>
-                  <div class="label2434">
-                    <div class="mr-homer-castillo216">Mr. Jessie Montalbo</div>
-                  </div>
-                  <img class="iconsregularchevron-down-s433" alt="" />
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="level16">Level</div>
-          <div class="section18">Section</div>
         </div>
     </div>
-
-    <script>
-      var frameContainer = document.getElementById("frameContainer");
-      if (frameContainer) {
-        frameContainer.addEventListener("click", function (e) {
-          window.location.href = "./CourseOffering2.html";
-        });
-      }
-      </script>
-  </body>
+</body>
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js"></script>
+<script>
+    var frameContainer = document.getElementById("frameContainer");
+    if (frameContainer) {
+      frameContainer.addEventListener("click", function (e) {
+        window.location.href = "./CourseOffering2.html";
+      });
+    }
+</script>
 </html>
