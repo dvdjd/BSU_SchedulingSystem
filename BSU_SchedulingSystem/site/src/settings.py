@@ -33,6 +33,11 @@ ALLOWED_HOSTS = []
 INSTALLED_APPS = [
     'pages.apps.PagesConfig',
     'loginuser.apps.LoginuserConfig',
+    'student.apps.StudentConfig',
+    'curriculum.apps.CurriculumConfig',
+    'room.apps.RoomConfig',
+    'course.apps.CourseConfig',
+    'exam.apps.ExamConfig',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',

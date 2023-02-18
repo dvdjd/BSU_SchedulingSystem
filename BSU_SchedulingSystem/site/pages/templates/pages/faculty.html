@@ -1,0 +1,33 @@
+{% extends 'mainLayout.html' %}
+{% load static %}
+{% block title %}Faculty Page{% endblock title %}
+{% block content %}
+<div class="row justify-content-md-center">
+  <div class="col-md-10 mt-4">
+    <h3>Faculty Schedule</h3>
+        <div class="row justify-content-md-center">
+          <div class="col-md-10 py-3 bg-light" style="border: 1px solid black; border-radius: 5px;">
+            <h4>Search by Instructor</h4>
+            <div class="row">
+              <div class="col-md-4">
+                <small style="color : #5c5c5c;">Level</small>
+                <select class="form-control form-control-sm">
+                    <option></option>
+                </select>
+              </div>
+              <div class="col-md-4">
+                <small style="color : #5c5c5c;">Instructor</small>
+                <select class="form-control form-control-sm">
+                    <option></option>
+                </select>
+              </div>
+              <div class="col-md-4">
+                <small style="color : #5c5c5c;">Search</small>
+                <button type="button" id="frameContainer" class="btn btn-success btn-block">Search</button>
+              </div>
+            </div>
+          </div>
+        </div>
+  </div>
+</div>
+{% endblock content %}

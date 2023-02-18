@@ -2,28 +2,37 @@
 {% load static %}
 {% block title %}Home Page{% endblock title %}
 {% block content %}
-<div class="scheduling-system">Scheduling System</div>
-    <div class="img">
+<div class="row justify-content-md-center">
+    <div class="col-md-5" style="margin: auto;">
+        <h1 class="text-center">Scheduling System</h1>
+    </div>
+    <div class="col-md-2">
+        <div class="img mt-5"><img
+            class="__home_img"
+            alt=""
+            src="{% static 'public/profile-pic@2x.png' %}"
+            /><img
+            class="__home_img"
+            alt=""
+            src="{% static 'public/profile-pic1@2x.png' %}"
+            /><img
+            class="__home_img"
+            alt=""
+            src="{% static 'public/profile-pic2@2x.png' %}"
+            /><img
+            class="__home_img"
+            alt=""
+            src="{% static 'public/profile-pic3@2x.png' %}"
+            />
+        </div>
+    </div>
+    <div class="col-md-5 my-auto text-center" >
         <img
-        class="received-704140150881574-remov-icon"
+        class="__home_logo"
         alt=""
         src="{% static 'public/received-704140150881574removebgpreview-1-3@2x.png' %}"
-        /><img
-        class="profile-pic-icon"
-        alt=""
-        src="{% static 'public/profile-pic@2x.png' %}"
-        /><img
-        class="profile-pic1-icon"
-        alt=""
-        src="{% static 'public/profile-pic1@2x.png' %}"
-        /><img
-        class="profile-pic2-icon"
-        alt=""
-        src="{% static 'public/profile-pic2@2x.png' %}"
-        /><img
-        class="profile-pic3-icon"
-        alt=""
-        src="{% static 'public/profile-pic3@2x.png' %}"
         />
     </div>
+</div>
+
 {% endblock content %}

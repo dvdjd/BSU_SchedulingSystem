@@ -20,4 +20,9 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('pages.urls')),
     path('', include('loginuser.urls')),
+    path('', include('student.urls')),
+    path('', include('room.urls')),
+    path('', include('exam.urls')),
+    path('', include('curriculum.urls')),
+    path('', include('course.urls')),
 ]

@@ -196,7 +196,7 @@ body {
   text-align: left;
 }
 .add-faculty6 {
-  top: 130px;
+  top: 50px;
   left: 340px;
   font-size: var(--font-size-50xl);
 }
@@ -422,13 +422,13 @@ body {
 }
 .add-faculty-container {
   position: absolute;
-  top: 167.24px;
+  top: 100px;
   left: 430.24px;
   background-color: var(--white);
   border: 0.8px solid var(--color-dimgray);
   box-sizing: border-box;
   width: 980.53px;
-  height: 230.98px;
+  height: 379.98px;
   overflow: hidden;
   font-size: var(--font-size-45xl);
 }

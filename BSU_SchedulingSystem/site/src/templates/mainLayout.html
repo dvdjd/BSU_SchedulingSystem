@@ -4,79 +4,109 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="initial-scale=1, width=device-width" />
-
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <link
       rel="stylesheet"
       href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;600&display=swap"
     />
-    {% include 'css.html' %}
-    <title>BSU - {% block title %}{% endblock title %}</title>
-  </head>
-  <body>
-    <div class="room-schedule">
-      <div class="nav-menu-parent">
-        <div class="nav-menu">
-          <div class="nav-menu-child"></div>
-          <div class="menu">MENU</div>
-          <div class="home-btn">
-            <div class="home-btn-child"></div>
-            <div class="home">Home</div>
-          </div>
-          <div class="fs-btn">
-            <div class="home-btn-child"></div>
-            <div class="home">Faculty Schedule</div>
-          </div>
-          <div class="ss-btn">
-            <div class="home-btn-child"></div>
-            <div class="home">Student Schedule</div>
-          </div>
-          <div class="rs-btn">
-            <div class="home-btn-child"></div>
-            <div class="home">Room Schedule</div>
-          </div>
-          <div class="mes-btn">
-            <div class="home-btn-child"></div>
-            <div class="home">Major Exam Schedule</div>
-          </div>
-          <div class="c-btn">
-            <div class="home-btn-child"></div>
-            <div class="home">Curriculum</div>
-          </div>
-          <div class="co-btn">
-            <div class="home-btn-child"></div>
-            <div class="home">Course Offering</div>
-          </div>
-          <div class="cs-btn">
-            <div class="home-btn-child"></div>
-            <div class="home">Course Scheduling</div>
-          </div>
-          <div class="ai-btn">
-            <div class="home-btn-child"></div>
-            <div class="home">Add Instructor</div>
-          </div>
-          <div class="as-btn">
-            <div class="home-btn-child"></div>
-            <div class="home">Add Student</div>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <title></title>
+    <style>
+      * {
+        font-family: -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
+      }
+
+      .active {
+        color: #8b1001 !important;
+      }
+
+      .__links {
+        color: #000;
+        line-height: 40px;
+        font-weight: 500;
+        font-size: 20px;
+      }
+
+      .__home_img {
+        height: auto;
+        width: 200px;
+      }
+
+      .__home_logo {
+        height: auto;
+        width: 400px;
+      }
+
+      .__top-right_link {
+        line-height: 40px;
+        font-weight: 500;
+        font-size: 20px;
+      }
+    </style>
+    </head>
+  <body style="background-color: #f3efee">
+    <nav class="navbar navbar-light" style="background-color: #fff;">
+      <ul class="nav justify-content-start">
+        <li class="nav-item">
+          <img src="{% static 'public/profileremovebgpreview-2@2x.png' %}" width="30" height="30" class="d-inline-block align-top" alt="">
+          <label class="ml-2" style="font-weight: 500; font-size: 25px;">Admin</label>
+        </li>
+      </ul>
+      <ul class="nav justify-content-center">
+        <li class="nav-item">
+          <h2 class="nav-link" href="#" style="font-size: 30px; letter-spacing: 0.4em; font-weight: 500;">BATANGAS STATE UNIVERSITY</h2>
+        </li>
+      </ul>
+      <ul class="nav justify-content-end">
+        <li class="nav-item">
+          <a class="nav-link __top-right_link" href="#" style="color: #8b1001">Change Password</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link __top-right_link" href="logout" style="color: #8b1001">Logout</a>
+        </li>
+      </ul>
+    </nav>
+    <div class="row" style="background-color: #fff; height: 100%; position: fixed; width: 280px;">
+      <div class="col-md-4">
+        <div class="row">
+          <div class="col-md-12 ml-2" style="position:fixed; max-width: 15%;">
+            <label style="color: #5c5c5c">Menu</label>
+            <ul class="nav flex-column">
+              <li class="nav-item">
+                <a class="nav-link __links" href="home">Home</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link __links" href="faculty">Faculty Schedule</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link __links" href="student">Student Schedule</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link __links" href="room">Room Schedule</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link __links" href="exam">Major Exam Schedule</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link __links" href="curriculum">Curriculum</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link __links" href="course_offer">Course Offering</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link __links" href="course_schedule">Course Scheduling</a>
+              </li>
+            </ul>
           </div>
         </div>
-        <div class="nav">
-          <div class="nav-child"></div>
-          <div class="batangas-state-university">BATANGAS STATE UNIVERSITY</div>
-          <div class="cp">
-            <div class="change-password">Change Password</div>
-          </div>
-          <div class="lo"><div class="change-password">Logout</div></div>
-        </div>
-        <div class="admin-pf">
-          <img
-            class="profile-removebg-preview-2-icon"
-            alt=""
-            src="{% static 'public/profileremovebgpreview-2@2x.png' %}"
-          />
-          <div class="admin">Admin</div>
-        </div>
-        {% block content %}{% endblock content %}
       </div>
     </div>
+    <div class="container-fluid" style="padding-left: 280px">
+      <!-- Content Here -->
+      {% block content %}{% endblock content %}
+    </div>
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
   </body>
 </html>
