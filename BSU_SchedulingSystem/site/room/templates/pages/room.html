@@ -1,38 +1,58 @@
 {% extends 'mainLayout.html' %}
 {% load static %}
-{% block title %}Student Page{% endblock title %}
+{% block title %}Rooms{% endblock title %}
 {% block content %}
 <div class="row justify-content-md-center">
   <div class="col-md-10 mt-4">
     {% comment %} Ito ang pattern {% endcomment %}
-    <h3>Student Schedule</h3>
+    <h3>Room Schedule</h3>
         <div class="row justify-content-md-center">
           <div class="col-md-10 py-3 bg-light" style="border: 1px solid black; border-radius: 5px;">
-            <h4>Search by Section</h4>
+            <h4>Search by Instructor</h4>
             <div class="row">
               <div class="col-md-3">
-                <small style="color : #5c5c5c;">Level</small>
+                <small style="color : #5c5c5c;">Program Code</small>
                 <select class="form-control form-control-sm">
-                    <option></option>
+                  <option></option>
+                  {% for program_code in program_codes  %}
+                    <option>{{ program_code }}</option>
+                  {% endfor %}
                 </select>
               </div>
               <div class="col-md-3">
-                <small style="color : #5c5c5c;">Section</small>
+                <small style="color : #5c5c5c;">Room</small>
                 <select class="form-control form-control-sm">
-                    <option></option>
+                  <option></option>
+                  {% for room in rooms  %}
+                    <option>{{ room }}</option>
+                  {% endfor %}
                 </select>
               </div>
-              <div class="col-md-3">
-                <small style="color : #5c5c5c;">Status</small>
-                <select class="form-control form-control-sm">
-                    <option></option>
-                </select>
-              </div>
-              <div class="col-md-3">
+              <div class="col-md-6">
                 <small style="color : #5c5c5c;">Search</small>
                 <button type="button" id="frameContainer" class="btn btn-success btn-block">Search</button>
               </div>
             </div>
+          </div>
+        </div>
+        <div class="row justify-content-md-center mt-2">
+          <div class="col-md-10 py-3 bg-light" style="border: 1px solid black; border-radius: 5px;">
+            <table class="table table-bordered table-hover text-center">
+              <thead>
+                <tr>
+                  <th scope="col" style="color:#fff; background:#8b1001;">Room</th>
+                  <th scope="col" style="color:#fff; background:#8b1001;">Assign Name</th>
+                  <th scope="col" style="color:#fff; background:#8b1001;">Schedule</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <th scope="row">CICS 101</th>
+                  <td>Mr. Homer R. Castillo</td>
+                  <td>8:00AM-10:00AM</td>
+                </tr>
+              </tbody>
+            </table>
           </div>
         </div>
   </div>

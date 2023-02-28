@@ -1,6 +1,6 @@
 {% extends 'mainLayout.html' %}
 {% load static %}
-{% block title %}Exam Page{% endblock title %}
+{% block title %}Exam Schedule{% endblock title %}
 {% block content %}
 <div class="row justify-content-md-center">
     <div class="col-md-10 mt-4">
@@ -12,7 +12,10 @@
                 <div class="col-md-3">
                   <small style="color : #5c5c5c;">Academic Program</small>
                   <select class="form-control form-control-sm">
-                      <option></option>
+                  <option></option>
+                  {% for program_code in program_codes  %}
+                    <option>{{ program_code }}</option>
+                  {% endfor %}
                   </select>
                 </div>
                 <div class="col-md-3">
@@ -24,7 +27,11 @@
                 <div class="col-md-3">
                   <small style="color : #5c5c5c;">Level</small>
                   <select class="form-control form-control-sm">
-                      <option></option>
+                      <option value=""></option>
+                      <option value="1">1st Year</option>
+                      <option value="2">2nd Year</option>
+                      <option value="3">3rd Year</option>
+                      <option value="4">4th Year</option>
                   </select>
                 </div>
                 <div class="col-md-3">
@@ -32,6 +39,38 @@
                   <button type="button" id="frameContainer" class="btn btn-success btn-block">Search</button>
                 </div>
               </div>
+            </div>
+          </div>
+          <div class="row justify-content-md-center mt-2">
+            <div class="col-md-10 py-3 bg-light" style="border: 1px solid black; border-radius: 5px;">
+              <h4>Courses to Offered</h4>
+              <div class="row">
+                <div class="col-md-12">
+                  <table class="table table-bordered table-hover text-center">
+                    <thead>
+                      <tr>
+                        <th scope="col" style="color:#fff; background:#8b1001;">Course Code</th>
+                        <th scope="col" style="color:#fff; background:#8b1001;">Course Name</th>
+                        <th scope="col" style="color:#fff; background:#8b1001;">Schedule</th>
+                        <th scope="col" style="color:#fff; background:#8b1001;">Actions</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <th scope="row">BSCS</th>
+                        <td>Bachelor of Science in Computer Science</td>
+                        <td>Bachelor of Science in Computer Science</td>
+                        <td><button class="btn btn-success btn-sm mr-1"><i class="fa fa-pencil" aria-hidden="true"></i></button><button class="btn btn-danger btn-sm"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></button></td>
+                      </tr>
+                      <tr>
+                        <th scope="row">BSIT</th>
+                        <td>Bachelor of Science in Information Technology</td>
+                        <td>Bachelor of Science in Information Technology</td>
+                        <td><button class="btn btn-success btn-sm mr-1"><i class="fa fa-pencil" aria-hidden="true"></i></button><button class="btn btn-danger btn-sm"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></button></td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
             </div>
           </div>
     </div>

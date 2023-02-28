@@ -1,0 +1,8 @@
+student_id
+level
+course_code
+program_code
+subject_code
+days
+schedule
+room

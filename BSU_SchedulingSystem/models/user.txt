@@ -1,0 +1,8 @@
+userid
+username
+password
+firstname
+middlename
+lastname
+usertype
+status

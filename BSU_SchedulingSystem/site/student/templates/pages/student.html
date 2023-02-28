@@ -1,6 +1,6 @@
 {% extends 'mainLayout.html' %}
 {% load static %}
-{% block title %}Student Page{% endblock title %}
+{% block title %}Student{% endblock title %}
 {% block content %}
 <div class="row justify-content-md-center">
   <div class="col-md-10 mt-4">
@@ -12,19 +12,25 @@
               <div class="col-md-3">
                 <small style="color : #5c5c5c;">Level</small>
                 <select class="form-control form-control-sm">
-                    <option></option>
+                  <option></option>
+                  <option value="1">1st Year</option>
+                  <option value="2">2nd Year</option>
+                  <option value="3">3rd Year</option>
+                  <option value="4">4th Year</option>
                 </select>
               </div>
               <div class="col-md-3">
                 <small style="color : #5c5c5c;">Section</small>
                 <select class="form-control form-control-sm">
-                    <option></option>
+                  <option></option>
                 </select>
               </div>
               <div class="col-md-3">
                 <small style="color : #5c5c5c;">Status</small>
                 <select class="form-control form-control-sm">
-                    <option></option>
+                  <option></option>
+                  <option>Regular</option>
+                  <option>Irregular</option>
                 </select>
               </div>
               <div class="col-md-3">
@@ -34,6 +40,59 @@
             </div>
           </div>
         </div>
+        <div class="row justify-content-md-center mt-2">
+          <div class="col-md-4 py-3 bg-light" style="border: 1px solid black; border-radius: 5px;">
+            <h4>Courses to Load</h4>
+            <table class="table table-bordered table-hover text-center">
+              <thead>
+                <tr>
+                  <th scope="col" style="color:#fff; background:#8b1001;">Course</th>
+                  <th class="bg-success" scope="col" style="color:#fff;">Schedule</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <th scope="row">BSCS</th>
+                  <td>Bachelor of Science in Computer Science</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <div class="col-md-6 py-3 bg-light ml-1" style="border: 1px solid black; border-radius: 5px;">
+            <h4>Student Schedule</h4>
+            <ul class="nav justify-content-end" style="margin-top: -55px">
+              <li class="nav-item">
+                <a class="nav-link __top-right_link" style="font-size: 12px; color: #000;" href="#">Tabular View</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link __top-right_link" href="#" style="font-size: 12px; color: #000;">Calendar View</a>
+              </li>
+            </ul>
+            <div class="row">
+              <div class="col-md-12">
+                <table class="table table-bordered table-hover text-center">
+                  <thead>
+                    <tr>
+                      <th scope="col" style="color:#fff; background:#8b1001;">Code</th>
+                      <th class="bg-success" scope="col" style="color:#fff;">Description</th>
+                      <th scope="col" style="color:#fff; background:#8b1001;">Units</th>
+                      <th scope="col" style="color:#fff; background:#8b1001;">Section</th>
+                      <th scope="col" style="color:#fff; background:#8b1001;">Schedule</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <th scope="row">Math 111</th>
+                      <td>Social Issues</td>
+                      <td>3</td>
+                      <td>CS 1101</td>
+                      <td>302 (M 2:00PM-4:00PM)</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
   </div>
 </div>
 {% endblock content %}

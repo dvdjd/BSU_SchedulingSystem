@@ -1,5 +1,4 @@
 from django.shortcuts import render, redirect
-from django.http import HttpResponseRedirect
 from .models import LoginUser
 
 # Create your views here.
@@ -16,7 +15,12 @@ def index (request):
         if username != '' and password != '':
             user = LoginUser.objects.filter(username=username, password=password)
             if user:
-                request.session['username'] = username
+                request.session['username'] = user[0].username
+                request.session['firstname'] = user[0].firstname
+                request.session['middlename'] = user[0].middlename
+                request.session['lastname'] = user[0].lastname
+                request.session['userid'] = user[0].userid
+                request.session['usertype'] = user[0].usertype
                 return redirect('home')
             else:
                 error = True

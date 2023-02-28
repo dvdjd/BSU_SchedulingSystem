@@ -1,8 +1,10 @@
 from django.shortcuts import render, redirect
+from global_session import GlobalSession
 
 # Create your views here.
 def student (request):
     if 'username' in request.session and request.session['username'] is not None:
-        return render(request, 'pages/student.html')
+        details = GlobalSession.sessions(request)
+        return render(request, 'pages/student.html', {'details': details})
     else:
         return redirect('/')

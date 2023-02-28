@@ -1,0 +1,8 @@
+instructor_id
+level
+course_code
+program_code
+subject_code
+room
+days
+schedule

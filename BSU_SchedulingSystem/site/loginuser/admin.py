@@ -4,7 +4,7 @@ from django.contrib import admin
 from .models import LoginUser
 from .forms import LoginUserAdminForm
 
-class MyModelAdmin(admin.ModelAdmin):
+class LoginUserAdmin(admin.ModelAdmin):
     form = LoginUserAdminForm
 
-admin.site.register(LoginUser, MyModelAdmin)
+admin.site.register(LoginUser, LoginUserAdmin)
