@@ -15,7 +15,7 @@ class FacultyModel(models.Model):
     instructor_id = models.CharField(max_length=20)
     subject_code = models.ForeignKey(SubjectModel,on_delete=models.CASCADE)
     room = models.ForeignKey(RoomModel,on_delete=models.CASCADE)
-    days = models.CharField(max_length=20)
+    days = models.CharField(max_length=100)
     time_in = models.TimeField()
     time_out = models.TimeField() 
         

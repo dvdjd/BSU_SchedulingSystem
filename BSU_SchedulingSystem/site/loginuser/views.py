@@ -1,5 +1,6 @@
 from django.shortcuts import render, redirect
 from .models import LoginUser
+from global_session import GlobalSession
 
 # Create your views here.
 def index (request):
@@ -33,6 +34,13 @@ def index (request):
             return redirect('home')
         else:
             return render(request, 'pages/login.html', {'error': error, 'blank': blank})
+        
+def change_password (request):
+    if 'username' in request.session and request.session['username'] is not None:
+        details = GlobalSession.sessions(request)
+        return render(request, 'pages/change_password.html', { 'details': details })
+    else:
+        return redirect('/')
 
 def logout (request):
     request.session.flush()

@@ -8,29 +8,30 @@
     <h3>Room Schedule</h3>
         <div class="row justify-content-md-center">
           <div class="col-md-10 py-3 bg-light" style="border: 1px solid black; border-radius: 5px;">
-            <h4>Search by Instructor</h4>
+            <h4>Search by Program Code</h4>
             <div class="row">
               <div class="col-md-3">
                 <small style="color : #5c5c5c;">Program Code</small>
-                <select class="form-control form-control-sm">
+                <select class="form-control form-control-sm" id="program_code">
                   <option></option>
                   {% for program_code in program_codes  %}
-                    <option>{{ program_code }}</option>
+                    <option>{{ program_code.program_code }}</option>
                   {% endfor %}
                 </select>
               </div>
               <div class="col-md-3">
                 <small style="color : #5c5c5c;">Room</small>
-                <select class="form-control form-control-sm">
+                <select class="form-control form-control-sm" id="room">
                   <option></option>
                   {% for room in rooms  %}
-                    <option>{{ room }}</option>
+                    <option>{{ room.room }}</option>
                   {% endfor %}
                 </select>
               </div>
               <div class="col-md-6">
                 <small style="color : #5c5c5c;">Search</small>
-                <button type="button" id="frameContainer" class="btn btn-success btn-block">Search</button>
+                <button id="btnSearch" class="btn btn-success btn-block">Search</button>
+                {% csrf_token %}
               </div>
             </div>
           </div>
@@ -40,21 +41,41 @@
             <table class="table table-bordered table-hover text-center">
               <thead>
                 <tr>
-                  <th scope="col" style="color:#fff; background:#8b1001;">Room</th>
-                  <th scope="col" style="color:#fff; background:#8b1001;">Assign Name</th>
+                  <th scope="col" style="color:#fff; background:#8b1001;">Program Code</th>
+                  <th scope="col" style="color:#fff; background:#8b1001;">Instructor</th>
                   <th scope="col" style="color:#fff; background:#8b1001;">Schedule</th>
+                  <th scope="col" style="color:#fff; background:#8b1001;">Room</th>
                 </tr>
               </thead>
-              <tbody>
-                <tr>
-                  <th scope="row">CICS 101</th>
-                  <td>Mr. Homer R. Castillo</td>
-                  <td>8:00AM-10:00AM</td>
-                </tr>
+              <tbody id="tblSchedule">
+                {% for schedule in schedules %}
+                  <tr>
+                    <th scope="row">{{ schedule.program_code }}</th>
+                    <td>{{ schedule.instructor }}</td>
+                    <td>{{ schedule.days }}, {{ schedule.time_in }}-{{ schedule.time_out }}</td>
+                    <th scope="row">{{ schedule.room }}</th>
+                  </tr>
+                {% endfor %}
               </tbody>
             </table>
           </div>
         </div>
   </div>
 </div>
+<script>
+  $(document).ready(function() {
+    $("#btnSearch").on('click', function () {
+      var room = $("#room").val().toLowerCase();
+      var program_code = $("#program_code").val().toLowerCase();
+
+      $("#tblSchedule tr").filter(function () {
+        var rows = $(this).text().toLowerCase();
+        var room_match = rows.indexOf(room) > -1;
+        var program_code_match = rows.indexOf(program_code) > -1;
+        $(this).toggle(room_match && program_code_match);
+      });
+
+    });
+  });
+</script>
 {% endblock content %}

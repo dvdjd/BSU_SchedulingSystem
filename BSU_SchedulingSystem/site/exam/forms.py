@@ -1,5 +1,5 @@
 from django import forms
-from .models import FacultyModel
+from .models import ExamModel
 
 DAYS_OF_WEEK = (
     ('Monday', 'Monday'),
@@ -11,7 +11,7 @@ DAYS_OF_WEEK = (
     ('Sunday', 'Sunday'),
 )
 
-class FacultyAdminForm(forms.ModelForm):
+class ExamAdminForm(forms.ModelForm):
     days = forms.MultipleChoiceField(
         choices=DAYS_OF_WEEK,
         widget=forms.CheckboxSelectMultiple,
@@ -19,7 +19,7 @@ class FacultyAdminForm(forms.ModelForm):
     )
 
     class Meta:
-        model = FacultyModel
+        model = ExamModel
         fields = '__all__'
         
     def save(self, *args, **kwargs):
