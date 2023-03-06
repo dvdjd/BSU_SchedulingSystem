@@ -3,6 +3,7 @@ from django.db import models
 USER_TYPE = (
     ('student', 'Student'),
     ('instructor', 'Instructor'),
+    ('admin', 'Administrator'),
 )
 
 class LoginUser(models.Model):

@@ -32,7 +32,7 @@ def room (request):
                 'room': classroom.room,
             })
         print(schedules)
-        return render(request, 'pages/room.html', {'details': details, 'program_codes': program_codes, 'rooms': rooms, 'schedules': schedules })
+        return render(request, 'pages/room.html', {'request': request, 'details': details, 'program_codes': program_codes, 'rooms': rooms, 'schedules': schedules })
     else:
         return redirect('/')
     

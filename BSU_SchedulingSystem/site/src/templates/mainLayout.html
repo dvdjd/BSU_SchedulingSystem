@@ -74,32 +74,43 @@
             <label style="color: #5c5c5c">Menu</label>
             <ul class="nav flex-column">
               <li class="nav-item">
-                <a class="nav-link __links" href="home">Home</a>
+                <a class="nav-link __links {% if request.path == '/home' %}active{% endif %}" href="home">Home</a>
               </li>
               {% if details.usertype == 'instructor'  %}
               <li class="nav-item">
-                <a class="nav-link __links" href="faculty">Faculty Schedule</a>
+                <a class="nav-link __links {% if request.path == '/faculty' %}active{% endif %}" href="faculty">Faculty Schedule</a>
               </li>
               {% elif details.usertype == 'student' %}
               <li class="nav-item">
-                <a class="nav-link __links" href="student">Student Schedule</a>
+                <a class="nav-link __links {% if request.path == '/student' %}active{% endif %}" href="student">Student Schedule</a>
               </li>
               {% endif %}
               <li class="nav-item">
-                <a class="nav-link __links" href="room">Room Schedule</a>
+                <a class="nav-link __links {% if request.path == '/room' %}active{% endif %}" href="room">Room Schedule</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link __links" href="exam">Major Exam Schedule</a>
+                <a class="nav-link __links {% if request.path == '/exam' %}active{% endif %}" href="exam">Major Exam Schedule</a>
               </li>
-              {% comment %} <li class="nav-item">
-                <a class="nav-link __links" href="curriculum">Curriculum</a>
+              {% if details.usertype == 'admin'  %}
+              <li class="nav-item">
+                <a class="nav-link __links {% if request.path == '/curriculum' %}active{% endif %}" href="curriculum">Curriculum</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link __links" href="course_offer">Course Offering</a>
+                <a class="nav-link __links {% if request.path == '/course_offer' %}active{% endif %}" href="course_offer">Course Offering</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link __links" href="course_schedule">Course Scheduling</a>
-              </li> {% endcomment %}
+                <a class="nav-link __links {% if request.path == '/course_schedule' %}active{% endif %}" href="course_schedule">Course Scheduling</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link __links {% if request.path == '/add_schedule' %}active{% endif %}" href="add_schedule">Add Schedule</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link __links {% if request.path == '/add_instructor' %}active{% endif %}" href="add_instructor">Add Instructor</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link __links {% if request.path == '/add_student' %}active{% endif %}" href="add_student">Add Student</a>
+              </li>
+              {% endif %}
             </ul>
           </div>
         </div>

@@ -1,11 +1,13 @@
 from django.shortcuts import render, redirect
 from .models import CourseModel
+from global_session import GlobalSession
 from django.http import HttpResponse
 
 # Create your views here.
 def curriculum (request):
     if 'username' in request.session and request.session['username'] is not None:
-        return render(request, 'pages/curriculum.html')
+        details = GlobalSession.sessions(request)
+        return render(request, 'pages/curriculum.html', {'request': request, 'details': details})
     else:
         return redirect('/')
     

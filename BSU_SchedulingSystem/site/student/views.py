@@ -5,6 +5,6 @@ from global_session import GlobalSession
 def student (request):
     if 'username' in request.session and request.session['username'] is not None:
         details = GlobalSession.sessions(request)
-        return render(request, 'pages/student.html', {'details': details})
+        return render(request, 'pages/student.html', {'request': request, 'details': details})
     else:
         return redirect('/')

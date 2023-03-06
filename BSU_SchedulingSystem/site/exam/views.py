@@ -7,6 +7,6 @@ def exam (request):
     if 'username' in request.session and request.session['username'] is not None:
         details = GlobalSession.sessions(request)
         program_codes = AcademicProgramModel.objects.all()
-        return render(request, 'pages/exam.html', {'details': details, 'program_codes': program_codes })
+        return render(request, 'pages/exam.html', {'request': request, 'details': details, 'program_codes': program_codes })
     else:
         return redirect('/')
