@@ -11,6 +11,13 @@ def curriculum (request):
     else:
         return redirect('/')
     
+def add_schedule (request):
+    if 'username' in request.session and request.session['username'] is not None:
+        details = GlobalSession.sessions(request)
+        return render(request, 'pages/add_schedule.html', {'request': request, 'details': details})
+    else:
+        return redirect('/')
+    
 def populate_programcode (request):
     if request.method == 'POST':
         course = CourseModel.objects.filter(course_code=request.POST.get('course_code'))
