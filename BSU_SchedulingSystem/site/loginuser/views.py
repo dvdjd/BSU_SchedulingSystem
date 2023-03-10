@@ -35,19 +35,13 @@ def index (request):
         else:
             return render(request, 'pages/login.html', {'error': error, 'blank': blank})
         
-def add_student (request):
+def add_user (request):
     if 'username' in request.session and request.session['username'] is not None:
         details = GlobalSession.sessions(request)
-        return render(request, 'pages/add_student.html', { 'details': details })
+        return render(request, 'pages/add_user.html', { 'details': details })
     else:
         return redirect('/')
 
-def add_instructor (request):
-    if 'username' in request.session and request.session['username'] is not None:
-        details = GlobalSession.sessions(request)
-        return render(request, 'pages/add_instructor.html', { 'details': details })
-    else:
-        return redirect('/')
 
 def change_password (request):
     if 'username' in request.session and request.session['username'] is not None:
