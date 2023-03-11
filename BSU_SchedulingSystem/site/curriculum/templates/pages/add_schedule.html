@@ -7,105 +7,191 @@
     <h3>Add Instructor</h3>
       <div class="row justify-content-md-center">
         <div class="col-md-10 py-3 bg-light" style="border: 1px solid black; border-radius: 5px;">
-          <h4>*Please take note this action</h4>
-            <div class="row">
-              <div class="col-md-4">
-                <small style="color : #5c5c5c;">Instructor ID</small>
-                <input type="text" name="instructorID" class="form-control form-control-sm">
-              </div>
-              <div class="col-md-4">
-                <small style="color : #5c5c5c;">Subject Code</small>
-                <input type="text" name="subjectCode" class="form-control form-control-sm">
-              </div>
-              <div class="col-md-4">
-                <small style="color : #5c5c5c;">Room</small>
-                <input type="text" name="room" class="form-control form-control-sm">
+          <div class="row py-3">
+            <div class="col-lg-8">
+              <h4>*Please take note this action</h4>
+            </div>
+            <div class="col-lg-4">
+              <div class="row">
+                <div class="col-lg-6">
+                  <select class="form-control form-control-sm" style="height : 39px;">
+                    <option>Type</option>
+                    <option>Student</option>
+                    <option>Faculty</option>
+                  </select>
+                </div>
+                <div class="col-lg-6">
+                  <button type="button" style="width : 100%" class="btn btn-success float-right" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                    Add Schedule
+                  </button>
+                </div>
               </div>
             </div>
-            <br>
-            <div class="row">
-              <div class="col-md-6">
-                <small style="color : #5c5c5c;">Days : </small>
-                <div class="row">
-                  <div class="col-sm-4">
-                    <div class="form-check form-control-sm">
-                      <input class="form-check-input" type="checkbox" name="monday" value="monday" id="flexCheckDefault">
-                      <label class="form-check-label" for="flexCheckDefault">
-                        Monday
-                      </label>
+          </div>
+          <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-lg modal-dialog-centered">
+              <div class="modal-content">
+                <div class="modal-body">
+                  <div class="row"> 
+                    <div class="col-md-6">
+                      <small style="color : #5c5c5c;">First Name</small>
+                      <input type="text" name="firstName" class="form-control form-control-sm">
+                    </div>
+                    <div class="col-md-6">
+                      <small style="color : #5c5c5c;">Last Name</small>
+                      <input type="text" name="lastName" class="form-control form-control-sm">
                     </div>
                   </div>
-                  <div class="col-sm-4">
-                    <div class="form-check form-control-sm">
-                      <input class="form-check-input" type="checkbox" name="tuesday" value="tuesday" id="flexCheckDefault">
-                      <label class="form-check-label" for="flexCheckDefault">
-                        Tuesday
-                      </label>
+                  <br>
+                  <div class="row">
+                    <div class="col-md-4">
+                      <small style="color : #5c5c5c;">Instructor ID</small>
+                      <select class="form-control form-control-sm">
+                        <option></option>
+                        <option>2018-00076-UQ-0</option>
+                        <option>2018-00076-UQ-1</option>
+                      </select>
+                    </div>
+                    <div class="col-md-4">
+                      <small style="color : #5c5c5c;">Subject Code</small>
+                      <select class="form-control form-control-sm">
+                        <option></option>
+                        <option>GEED-999</option>
+                        <option>COMP-000</option>
+                      </select>
+                    </div>
+                    <div class="col-md-4">
+                      <small style="color : #5c5c5c;">Room</small>
+                      <select class="form-control form-control-sm">
+                        <option></option>
+                        <option>101</option>
+                        <option>102</option>
+                      </select>
                     </div>
                   </div>
-                  <div class="col-sm-4">
-                    <div class="form-check form-control-sm">
-                      <input class="form-check-input" type="checkbox" name="wednesday" value="wednesday" id="flexCheckDefault">
-                      <label class="form-check-label" for="flexCheckDefault">
-                        Wednesday
-                      </label>
+                  <br>
+                  <div class="row">
+                    <div class="col-md-6">
+                      <small style="color : #5c5c5c;">Days : </small>
+                      <div class="row">
+                        <div class="col-sm-4">
+                          <div class="form-check form-control-sm">
+                            <input class="form-check-input" type="checkbox" name="monday" value="monday" id="flexCheckDefault">
+                            <label class="form-check-label" for="flexCheckDefault">
+                              Monday
+                            </label>
+                          </div>
+                        </div>
+                        <div class="col-sm-4">
+                          <div class="form-check form-control-sm">
+                            <input class="form-check-input" type="checkbox" name="tuesday" value="tuesday" id="flexCheckDefault">
+                            <label class="form-check-label" for="flexCheckDefault">
+                              Tuesday
+                            </label>
+                          </div>
+                        </div>
+                        <div class="col-sm-4">
+                          <div class="form-check form-control-sm">
+                            <input class="form-check-input" type="checkbox" name="wednesday" value="wednesday" id="flexCheckDefault">
+                            <label class="form-check-label" for="flexCheckDefault">
+                              Wednesday
+                            </label>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="row">
+                        <div class="col-sm-4">
+                          <div class="form-check form-control-sm">
+                            <input class="form-check-input" type="checkbox" name="thursday" value="thursday" id="flexCheckDefault">
+                            <label class="form-check-label" for="flexCheckDefault">
+                              Thursday
+                            </label>
+                          </div>
+                        </div>
+                        <div class="col-sm-4">
+                          <div class="form-check form-control-sm">
+                            <input class="form-check-input" type="checkbox" name="friday" value="friday" id="flexCheckDefault">
+                            <label class="form-check-label" for="flexCheckDefault">
+                              Friday
+                            </label>
+                          </div>
+                        </div>
+                        <div class="col-sm-4">
+                          <div class="form-check form-control-sm">
+                            <input class="form-check-input" type="checkbox" name="saturday" value="saturday" id="flexCheckDefault">
+                            <label class="form-check-label" for="flexCheckDefault">
+                              Saturday
+                            </label>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="row">
+                        <div class="col-sm-4">
+                          <div class="form-check form-control-sm">
+                            <input class="form-check-input" type="checkbox" name="sunday" value="sunday" id="flexCheckDefault">
+                            <label class="form-check-label" for="flexCheckDefault">
+                              Sunday
+                            </label>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col-md-3">
+                      <small style="color : #5c5c5c;">Time In</small>
+                      <input type="time" name="timeIn" class="form-control form-control-sm">
+                    </div>
+                    <div class="col-md-3">
+                      <small style="color : #5c5c5c;">Time Out</small>
+                      <input type="time" name="timeOut" class="form-control form-control-sm">
                     </div>
                   </div>
                 </div>
-                <div class="row">
-                  <div class="col-sm-4">
-                    <div class="form-check form-control-sm">
-                      <input class="form-check-input" type="checkbox" name="thursday" value="thursday" id="flexCheckDefault">
-                      <label class="form-check-label" for="flexCheckDefault">
-                        Thursday
-                      </label>
-                    </div>
-                  </div>
-                  <div class="col-sm-4">
-                    <div class="form-check form-control-sm">
-                      <input class="form-check-input" type="checkbox" name="friday" value="friday" id="flexCheckDefault">
-                      <label class="form-check-label" for="flexCheckDefault">
-                        Friday
-                      </label>
-                    </div>
-                  </div>
-                  <div class="col-sm-4">
-                    <div class="form-check form-control-sm">
-                      <input class="form-check-input" type="checkbox" name="saturday" value="saturday" id="flexCheckDefault">
-                      <label class="form-check-label" for="flexCheckDefault">
-                        Saturday
-                      </label>
-                    </div>
-                  </div>
-                </div>
-                <div class="row">
-                  <div class="col-sm-4">
-                    <div class="form-check form-control-sm">
-                      <input class="form-check-input" type="checkbox" name="sunday" value="sunday" id="flexCheckDefault">
-                      <label class="form-check-label" for="flexCheckDefault">
-                        Sunday
-                      </label>
-                    </div>
-                  </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
+                  <button type="button" id="frameContainer" class="btn btn-success text-white">Confirm</button>
                 </div>
               </div>
-              <div class="col-md-3">
-                <small style="color : #5c5c5c;">Time In</small>
-                <input type="time" name="timeIn" class="form-control form-control-sm">
-              </div>
-              <div class="col-md-3">
-                <small style="color : #5c5c5c;">Time Out</small>
-                <input type="time" name="timeOut" class="form-control form-control-sm">
-              </div>
             </div>
-            <br>
-            <div class="row">
-              <div class="col-md-12">
-                <button type="button" id="frameContainer" style="width:50%; margin-left:auto; margin-right:auto;" class="btn btn-success btn-block text-white">Confirm</button>
-              </div>
+          </div>
+          <div class="row">
+            <div class="col-md-12">
+              <table class="table table-bordered table-hover text-center">
+                <thead>
+                  <tr>
+                    <th scope="col" style="color:#fff; background:#8b1001;">Name</th>
+                    <th scope="col" style="color:#fff; background:#8b1001;">Instructor ID</th>
+                    <th scope="col" style="color:#fff; background:#8b1001;">Subject Code</th>
+                    <th scope="col" style="color:#fff; background:#8b1001;">Room</th>
+                    <th scope="col" style="color:#fff; background:#8b1001;">Days</th>
+                    <th scope="col" style="color:#fff; background:#8b1001;">Time In/Out</th>
+                    <th scope="col" style="color:#fff; background:#8b1001;">Action</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <th scope="row">Night Stalker</th>
+                    <td>2018-00076-UQ-0</td>
+                    <td>GEED-999</td>
+                    <td>101</td>
+                    <td>Mon, Wed, Fri</td>
+                    <td>8:00 AM - 1:00 PM</td>
+                    <td><button class="btn btn-primary btn-sm"><i class="fa fa-eye" aria-hidden="true"></i></button></td>
+                  </tr>
+                </tbody>
+              </table>
             </div>
+          </div>
         </div>
       </div>
   </div>
 </div>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+<script>
+  const myModal = document.getElementById('myModal')
+  const myInput = document.getElementById('myInput')
+
+  myModal.addEventListener('shown.bs.modal', () => {
+    myInput.focus()
+  })
+</script>
 {% endblock content %}
