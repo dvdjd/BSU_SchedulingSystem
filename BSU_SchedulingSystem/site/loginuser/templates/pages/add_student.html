@@ -1,0 +1,93 @@
+{% extends 'mainLayout.html' %}
+{% load static %}
+{% block title %}Add Student{% endblock title %}
+{% block content %}
+{% comment %} <div class="row justify-content-md-center">
+  <div class="col-md-10 mt-4">
+    <h3>Add Student</h3>
+      <div class="row justify-content-md-center">
+        <div class="col-md-10 py-3 bg-light" style="border: 1px solid black; border-radius: 5px;">
+          <h4>*Please take note this action</h4>
+          <div class="row">
+            <div class="col-md-4">
+              <small style="color : #5c5c5c;">First Name</small>
+              <input type="text" name="frstName" class="form-control form-control-sm">
+            </div>
+            <div class="col-md-4">
+              <small style="color : #5c5c5c;">Middle Name</small>
+              <input type="text" name="middleName" class="form-control form-control-sm">
+            </div>
+            <div class="col-md-4">
+              <small style="color : #5c5c5c;">Last Name</small>
+              <input type="text" name="lastName" class="form-control form-control-sm">
+            </div>
+          </div>
+          <br>
+          <div class="row">
+            <div class="col-md-4">
+              <small style="color : #5c5c5c;">ID No.</small>
+              <input type="text" name="id" class="form-control form-control-sm">
+            </div>
+            <div class="col-md-4">
+              <small style="color : #5c5c5c;">Username</small>
+              <input type="text" name="username" class="form-control form-control-sm">
+            </div>
+            <div class="col-md-4">
+              <small style="color : #5c5c5c;">Password</small>
+              <input type="password" name="password" class="form-control form-control-sm">
+            </div>
+          </div>
+          <br>
+          <div class="row">
+            <div class="col-md-12">
+              <button type="button" id="frameContainer" style="width:50%; margin-left:auto; margin-right:auto;" class="btn btn-success btn-block text-white">Confirm</button>
+            </div>
+          </div>
+        </div>
+      </div>
+  </div>
+</div> {% endcomment %}
+<div class="row justify-content-md-center">
+  <div class="col-md-10 mt-4">
+    {% comment %} Ito ang pattern {% endcomment %}
+    <h3>Student List</h3>
+        <div class="row justify-content-md-center">
+          <div class="col-md-10 py-3 bg-light" style="border: 1px solid black; border-radius: 5px;">
+            <div class="row justify-content-md-center">
+              <div class="col-md-6 mb-2">
+                <h4>Students</h4>
+              </div>
+              <div class="col-md-6 text-right">
+                <button class="btn btn-success">Add Student</button>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-12">
+                <table class="table table-bordered table-hover text-center">
+                  <thead>
+                    <tr>
+                      <th scope="col" style="color:#fff; background:#8b1001;">SR</th>
+                      <th scope="col" style="color:#fff; background:#8b1001;">Faculty Name</th>
+                      <th scope="col" style="color:#fff; background:#8b1001;">College</th>
+                      <th class="bg-success" scope="col" style="color:#fff;">Action</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <th scope="row">12345</th>
+                      <td>Juan Dela Cruz</td>
+                      <td>College of Informatics and Computing Science</td>
+                      <td>
+                        <button class="btn btn-success btn-sm"><i class="fa fa-pencil" aria-hidden="true"></i></button>
+                        <button class="btn btn-danger btn-sm"><i class="fa fa-times" aria-hidden="true"></i></button>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
+  </div>
+</div>
+{% endblock content %}

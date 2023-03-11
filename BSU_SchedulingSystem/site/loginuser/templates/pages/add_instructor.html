@@ -1,0 +1,48 @@
+{% extends 'mainLayout.html' %}
+{% load static %}
+{% block title %}Add Instructor{% endblock title %}
+{% block content %}
+<div class="row justify-content-md-center">
+  <div class="col-md-10 mt-4">
+    {% comment %} Ito ang pattern {% endcomment %}
+    <h3>Instructor List</h3>
+        <div class="row justify-content-md-center">
+          <div class="col-md-10 py-3 bg-light" style="border: 1px solid black; border-radius: 5px;">
+            <div class="row justify-content-md-center">
+              <div class="col-md-6 mb-2">
+                <h4>Instructors</h4>
+              </div>
+              <div class="col-md-6 text-right">
+                <button class="btn btn-success">Add Instructor</button>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-12">
+                <table class="table table-bordered table-hover text-center">
+                  <thead>
+                    <tr>
+                      <th scope="col" style="color:#fff; background:#8b1001;">SR</th>
+                      <th scope="col" style="color:#fff; background:#8b1001;">Faculty Name</th>
+                      <th scope="col" style="color:#fff; background:#8b1001;">College</th>
+                      <th class="bg-success" scope="col" style="color:#fff;">Action</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <th scope="row">12345</th>
+                      <td>Juan Dela Cruz</td>
+                      <td>College of Informatics and Computing Science</td>
+                      <td>
+                        <button class="btn btn-success btn-sm"><i class="fa fa-pencil" aria-hidden="true"></i></button>
+                        <button class="btn btn-danger btn-sm"><i class="fa fa-times" aria-hidden="true"></i></button>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
+  </div>
+</div>
+{% endblock content %}

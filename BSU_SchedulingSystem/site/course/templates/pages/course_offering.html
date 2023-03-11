@@ -1,0 +1,58 @@
+{% extends 'mainLayout.html' %}
+{% load static %}
+{% block title %}Course Offer{% endblock title %}
+{% block content %}
+<div class="row justify-content-md-center">
+  <div class="col-md-10 mt-4">
+    {% comment %} Ito ang pattern {% endcomment %}
+    <h3>Course Offering</h3>
+        <div class="row justify-content-md-center">
+          <div class="col-md-3 py-3 bg-light" style="border: 1px solid black; border-radius: 5px;">
+            <h4>{{course.0.course_name}}</h4>
+            <div class="row">
+              <div class="col-md-12">
+                <small style="color : #5c5c5c;">Curriculum Year</small>
+                <select class="form-control form-control-sm" id="curriculum_year">
+                  <option></option>
+                </select>
+            </div>
+            <div class="col-md-12">
+              <small style="color : #5c5c5c;">Section</small>
+              <select class="form-control form-control-sm" id="section">
+                <option></option>
+              </select>
+          </div>
+          </div>
+        </div>
+        <div class="col-md-7 py-3 bg-light ml-2" style="border: 1px solid black; border-radius: 5px;">
+          <h4>Search Course</h4>
+          <div class="row">
+            <div class="col-md-3">
+              <small style="color : #5c5c5c;">Curriculum Year</small>
+              <select class="form-control form-control-sm" id="curriculum_year">
+                <option></option>
+              </select>
+          </div>
+          <div class="col-md-3">
+            <small style="color : #5c5c5c;">Section</small>
+            <select class="form-control form-control-sm" id="section">
+              <option></option>
+            </select>
+          </div>
+          <div class="col-md-3">
+            <small style="color : #5c5c5c;">Section</small>
+            <select class="form-control form-control-sm" id="section">
+              <option></option>
+            </select>
+          </div>
+          <div class="col-md-3">
+            <small style="color : #5c5c5c;">Section</small>
+            <select class="form-control form-control-sm" id="section">
+              <option></option>
+            </select>
+          </div>
+        </div>
+      </div>
+  </div>
+</div>
+{% endblock content %}

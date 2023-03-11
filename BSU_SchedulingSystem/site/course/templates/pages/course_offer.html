@@ -20,16 +20,13 @@
                     </tr>
                   </thead>
                   <tbody>
+                    {% for course in courses %}
                     <tr>
-                      <th scope="row">BSCS</th>
-                      <td>Bachelor of Science in Computer Science</td>
-                      <td><button class="btn btn-success btn-sm"><i class="fa fa-chevron-right" aria-hidden="true"></i></button></td>
+                      <th scope="row">{{course.course_code}}</th>
+                      <td>{{course.course_name}}</td>
+                      <td><button class="btn btn-success btn-sm btnCourseOffer" data-code="{{course.course_code}}"><i class="fa fa-chevron-right" aria-hidden="true"></i></button></td>
                     </tr>
-                    <tr>
-                      <th scope="row">BSIT</th>
-                      <td>Bachelor of Science in Information Technology</td>
-                      <td><button class="btn btn-success btn-sm"><i class="fa fa-chevron-right" aria-hidden="true"></i></button></td>
-                    </tr>
+                    {% endfor %}
                   </tbody>
                 </table>
               </div>
@@ -38,4 +35,11 @@
         </div>
   </div>
 </div>
+<script>
+  $(document).ready(function () {
+    $(".btnCourseOffer").click(function () {
+      window.location.href = 'http://localhost:8000/course_offering?course_code=' + $(this).data("code");
+    });
+  });
+</script>
 {% endblock content %}
