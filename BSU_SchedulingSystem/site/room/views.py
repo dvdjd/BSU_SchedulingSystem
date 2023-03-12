@@ -31,7 +31,6 @@ def room (request):
                 'time_out': fac['time_out'],
                 'room': classroom.room,
             })
-        print(schedules)
         return render(request, 'pages/room.html', {'request': request, 'details': details, 'program_codes': program_codes, 'rooms': rooms, 'schedules': schedules })
     else:
         return redirect('/')

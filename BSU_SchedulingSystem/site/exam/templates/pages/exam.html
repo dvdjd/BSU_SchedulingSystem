@@ -11,7 +11,7 @@
               <div class="row">
                 <div class="col-md-3">
                   <small style="color : #5c5c5c;">Academic Program</small>
-                  <select class="form-control form-control-sm">
+                  <select class="form-control form-control-sm" id="program_code">
                   <option></option>
                   {% for program_code in program_codes  %}
                     <option>{{ program_code }}</option>
@@ -20,13 +20,16 @@
                 </div>
                 <div class="col-md-3">
                   <small style="color : #5c5c5c;">Section</small>
-                  <select class="form-control form-control-sm">
+                  <select class="form-control form-control-sm" id="section">
                       <option></option>
+                      {% for section in sections  %}
+                        <option>{{ section.section_code }}</option>
+                      {% endfor %}
                   </select>
                 </div>
                 <div class="col-md-3">
                   <small style="color : #5c5c5c;">Level</small>
-                  <select class="form-control form-control-sm">
+                  <select class="form-control form-control-sm" id="level">
                       <option value=""></option>
                       <option value="1">1st Year</option>
                       <option value="2">2nd Year</option>
@@ -36,38 +39,52 @@
                 </div>
                 <div class="col-md-3">
                   <small style="color : #5c5c5c;">Search</small>
-                  <button type="button" id="frameContainer" class="btn btn-success btn-block">Search</button>
+                  <button type="button" id="btnSearch" class="btn btn-success btn-block">Search</button>
                 </div>
               </div>
             </div>
           </div>
           <div class="row justify-content-md-center mt-2">
             <div class="col-md-10 py-3 bg-light" style="border: 1px solid black; border-radius: 5px;">
-              <h4>Courses to Offered</h4>
+              <h4>Schedule</h4>
               <div class="row">
                 <div class="col-md-12">
                   <table class="table table-bordered table-hover text-center">
                     <thead>
                       <tr>
-                        <th scope="col" style="color:#fff; background:#8b1001;">Course Code</th>
-                        <th scope="col" style="color:#fff; background:#8b1001;">Course Name</th>
+                        <th scope="col" style="color:#fff; background:#8b1001;">Academic Program</th>
+                        <th scope="col" style="color:#fff; background:#8b1001;">Course</th>
+                        <th scope="col" style="color:#fff; background:#8b1001;">Section</th>
+                        <th scope="col" style="color:#fff; background:#8b1001;">Level</th>
+                        <th scope="col" style="color:#fff; background:#8b1001;">Subject Code</th>
+                        <th scope="col" style="color:#fff; background:#8b1001;">Subject Name</th>
                         <th scope="col" style="color:#fff; background:#8b1001;">Schedule</th>
                         <th scope="col" style="color:#fff; background:#8b1001;">Actions</th>
                       </tr>
                     </thead>
-                    <tbody>
-                      <tr>
-                        <th scope="row">BSCS</th>
+                    <tbody id="tblSchedule">
+                      {% comment %} <tr>
+                        <th scope="row">CICS</th>
                         <td>Bachelor of Science in Computer Science</td>
-                        <td>Bachelor of Science in Computer Science</td>
-                        <td><button class="btn btn-success btn-sm mr-1"><i class="fa fa-pencil" aria-hidden="true"></i></button><button class="btn btn-danger btn-sm"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></button></td>
-                      </tr>
+                        <td>Section Sample</td>
+                        <td>1st Year</td>
+                        <td>Math 111</td>
+                        <td>Mathematics</td>
+                        <td>Monday 4:00PM-5:00PM</td>
+                        <td><button class="btn btn-success btn-sm mr-1"><i class="fa fa-pencil" aria-hidden="true"></i></button></td>
+                      </tr> {% endcomment %}
+                      {% for exam_schedule in  exam_schedules %}
                       <tr>
-                        <th scope="row">BSIT</th>
-                        <td>Bachelor of Science in Information Technology</td>
-                        <td>Bachelor of Science in Information Technology</td>
-                        <td><button class="btn btn-success btn-sm mr-1"><i class="fa fa-pencil" aria-hidden="true"></i></button><button class="btn btn-danger btn-sm"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></button></td>
+                        <th scope="row">{{ exam_schedule.program_code }}</th>
+                        <td>{{ exam_schedule.course }}</td>
+                        <td>{{ exam_schedule.section }}</td>
+                        <td>{{ exam_schedule.level }}</td>
+                        <td>{{ exam_schedule.subject_code }}</td>
+                        <td>{{ exam_schedule.subject_description }}</td>
+                        <td>{{ exam_schedule.schedule }}</td>
+                        <td><button class="btn btn-success btn-sm mr-1"><i class="fa fa-pencil" aria-hidden="true"></i></button></td>
                       </tr>
+                      {% endfor %}
                     </tbody>
                   </table>
                 </div>
@@ -75,4 +92,22 @@
           </div>
     </div>
   </div>
+  <script>
+    $(document).ready(function() {
+      $("#btnSearch").on('click', function () {
+        var program_code = $("#program_code").val().toLowerCase();
+        var section = $("#section").val().toLowerCase();
+        var level = $("#level").val().toLowerCase();
+  
+        $("#tblSchedule tr").filter(function () {
+          var rows = $(this).text().toLowerCase();
+          var program_code_match = rows.indexOf(program_code) > -1;
+          var section_match = rows.indexOf(section) > -1;
+          var level_match = rows.indexOf(level) > -1;
+          $(this).toggle(program_code_match && section_match && level_match);
+        });
+  
+      });
+    });
+  </script>
 {% endblock content %}

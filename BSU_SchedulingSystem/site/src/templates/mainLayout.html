@@ -59,9 +59,11 @@
         </li>
       </ul>
       <ul class="nav justify-content-end">
+        {% if details.usertype != 'admin'  %}
         <li class="nav-item">
           <a class="nav-link __top-right_link" href="change_password" style="color: #8b1001">Change Password</a>
         </li>
+        {% endif %}
         <li class="nav-item">
           <a class="nav-link __top-right_link" href="logout" style="color: #8b1001">Logout</a>
         </li>

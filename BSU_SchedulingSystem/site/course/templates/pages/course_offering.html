@@ -6,53 +6,218 @@
   <div class="col-md-10 mt-4">
     {% comment %} Ito ang pattern {% endcomment %}
     <h3>Course Offering</h3>
-        <div class="row justify-content-md-center">
-          <div class="col-md-3 py-3 bg-light" style="border: 1px solid black; border-radius: 5px;">
-            <h4>{{course.0.course_name}}</h4>
-            <div class="row">
-              <div class="col-md-12">
-                <small style="color : #5c5c5c;">Curriculum Year</small>
-                <select class="form-control form-control-sm" id="curriculum_year">
-                  <option></option>
-                </select>
-            </div>
-            <div class="col-md-12">
-              <small style="color : #5c5c5c;">Section</small>
-              <select class="form-control form-control-sm" id="section">
-                <option></option>
-              </select>
+    <div class="row justify-content-md-center">
+      <div class="col-md-10 py-3 bg-light" style="border: 1px solid black; border-radius: 5px;">
+        <h4>{{course.0.course_name}}</h4>
+        <div class="row">
+          <div class="col-md-4">
+            <small style="color : #5c5c5c;">Curriculum Year</small>
+            <select class="form-control form-control-sm" id="curriculum_year">
+              <option></option>
+              {% for year in years %}
+                <option value="{{ year.id }}">{{ year.curriculum_year }}</option>
+              {% endfor %}
+            </select>
           </div>
+          <div class="col-md-4">
+            <small style="color : #5c5c5c;">Level</small>
+            <select class="form-control form-control-sm" id="level">
+              <option></option>
+              <option value="1">1st Year</option>
+              <option value="2">2nd Year</option>
+              <option value="3">3rd Year</option>
+              <option value="4">4th Year</option>
+            </select>
+          </div>
+          <div class="col-md-4">
+            <small style="color : #5c5c5c;">Period</small>
+            <select class="form-control form-control-sm" id="period">
+              <option></option>
+              <option value="1">1st Semester</option>
+              <option value="2">2nd Semester</option>
+              <option value="3">Midterm</option>
+            </select>
           </div>
         </div>
-        <div class="col-md-7 py-3 bg-light ml-2" style="border: 1px solid black; border-radius: 5px;">
-          <h4>Search Course</h4>
-          <div class="row">
-            <div class="col-md-3">
-              <small style="color : #5c5c5c;">Curriculum Year</small>
-              <select class="form-control form-control-sm" id="curriculum_year">
-                <option></option>
-              </select>
+        <div class="row mt-4 justify-content-md-center">
+          <div class="col-md-5">
+            <button id="btnSearch" class="btn btn-success btn-block">Search</button>
           </div>
+        </div>
+        {% csrf_token %}
+      </div>
+    </div>
+    <div class="row justify-content-md-center mt-2">
+      <div class="col-md-10 py-3 bg-light" style="border: 1px solid black; border-radius: 5px;">
+        <div class="col-md-12 text-right mb-2">
+          <button type="button" id="btnAddCurriculum" class="btn btn-success">Add Curriculum</button>
+        </div>
+        <table class="table table-bordered table-hover text-center">
+          <thead>
+            <tr>
+              <th scope="col" style="color:#fff; background:#8b1001;">Subject Code</th>
+              <th scope="col" style="color:#fff; background:#8b1001;">Subject Name</th>
+              <th scope="col" style="color:#fff; background:#8b1001;">Lec</th>
+              <th scope="col" style="color:#fff; background:#8b1001;">Lab</th>
+              <th scope="col" style="color:#fff; background:#8b1001;">Units</th>
+            </tr>
+          </thead>
+          <tbody id="tblCourse">
+            {% for curriculum in curriculums %}
+            <tr>
+              <th scope="row">{{ curriculum.subject_code }}</th>
+              <td>{{ curriculum.subject_name }}</td>
+              <td>{{ curriculum.lecture }}</td>
+              <td>{{ curriculum.lab }}</td>
+              <td>{{ curriculum.units }}</td>
+            </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+<div class="modal fade" id="curricullumModal" tabindex="-1" aria-labelledby="curricullumModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4>Add Curriculum</h4>
+      </div>
+      <div class="modal-body">
+        <div class="row"> 
           <div class="col-md-3">
-            <small style="color : #5c5c5c;">Section</small>
-            <select class="form-control form-control-sm" id="section">
+            <small style="color : #5c5c5c;">Curriculum Year</small>
+            <select class="form-control form-control-sm" id="new_curriculum_year">
               <option></option>
+              {% for year in years %}
+                <option>{{ year.curriculum_year }}</option>
+              {% endfor %}
             </select>
           </div>
           <div class="col-md-3">
-            <small style="color : #5c5c5c;">Section</small>
-            <select class="form-control form-control-sm" id="section">
+            <small style="color : #5c5c5c;">Period</small>
+            <select class="form-control form-control-sm" id="new_period">
               <option></option>
+              <option value="1">1st Semester</option>
+              <option value="2">2nd Semester</option>
+              <option value="3">Midterm</option>
             </select>
           </div>
           <div class="col-md-3">
-            <small style="color : #5c5c5c;">Section</small>
-            <select class="form-control form-control-sm" id="section">
+            <small style="color : #5c5c5c;">Level</small>
+            <select class="form-control form-control-sm" id="new_level">
               <option></option>
+              <option value="1">1st Year</option>
+              <option value="2">2nd Year</option>
+              <option value="3">3rd Year</option>
+              <option value="4">4th Year</option>
             </select>
+          </div>
+          <div class="col-md-3">
+            <small style="color : #5c5c5c;">Course Code</small>
+            <input type="text" id="new_course_code" name="new_course_code" class="form-control form-control-sm" value="{{ request.GET.course_code }}" readonly>
+          </div>
+          <div class="col-md-3">
+            <small style="color : #5c5c5c;">Subject Code</small>
+            <select class="form-control form-control-sm" id="new_subject_code">
+              <option></option>
+              {% for subject in subjects %}
+                <option>{{ subject.subject_code }}</option>
+              {% endfor %}
+            </select>
+          </div>
+          <div class="col-md-3">
+            <small style="color : #5c5c5c;">Program Code</small>
+            <input type="text" id="new_program_code" name="new_program_code" class="form-control form-control-sm" value="{{ course.0.program_code }}" readonly>
+          </div>
+          <div class="col-md-2">
+            <small style="color : #5c5c5c;">Lecture</small>
+            <input type="number" id="new_lecture" name="new_lecture" class="form-control form-control-sm">
+          </div>
+          <div class="col-md-2">
+            <small style="color : #5c5c5c;">Lab</small>
+            <input type="number" id="new_lab" name="new_lab" class="form-control form-control-sm">
+          </div>
+          <div class="col-md-2">
+            <small style="color : #5c5c5c;">Units</small>
+            <input type="number" id="new_units" name="new_units" class="form-control form-control-sm">
           </div>
         </div>
       </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+        <button type="button" id="btnSave" class="btn btn-success text-white">Save</button>
+      </div>
+      {% csrf_token %}
+    </div>
   </div>
 </div>
+<script>
+$(document).ready(function () {
+
+  $('#btnAddCurriculum').click(function () {
+    $('#curricullumModal').modal('toggle');
+  });
+
+  $('#btnSearch').click(function () {
+    $.ajax({
+      url: '{% url 'search_course' %}',
+      method: 'POST',
+      data: {
+        year: $('#curriculum_year').val(),
+        level: $('#level').val(),
+        period: $('#period').val()
+      },
+      headers: {
+        'X-CSRFToken': $('input[name="csrfmiddlewaretoken"]').val()
+      },
+      success: function (data) {
+        console.log(data);
+        $('#tblCourse').empty();
+
+        // Generate HTML markup for new rows
+        var rowsHtml = '';
+        for (var i = 0; i < data.length; i++) {
+          rowsHtml += '<tr>';
+          rowsHtml += '<th scope="row">' + data[i].subject_code + '</th>';
+          rowsHtml += '<td>' + data[i].subject_name + '</td>';
+          rowsHtml += '<td>' + data[i].lecture + '</td>';
+          rowsHtml += '<td>' + data[i].lab + '</td>';
+          rowsHtml += '<td>' + data[i].units + '</td>';
+          rowsHtml += '</tr>';
+        }
+        // Append new rows to table body
+        $('#tblCourse').append(rowsHtml);
+      }
+    });
+  });
+
+  $('#btnSave').click(function () {
+    $.ajax({
+      url: '{% url 'save_course_offering' %}',
+      method: 'POST',
+      data: {
+        year: $('#new_curriculum_year').val(),
+        period: $('#new_period').val(),
+        level: $('#new_level').val(),
+        course_code: $('#new_course_code').val(),
+        subject_code: $('#new_subject_code').val(),
+        program_code: $('#new_program_code').val(),
+        lecture: $('#new_lecture').val(),
+        lab: $('#new_lab').val(),
+        units: $('#new_units').val(),
+      },
+      headers: {
+        'X-CSRFToken': $('input[name="csrfmiddlewaretoken"]').val()
+      },
+      success: function (data) {
+        console.log(data)
+        location.reload();
+      }
+    });
+  });
+});
+</script>
 {% endblock content %}

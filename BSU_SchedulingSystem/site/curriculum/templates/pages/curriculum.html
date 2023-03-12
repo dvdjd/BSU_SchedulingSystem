@@ -13,7 +13,7 @@
                 <h4>Academic Program</h4>
               </div>
               <div class="col-md-6 text-right">
-                <button class="btn btn-success">Add Curriculum</button>
+                <button id="addCurriculum" class="btn btn-success" data-toggle="modal" data-target="#curricullumModal">Add Academic Program</button>
               </div>
             </div>
             <div class="row">
@@ -27,11 +27,13 @@
                     </tr>
                   </thead>
                   <tbody>
+                    {% for program in programs %}
                     <tr>
-                      <th scope="row">BSCS</th>
-                      <td>Bachelor of Science in Computer Science</td>
-                      <td><button class="btn btn-primary btn-sm"><i class="fa fa-eye" aria-hidden="true"></i></button></td>
+                      <th scope="row">{{ program.program_code }}</th>
+                      <td>{{ program.program_description }}</td>
+                      <td><button class="btn btn-success btn-sm btnModify" data-code="{{ program.program_code }}"><i class="fa fa-pencil" aria-hidden="true"></i></button></td>
                     </tr>
+                    {% endfor %}
                   </tbody>
                 </table>
               </div>
@@ -40,4 +42,119 @@
         </div>
   </div>
 </div>
+<div class="modal fade" id="curricullumModal" tabindex="-1" aria-labelledby="curricullumModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4>Add Academic Program</h4>
+      </div>
+      <div class="modal-body">
+        <div class="row"> 
+          <div class="col-md-4">
+            <small style="color : #5c5c5c;">Program Code</small>
+            <input type="text" id="program_code" name="program_code" class="form-control form-control-sm">
+          </div>
+          <div class="col-md-8">
+            <small style="color : #5c5c5c;">Program Description</small>
+            <input type="text" id="program_description" name="program_description" class="form-control form-control-sm">
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+        <button type="button" id="btnSave" class="btn btn-success text-white">Save</button>
+      </div>
+      {% csrf_token %}
+    </div>
+  </div>
+</div>
+<div class="modal fade" id="curricullumModifyModal" tabindex="-1" aria-labelledby="curricullumModifyModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4>Add Academic Program</h4>
+      </div>
+      <div class="modal-body">
+        <div class="row"> 
+          <div class="col-md-4">
+            <small style="color : #5c5c5c;">Program Code</small>
+            <input type="text" id="modify_program_code" name="program_code" class="form-control form-control-sm">
+          </div>
+          <div class="col-md-8">
+            <small style="color : #5c5c5c;">Program Description</small>
+            <input type="text" id="modify_program_description" name="program_description" class="form-control form-control-sm">
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+        <button type="button" id="btnUpdate" class="btn btn-success text-white">Save</button>
+      </div>
+      {% csrf_token %}
+    </div>
+  </div>
+</div>
+<script>
+  $(document).ready(function () {
+    $("#addCurriculum").click(function () {
+      $('#curricullumModal').modal('toggle');
+    });
+
+    $('#btnSave').click(function () {
+      $.ajax({
+        url: '{% url 'save_curriculum' %}',
+        method: 'POST',
+        data: {
+          program_code: $('#program_code').val(),
+          program_description: $('#program_description').val()
+        },
+        headers: {
+          'X-CSRFToken': $('input[name="csrfmiddlewaretoken"]').val()
+        },
+        success: function (data) {
+          if (data == 'success') {
+            location.reload();
+          }
+        }
+      });
+    });
+
+    $('.btnModify').click(function () {
+      $.ajax({
+        url: '{% url 'get_curriculum' %}',
+        method: 'POST',
+        data: {
+          program_code: $(this).data('code')
+        },
+        headers: {
+          'X-CSRFToken': $('input[name="csrfmiddlewaretoken"]').val()
+        },
+        success: function (data) {
+          $('#modify_program_code').val(data.program[0].fields.program_code);
+          $('#modify_program_description').val(data.program[0].fields.program_description);
+          $('#curricullumModifyModal').modal('toggle');
+        }
+      });
+    });
+
+    $('#btnUpdate').click(function () {
+      $.ajax({
+        url: '{% url 'update_curriculum' %}',
+        method: 'POST',
+        data: {
+          program_code: $('#modify_program_code').val(),
+          program_description: $('#modify_program_description').val()
+        },
+        headers: {
+          'X-CSRFToken': $('input[name="csrfmiddlewaretoken"]').val()
+        },
+        success: function (data) {
+          if (data == 'success') {
+            location.reload();
+          }
+        }
+      });
+    });
+  });
+</script>
 {% endblock content %}

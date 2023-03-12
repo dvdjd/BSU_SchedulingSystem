@@ -17,12 +17,7 @@ class CurriculumModelAdmin(admin.ModelAdmin):
         js = ('js/course_program_populate.js',)
         
 class SubjectModelAdmin(admin.ModelAdmin):
-    list_display = ('subject_code', 'subject_description', 'course_code', 'program_code')
-    
-    form = CurriculumAdminForm
-    
-    class Media:
-        js = ('js/course_program_populate.js',)
+    list_display = ('subject_code', 'subject_description')
     
 class SectionModelAdmin(admin.ModelAdmin):
     list_display = ('section_code','level')

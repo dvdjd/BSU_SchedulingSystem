@@ -10,6 +10,7 @@ LEVEL = (
 PERIOD = (
     ('1', '1st Semester'),
     ('2', '2nd Semester'),
+    ('3', 'Midterm'),
 )
 
 # Create your models here.
@@ -45,9 +46,6 @@ class SectionModel(models.Model):
 class SubjectModel(models.Model):
     subject_code = models.CharField(max_length=20, unique=True)
     subject_description = models.CharField(max_length=100)
-    course_code = models.ForeignKey(CourseModel,on_delete=models.CASCADE)
-    section_code = models.ForeignKey(SectionModel,on_delete=models.CASCADE)
-    program_code = models.CharField(max_length=20)
     
     def __str__(self):
         return self.subject_code
@@ -63,5 +61,3 @@ class CurriculumModel(models.Model):
     lab = models.IntegerField()
     units = models.IntegerField()
     
-    def __str__(self):
-        return self.curriculum_year, self.period, self.level, self.program_code, self.course_code, self.lecture, self.lab, self.units
