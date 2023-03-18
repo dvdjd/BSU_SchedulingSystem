@@ -1,8 +1,11 @@
 from django.shortcuts import render, redirect
 from global_session import GlobalSession
-from curriculum.models import CourseModel, CurriculumYearModel, SectionModel, CurriculumModel, SubjectModel
+from curriculum.models import CourseModel, CurriculumYearModel, SectionModel, CurriculumModel, SubjectModel, AcademicProgramModel
+from pages.models import FacultyModel
 from django.db.models import Q
 from django.http import JsonResponse, HttpResponse
+from django.core import serializers
+from django.template.defaultfilters import date
 
 # Create your views here.
 def course_offer (request):
@@ -43,7 +46,9 @@ def course_offering (request):
 def course_schedule (request):
     if 'username' in request.session and request.session['username'] is not None:
         details = GlobalSession.sessions(request)
-        return render(request, 'pages/course_schedule.html', {'request': request, 'details': details})
+        programs = AcademicProgramModel.objects.all()
+        sections = SectionModel.objects.all()
+        return render(request, 'pages/course_schedule.html', { 'request': request, 'details': details, 'programs': programs, 'sections': sections })
     else:
         return redirect('/')
     
@@ -85,3 +90,26 @@ def save_course_offering (request):
         return HttpResponse('success')
     else:
         return HttpResponse('this is get')
+    
+def populate_section (request):
+    if request.method == 'POST':
+        sections = SectionModel.objects.filter(level=request.POST.get('level'))
+        sections_dict = serializers.serialize('python', sections)
+        return JsonResponse({ 'sections': sections_dict })
+    
+def search_course_schedule (request):
+    if request.method == 'POST':
+        schedules = FacultyModel.objects.filter(Q(program_code=request.POST.get('program_code')) & Q(section_code=request.POST.get('section')))
+        course_schedule = []
+        
+        for schedule in schedules:
+            subject = SubjectModel.objects.filter(subject_code=schedule.subject_code).first()
+            course_schedule.append({
+                'course_code': schedule.course_code,
+                'subject_code': schedule.subject_code,
+                'subject_name': subject.subject_description,
+                'time_in': date(schedule.time_in, "g:i A"),
+                'time_out': date(schedule.time_out, "g:i A")
+            })
+            
+        return JsonResponse(course_schedule, safe=False)

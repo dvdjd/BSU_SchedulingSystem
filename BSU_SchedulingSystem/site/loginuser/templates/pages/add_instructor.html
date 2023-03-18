@@ -13,7 +13,7 @@
                 <h4>Instructors</h4>
               </div>
               <div class="col-md-6 text-right">
-                <button class="btn btn-success">Add Instructor</button>
+                <button class="btn btn-success" data-toggle="modal" data-target="#addInstructorModal">Add Instructor</button>
               </div>
             </div>
             <div class="row">
@@ -23,20 +23,20 @@
                     <tr>
                       <th scope="col" style="color:#fff; background:#8b1001;">SR</th>
                       <th scope="col" style="color:#fff; background:#8b1001;">Faculty Name</th>
-                      <th scope="col" style="color:#fff; background:#8b1001;">College</th>
                       <th class="bg-success" scope="col" style="color:#fff;">Action</th>
                     </tr>
                   </thead>
                   <tbody>
+                    {% for instructor in instructors %}
                     <tr>
-                      <th scope="row">12345</th>
-                      <td>Juan Dela Cruz</td>
-                      <td>College of Informatics and Computing Science</td>
+                      <th scope="row">{{ instructor.userid }}</th>
+                      <td>{{ instructor.firstname }} {{ instructor.middlename }} {{ instructor.lastname }}</td>
                       <td>
-                        <button class="btn btn-success btn-sm"><i class="fa fa-pencil" aria-hidden="true"></i></button>
+                        <button class="btn btn-success btn-sm btnSchedules" data-id="{{ instructor.userid }}"><i class="fa fa-pencil" aria-hidden="true"></i></button>
                         <button class="btn btn-danger btn-sm"><i class="fa fa-times" aria-hidden="true"></i></button>
                       </td>
                     </tr>
+                    {% endfor %}
                   </tbody>
                 </table>
               </div>
@@ -45,4 +45,76 @@
         </div>
   </div>
 </div>
+<div class="modal fade" id="addInstructorModal" tabindex="-1" aria-labelledby="addInstructorModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4>Add Instructor</h4>
+      </div>
+      <div class="modal-body">
+        <div class="row"> 
+          <div class="col-md-4">
+            <small style="color : #5c5c5c;">Instructor ID</small>
+            <input type="text" id="student_id" name="instructor_id" class="form-control form-control-sm">
+          </div>
+          <div class="col-md-4">
+            <small style="color : #5c5c5c;">Username</small>
+            <input type="text" id="username" name="username" class="form-control form-control-sm">
+          </div>
+          <div class="col-md-4">
+            <small style="color : #5c5c5c;">Password</small>
+            <input type="password" id="password" name="password" class="form-control form-control-sm">
+          </div>
+          <div class="col-md-4">
+            <small style="color : #5c5c5c;">First Name</small>
+            <input type="text" id="firstname" name="firstname" class="form-control form-control-sm">
+          </div>
+          <div class="col-md-4">
+            <small style="color : #5c5c5c;">Middle Name</small>
+            <input type="text" id="middlename" name="middlename" class="form-control form-control-sm">
+          </div>
+          <div class="col-md-4">
+            <small style="color : #5c5c5c;">Last Name</small>
+            <input type="text" id="lastname" name="lastname" class="form-control form-control-sm">
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+        <button type="button" id="btnSave" class="btn btn-success text-white">Save</button>
+      </div>
+      {% csrf_token %}
+    </div>
+  </div>
+</div>
+<script>
+  $(document).ready(function () {
+    $('#btnSave').click(function () {
+      $.ajax({
+        url: '{% url 'add_student' %}',
+        method: 'POST',
+        data: {
+          userid: $('#instructor_id').val(),
+          username: $('#username').val(),
+          password: $('#password').val(),
+          firstname: $('#firstname').val(),
+          middlename: $('#middlename').val(),
+          lastname: $('#lastname').val()
+        },
+        headers: {
+          'X-CSRFToken': $('input[name="csrfmiddlewaretoken"]').val()
+        },
+        success: function (data) {
+          if (data == 'success') {
+            location.reload();
+          }
+        }
+      });
+    });
+
+    $('.btnSchedules').click(function () {
+      window.location.href = 'http://localhost:8000/add_instructor_schedule?instructor_id=' + $(this).data("id");
+    });
+  });
+</script>
 {% endblock content %}

@@ -12,56 +12,52 @@
             <div class="row">
               <div class="col-md-3">
                 <small style="color : #5c5c5c;">Academic Programs</small>
-                <select class="form-control form-control-sm">
+                <select class="form-control form-control-sm" id="program">
                     <option></option>
-                </select>
-              </div>
-              <div class="col-md-3">
-                <small style="color : #5c5c5c;">Section</small>
-                <select class="form-control form-control-sm">
-                    <option></option>
+                    {% for program in programs %}
+                      <option>{{ program.program_code }}</option>
+                    {% endfor %}
                 </select>
               </div>
               <div class="col-md-3">
                 <small style="color : #5c5c5c;">Level</small>
-                <select class="form-control form-control-sm">
+                <select class="form-control form-control-sm" id="level">
+                    <option></option>
+                    <option value="1">1st Year</option>
+                    <option value="2">2nd Year</option>
+                    <option value="3">3rd Year</option>
+                    <option value="4">4th Year</option>
+                </select>
+              </div>
+              <div class="col-md-3">
+                <small style="color : #5c5c5c;">Section</small>
+                <select class="form-control form-control-sm" id="section">
                     <option></option>
                 </select>
               </div>
               <div class="col-md-3">
                 <small style="color : #5c5c5c;">Search</small>
-                <button type="button" id="frameContainer" class="btn btn-success btn-block">Search</button>
+                <button type="button" id="btnSearch" class="btn btn-success btn-block">Search</button>
+                {% csrf_token %}
               </div>
             </div>
           </div>
         </div>
         <div class="row justify-content-md-center mt-2">
           <div class="col-md-10 py-3 bg-light" style="border: 1px solid black; border-radius: 5px;">
-            <h4>Courses to Offered</h4>
+            <h4>Courses Schedule</h4>
             <div class="row">
               <div class="col-md-12">
                 <table class="table table-bordered table-hover text-center">
                   <thead>
                     <tr>
                       <th scope="col" style="color:#fff; background:#8b1001;">Course Code</th>
-                      <th scope="col" style="color:#fff; background:#8b1001;">Course Name</th>
+                      <th scope="col" style="color:#fff; background:#8b1001;">Subject Code</th>
+                      <th scope="col" style="color:#fff; background:#8b1001;">Subject Name</th>
                       <th scope="col" style="color:#fff; background:#8b1001;">Schedule</th>
-                      <th scope="col" style="color:#fff; background:#8b1001;">Actions</th>
                     </tr>
                   </thead>
-                  <tbody>
-                    <tr>
-                      <th scope="row">BSCS</th>
-                      <td>Bachelor of Science in Computer Science</td>
-                      <td>Bachelor of Science in Computer Science</td>
-                      <td><button class="btn btn-success btn-sm"><i class="fa fa-pencil" aria-hidden="true"></i></button></td>
-                    </tr>
-                    <tr>
-                      <th scope="row">BSIT</th>
-                      <td>Bachelor of Science in Information Technology</td>
-                      <td>Bachelor of Science in Information Technology</td>
-                      <td><button class="btn btn-success btn-sm"><i class="fa fa-pencil" aria-hidden="true"></i></button></td>
-                    </tr>
+                  <tbody id="tblSchedule">
                   </tbody>
                 </table>
               </div>
@@ -69,4 +65,60 @@
         </div>
   </div>
 </div>
+<script>
+  $(document).ready(function () {
+    $('#level').change(function () {
+      $.ajax({
+        url: '{% url 'populate_section' %}',
+        method: 'POST',
+        data: {
+          level: $(this).val()
+        },
+        headers: {
+          'X-CSRFToken': $('input[name="csrfmiddlewaretoken"]').val()
+        },
+        success: function (data) {
+          console.log(data.sections);
+          $('#section').empty();
+          $('#section').append($('<option></option>'))
+          $.each(data.sections, function(index, value) {
+            var option = $('<option></option>').attr('value', value.fields.section_code).text(value.fields.section_code);
+      
+            $('#section').append(option);
+          });
+        }
+      });
+    });
+
+    $('#btnSearch').click(function () {
+      $.ajax({
+        url: '{% url 'search_course_schedule' %}',
+        method: 'POST',
+        data: {
+          program_code: $('#program').val(),
+          section: $('#section').val()
+        },
+        headers : {
+          'X-CSRFToken': $('input[name="csrfmiddlewaretoken"]').val()
+        },
+        success: function (data) {
+          console.log(data);
+        $('#tblSchedule').empty();
+
+        var rowsHtml = '';
+        for (var i = 0; i < data.length; i++) {
+          rowsHtml += '<tr>';
+          rowsHtml += '<th scope="row">' + data[i].course_code + '</th>';
+          rowsHtml += '<td>' + data[i].subject_code + '</td>';
+          rowsHtml += '<td>' + data[i].subject_name + '</td>';
+          rowsHtml += '<td>' + data[i].time_in + ' - ' + data[i].time_out + '</td>';
+          rowsHtml += '</tr>';
+        }
+        // Append new rows to table body
+        $('#tblSchedule').append(rowsHtml);
+        }
+      });
+    });
+  });
+</script>
 {% endblock content %}

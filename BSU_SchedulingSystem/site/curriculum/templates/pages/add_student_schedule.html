@@ -1,0 +1,441 @@
+{% extends 'mainLayout.html' %}
+{% load static %}
+{% block title %}Add Student{% endblock title %}
+{% block content %}
+<div class="row justify-content-md-center">
+  <div class="col-md-10 mt-4">
+      <div class="row justify-content-md-center">
+        <div class="col-md-10 py-3 bg-light" style="border: 1px solid black; border-radius: 5px;">
+          <div class="row py-3">
+            <div class="col-lg-8">
+                {% for user in users %}
+                <h4>{{ user.firstname }} {{ user.lastname }} Schedule List</h4>
+                {% endfor %}
+            </div>
+            <div class="col-lg-4">
+              <div class="row">
+                <div class="col-lg-12">
+                  {% if student.status == 'irregular' %}
+                  <button type="button" id="addSchedule" style="width : 100%" class="btn btn-success float-right" data-toggle="modal" data-target="#scheduleModal">
+                    Add Schedule
+                  </button>
+                  {% endif %}
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="modal fade" id="scheduleModal" tabindex="-1" aria-labelledby="scheduleModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-lg modal-dialog-centered">
+              <div class="modal-content">
+                <div class="modal-body">
+                  <div class="row"> 
+                    <div class="col-md-4">
+                      <small style="color : #5c5c5c;">Instructor ID</small>
+                      <input type="text" name="instructorid" id="instructorid" class="form-control form-control-sm" value="{{ instructors.0.userid }}" readonly >
+                    </div>
+                    <div class="col-md-4">
+                      <small style="color : #5c5c5c;">First Name</small>
+                      <input type="text" name="firstName" id="firstName" class="form-control form-control-sm" value="{{ instructors.0.firstname }}" readonly >
+                    </div>
+                    <div class="col-md-4">
+                      <small style="color : #5c5c5c;">Last Name</small>
+                      <input type="text" name="lastName" id="lastName" class="form-control form-control-sm" value="{{ instructors.0.lastname }}" readonly >
+                    </div>
+                  </div>
+                  <br>
+                  <div class="row">
+                    <div class="col-md-6">
+                      <small style="color : #5c5c5c;">Course Code</small>
+                      <select class="form-control form-control-sm" id="course">
+                        <option></option>
+                        {% for course in courses %}
+                        <option>{{ course.course_code }}</option>
+                        {% endfor %}
+                      </select>
+                    </div>
+                    <div class="col-md-6">
+                      <small style="color : #5c5c5c;">Program Code</small>
+                      <input type="text" name="program" id="program" class="form-control form-control-sm" readonly >
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col-md-4">
+                      <small style="color : #5c5c5c;">Sections</small>
+                      <select class="form-control form-control-sm" id="section">
+                        <option></option>
+                        {% for section in sections %}
+                        <option>{{ section.section_code }}</option>
+                        {% endfor %}
+                      </select>
+                    </div>
+                    <div class="col-md-4">
+                      <small style="color : #5c5c5c;">Subject Code</small>
+                      <select class="form-control form-control-sm" id="subject">
+                        <option></option>
+                        {% for subject in subjects %}
+                        <option>{{ subject.subject_code }}</option>
+                        {% endfor %}
+                      </select>
+                    </div>
+                    <div class="col-md-4">
+                      <small style="color : #5c5c5c;">Room</small>
+                      <select class="form-control form-control-sm" id="room">
+                        <option></option>
+                        {% for room in rooms %}
+                        <option>{{ room.room }}</option>
+                        {% endfor %}
+                      </select>
+                    </div>
+                  </div>
+                  <br>
+                  <div class="row">
+                    <div class="col-md-6">
+                      <small style="color : #5c5c5c;">Days : </small>
+                      <div class="row">
+                        <div class="col-sm-4">
+                          <div class="form-check form-control-sm">
+                            <input class="form-check-input checkDays" type="checkbox" name="monday" value="monday">
+                            <label class="form-check-label" for="flexCheckDefault">
+                              Monday
+                            </label>
+                          </div>
+                        </div>
+                        <div class="col-sm-4">
+                          <div class="form-check form-control-sm">
+                            <input class="form-check-input checkDays" type="checkbox" name="tuesday" value="tuesday">
+                            <label class="form-check-label" for="flexCheckDefault">
+                              Tuesday
+                            </label>
+                          </div>
+                        </div>
+                        <div class="col-sm-4">
+                          <div class="form-check form-control-sm">
+                            <input class="form-check-input checkDays" type="checkbox" name="wednesday" value="wednesday">
+                            <label class="form-check-label" for="flexCheckDefault">
+                              Wednesday
+                            </label>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="row">
+                        <div class="col-sm-4">
+                          <div class="form-check form-control-sm">
+                            <input class="form-check-input checkDays" type="checkbox" name="thursday" value="thursday">
+                            <label class="form-check-label" for="flexCheckDefault">
+                              Thursday
+                            </label>
+                          </div>
+                        </div>
+                        <div class="col-sm-4">
+                          <div class="form-check form-control-sm">
+                            <input class="form-check-input checkDays" type="checkbox" name="friday" value="friday">
+                            <label class="form-check-label" for="flexCheckDefault">
+                              Friday
+                            </label>
+                          </div>
+                        </div>
+                        <div class="col-sm-4">
+                          <div class="form-check form-control-sm">
+                            <input class="form-check-input checkDays" type="checkbox" name="saturday" value="saturday">
+                            <label class="form-check-label" for="flexCheckDefault">
+                              Saturday
+                            </label>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="row">
+                        <div class="col-sm-4">
+                          <div class="form-check form-control-sm">
+                            <input class="form-check-input checkDays" type="checkbox" name="sunday" value="sunday">
+                            <label class="form-check-label" for="flexCheckDefault">
+                              Sunday
+                            </label>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col-md-3">
+                      <small style="color : #5c5c5c;">Time In</small>
+                      <input type="time" name="timeIn" class="form-control form-control-sm" id="time_in">
+                    </div>
+                    <div class="col-md-3">
+                      <small style="color : #5c5c5c;">Time Out</small>
+                      <input type="time" name="timeOut" class="form-control form-control-sm" id="time_out">
+                    </div>
+                  </div>
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                  <button type="button" id="btnConfirm" class="btn btn-success text-white">Confirm</button>
+                </div>
+                {% csrf_token %}
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-12">
+              <table class="table table-bordered table-hover text-center">
+                <thead>
+                  <tr>
+                    <th scope="col" style="color:#fff; background:#8b1001;">Subject Code</th>
+                    <th scope="col" style="color:#fff; background:#8b1001;">Room</th>
+                    <th scope="col" style="color:#fff; background:#8b1001;">Section</th>
+                    <th scope="col" style="color:#fff; background:#8b1001;">Day</th>
+                    <th scope="col" style="color:#fff; background:#8b1001;">Time In/Out</th>
+                    <th scope="col" style="color:#fff; background:#8b1001;">Action</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {% for schedule in schedules %}
+                  <tr>
+                    <td>{{ schedule.subject_code }}</td>
+                    <td>{{ schedule.room }}</td>
+                    <td>{{ schedule.section_code }}</td>
+                    <td>{{ schedule.days|capfirst }}</td>
+                    <td>{{ schedule.time_in|date:"g:i A" }} - {{ schedule.time_out|date:"g:i A" }}</td>
+                    <td>
+                      <button class="btn btn-success btn-sm btnModifySchedule" data-id="{{ schedule.id }}"  data-toggle="modal" data-target="#modifyScheduleModal"><i class="fa fa-pencil" aria-hidden="true"></i></button>
+                      <button class="btn btn-danger btn-sm btnDeleteSchedule" data-id="{{ schedule.id }}"><i class="fa fa-times" aria-hidden="true"></i></button>
+                    </td>
+                  </tr>
+                  {% endfor %}
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+  </div>
+</div>
+<div class="modal fade" id="modifyScheduleModal" tabindex="-1" aria-labelledby="modifyScheduleModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-body">
+        <div class="row"> 
+          <div class="col-md-4">
+            <small style="color : #5c5c5c;">Instructor ID</small>
+            <input type="hidden" name="id" id="id">
+            <input type="text" name="instructorid" id="instructorid" class="form-control form-control-sm" value="{{ instructors.0.userid }}" readonly >
+          </div>
+          <div class="col-md-4">
+            <small style="color : #5c5c5c;">First Name</small>
+            <input type="text" name="firstName" id="firstName" class="form-control form-control-sm" value="{{ instructors.0.firstname }}" readonly >
+          </div>
+          <div class="col-md-4">
+            <small style="color : #5c5c5c;">Last Name</small>
+            <input type="text" name="lastName" id="lastName" class="form-control form-control-sm" value="{{ instructors.0.lastname }}" readonly >
+          </div>
+        </div>
+        <br>
+        <div class="row">
+          <div class="col-md-6">
+            <small style="color : #5c5c5c;">Course Code</small>
+            <select class="form-control form-control-sm" id="editCourse">
+              <option></option>
+              {% for course in courses %}
+              <option>{{ course.course_code }}</option>
+              {% endfor %}
+            </select>
+          </div>
+          <div class="col-md-6">
+            <small style="color : #5c5c5c;">Program Code</small>
+            <input type="text" name="program" id="editProgram" class="form-control form-control-sm" readonly >
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-4">
+            <small style="color : #5c5c5c;">Sections</small>
+            <select class="form-control form-control-sm" id="editSection">
+              <option></option>
+              {% for section in sections %}
+              <option>{{ section.section_code }}</option>
+              {% endfor %}
+            </select>
+          </div>
+          <div class="col-md-4">
+            <small style="color : #5c5c5c;">Subject Code</small>
+            <select class="form-control form-control-sm" id="editSubject">
+              <option></option>
+              {% for subject in subjects %}
+              <option>{{ subject.subject_code }}</option>
+              {% endfor %}
+            </select>
+          </div>
+          <div class="col-md-4">
+            <small style="color : #5c5c5c;">Room</small>
+            <select class="form-control form-control-sm" id="editRoom">
+              <option></option>
+              {% for room in rooms %}
+              <option>{{ room.room }}</option>
+              {% endfor %}
+            </select>
+          </div>
+        </div>
+        <br>
+        <div class="row">
+          <div class="col-md-6">
+            <small style="color : #5c5c5c;">Days : </small>
+            <select class="form-control form-control-sm" id="modifyDay">
+              <option value="monday">Monday</option>
+              <option value="tuesday">Tuesday</option>
+              <option value="wednesday">Wednesday</option>
+              <option value="thursday">Thursday</option>
+              <option value="friday">Friday</option>
+              <option value="saturday">Saturday</option>
+              <option value="sunday">Sunday</option>
+            </select>
+          </div>
+          <div class="col-md-3">
+            <small style="color : #5c5c5c;">Time In</small>
+            <input type="time" name="timeIn" class="form-control form-control-sm" id="editTime_in">
+          </div>
+          <div class="col-md-3">
+            <small style="color : #5c5c5c;">Time Out</small>
+            <input type="time" name="timeOut" class="form-control form-control-sm" id="editTime_out">
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+        <button type="button" id="btnConfirmEdit" class="btn btn-success text-white">Confirm</button>
+      </div>
+      {% csrf_token %}
+    </div>
+  </div>
+</div>
+<script>
+  $(document).ready(function () {
+    $(".btnModifySchedule").click(function () {
+      console.log($(this).data('id'));
+      $('#id').val($(this).data('id'));
+      $.ajax({
+        url: '{% url 'get_schedule' %}',
+        method: 'POST',
+        data: {
+          id: $(this).data('id')
+        },
+        headers: {
+          'X-CSRFToken': $('input[name="csrfmiddlewaretoken"]').val()
+        },
+        success: function (data) {
+          console.log(data.schedule[0].fields);
+          $('#editCourse').val(data.schedule[0].fields.course_code);
+          $('#editProgram').val(data.schedule[0].fields.program_code);
+          $('#editSection').val(data.schedule[0].fields.section_code);
+          $('#editSubject').val(data.schedule[0].fields.subject_code);
+          $('#editRoom').val(data.schedule[0].fields.room);
+          $('#modifyDay').val(data.schedule[0].fields.days);
+          $('#editTime_in').val(data.schedule[0].fields.time_in);
+          $('#editTime_out').val(data.schedule[0].fields.time_out);
+        }
+      });
+    });
+
+    $('#course').change(function () {
+      console.log($(this).val());
+      $.ajax({
+        url: '{% url 'populate_programcode' %}',
+        method: 'POST',
+        data: {
+          course_code: $(this).val()
+        },
+        headers: {
+          'X-CSRFToken': $('input[name="csrfmiddlewaretoken"]').val()
+        },
+        success: function (data) {
+          $('#program').val(data);
+        }
+      });
+    });
+
+    $('#editCourse').change(function () {
+      console.log($(this).val());
+      $.ajax({
+        url: '{% url 'populate_programcode' %}',
+        method: 'POST',
+        data: {
+          course_code: $(this).val()
+        },
+        headers: {
+          'X-CSRFToken': $('input[name="csrfmiddlewaretoken"]').val()
+        },
+        success: function (data) {
+          $('#editProgram').val(data);
+        }
+      });
+    });
+
+    $('#btnConfirm').click(function () {
+        var checkedValues = $('.checkDays:checked').map(function() {
+            return $(this).val();
+        }).get();
+
+        $.ajax({
+          url: '{% url 'add_instructor_schedule' %}',
+          method: 'POST',
+          data: {
+            userid: $('#instructorid').val(),
+            subject: $('#subject').val(),
+            course: $('#course').val(),
+            program: $('#program').val(),
+            section: $('#section').val(),
+            room: $('#room').val(),
+            days: JSON.stringify(checkedValues),
+            time_in: $('#time_in').val(),
+            time_out: $('#time_out').val(),
+          },
+          headers: {
+            'X-CSRFToken': $('input[name="csrfmiddlewaretoken"]').val()
+          },
+          success: function (data) {
+            location.reload();
+          }
+        });
+
+    });
+
+    $('#btnConfirmEdit').click(function () {
+
+      $.ajax({
+        url: '{% url 'update_instructor_schedule' %}',
+        method: 'POST',
+        data: {
+          id: $('#id').val(),
+          userid: $('#instructorid').val(),
+          subject: $('#editSubject').val(),
+          course: $('#editCourse').val(),
+          program: $('#editProgram').val(),
+          section: $('#editSection').val(),
+          room: $('#editRoom').val(),
+          days: $('#modifyDay').val(),
+          time_in: $('#editTime_in').val(),
+          time_out: $('#editTime_out').val(),
+        },
+        headers: {
+          'X-CSRFToken': $('input[name="csrfmiddlewaretoken"]').val()
+        },
+        success: function (data) {
+          location.reload();
+        }
+      });
+
+    });
+
+    $('.btnDeleteSchedule').click(function () {
+      $.ajax({
+        url: '{% url 'delete_instructor_schedule' %}',
+        method: 'POST',
+        data: {
+          id: $(this).data('id'),
+        },
+        headers: {
+          'X-CSRFToken': $('input[name="csrfmiddlewaretoken"]').val()
+        },
+        success: function (data) {
+          location.reload();
+        }
+      });
+    });
+  });
+</script>
+{% endblock content %}

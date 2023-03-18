@@ -63,16 +63,6 @@
                       </tr>
                     </thead>
                     <tbody id="tblSchedule">
-                      {% comment %} <tr>
-                        <th scope="row">CICS</th>
-                        <td>Bachelor of Science in Computer Science</td>
-                        <td>Section Sample</td>
-                        <td>1st Year</td>
-                        <td>Math 111</td>
-                        <td>Mathematics</td>
-                        <td>Monday 4:00PM-5:00PM</td>
-                        <td><button class="btn btn-success btn-sm mr-1"><i class="fa fa-pencil" aria-hidden="true"></i></button></td>
-                      </tr> {% endcomment %}
                       {% for exam_schedule in  exam_schedules %}
                       <tr>
                         <th scope="row">{{ exam_schedule.program_code }}</th>

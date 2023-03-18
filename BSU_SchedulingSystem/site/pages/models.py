@@ -13,8 +13,11 @@ LEVEL = (
 class FacultyModel(models.Model):
 
     instructor_id = models.CharField(max_length=20)
-    subject_code = models.ForeignKey(SubjectModel,on_delete=models.CASCADE)
-    room = models.ForeignKey(RoomModel,on_delete=models.CASCADE)
+    subject_code = models.CharField(max_length=20)
+    room = models.CharField(max_length=20)
+    section_code = models.CharField(max_length=20)
+    course_code = models.CharField(max_length=20)
+    program_code = models.CharField(max_length=20)
     days = models.CharField(max_length=100)
     time_in = models.TimeField()
     time_out = models.TimeField() 

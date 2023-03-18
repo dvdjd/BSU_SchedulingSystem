@@ -52,7 +52,7 @@
                   <tr>
                     <th scope="row">{{ schedule.program_code }}</th>
                     <td>{{ schedule.instructor }}</td>
-                    <td>{{ schedule.days }}, {{ schedule.time_in }}-{{ schedule.time_out }}</td>
+                    <td>{{ schedule.days|capfirst }}, {{ schedule.time_in|date:"g:i A" }}-{{ schedule.time_out|date:"g:i A" }}</td>
                     <th scope="row">{{ schedule.room }}</th>
                   </tr>
                 {% endfor %}

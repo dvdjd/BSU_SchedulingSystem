@@ -20,8 +20,14 @@ class StudentModel(models.Model):
     course_code = models.CharField(max_length=20)
     program_code = models.CharField(max_length=20)
     section_code = models.CharField(max_length=20)
-    subject_code = models.CharField(max_length=20)
     status = models.CharField(max_length=20, choices=STATUS, default='Select Status')
 
     def __str__(self):
         return self.student_id
+
+#For Irregular Students
+class StudentScheduleModel(models.Model):
+    instructor_id = models.CharField(max_length=20)
+    student_id = models.CharField(max_length=20)
+    faculty_schedule_id = models.CharField(max_length=20)
+        

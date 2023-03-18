@@ -2,51 +2,6 @@
 {% load static %}
 {% block title %}Add Student{% endblock title %}
 {% block content %}
-{% comment %} <div class="row justify-content-md-center">
-  <div class="col-md-10 mt-4">
-    <h3>Add Student</h3>
-      <div class="row justify-content-md-center">
-        <div class="col-md-10 py-3 bg-light" style="border: 1px solid black; border-radius: 5px;">
-          <h4>*Please take note this action</h4>
-          <div class="row">
-            <div class="col-md-4">
-              <small style="color : #5c5c5c;">First Name</small>
-              <input type="text" name="frstName" class="form-control form-control-sm">
-            </div>
-            <div class="col-md-4">
-              <small style="color : #5c5c5c;">Middle Name</small>
-              <input type="text" name="middleName" class="form-control form-control-sm">
-            </div>
-            <div class="col-md-4">
-              <small style="color : #5c5c5c;">Last Name</small>
-              <input type="text" name="lastName" class="form-control form-control-sm">
-            </div>
-          </div>
-          <br>
-          <div class="row">
-            <div class="col-md-4">
-              <small style="color : #5c5c5c;">ID No.</small>
-              <input type="text" name="id" class="form-control form-control-sm">
-            </div>
-            <div class="col-md-4">
-              <small style="color : #5c5c5c;">Username</small>
-              <input type="text" name="username" class="form-control form-control-sm">
-            </div>
-            <div class="col-md-4">
-              <small style="color : #5c5c5c;">Password</small>
-              <input type="password" name="password" class="form-control form-control-sm">
-            </div>
-          </div>
-          <br>
-          <div class="row">
-            <div class="col-md-12">
-              <button type="button" id="frameContainer" style="width:50%; margin-left:auto; margin-right:auto;" class="btn btn-success btn-block text-white">Confirm</button>
-            </div>
-          </div>
-        </div>
-      </div>
-  </div>
-</div> {% endcomment %}
 <div class="row justify-content-md-center">
   <div class="col-md-10 mt-4">
     {% comment %} Ito ang pattern {% endcomment %}
@@ -58,7 +13,18 @@
                 <h4>Students</h4>
               </div>
               <div class="col-md-6 text-right">
-                <button class="btn btn-success">Add Student</button>
+                <div class="row justify-content-md-end">
+                <div class="col-lg-6 text-right">
+                  <select class="form-control form-control-sm" style="height : 39px;" id="status">
+                    <option>Status</option>
+                    <option value="regular">Regular</option>
+                    <option value="irregular">Irregular</option>
+                  </select>
+                </div>
+                <div class="col-lg-3">
+                  <button class="btn btn-success" data-toggle="modal" data-target="#addStudentModal">Add Student</button>
+              </div>
+              </div>
               </div>
             </div>
             <div class="row">
@@ -67,21 +33,23 @@
                   <thead>
                     <tr>
                       <th scope="col" style="color:#fff; background:#8b1001;">SR</th>
-                      <th scope="col" style="color:#fff; background:#8b1001;">Faculty Name</th>
+                      <th scope="col" style="color:#fff; background:#8b1001;">Student Name</th>
                       <th scope="col" style="color:#fff; background:#8b1001;">College</th>
                       <th class="bg-success" scope="col" style="color:#fff;">Action</th>
                     </tr>
                   </thead>
-                  <tbody>
+                  <tbody id="tblStudents">
+                    {% for student in students %}
                     <tr>
-                      <th scope="row">12345</th>
-                      <td>Juan Dela Cruz</td>
-                      <td>College of Informatics and Computing Science</td>
+                      <th scope="row">{{ student.userid }}</th>
+                      <td>{{ student.firstname }} {{ student.middlename }} {{ student.lastname }}</td>
+                      <td>{{ student.program_code }}</td>
                       <td>
-                        <button class="btn btn-success btn-sm"><i class="fa fa-pencil" aria-hidden="true"></i></button>
+                        <button class="btn btn-success btn-sm btnModify" data-id="{{ student.userid }}"><i class="fa fa-pencil" aria-hidden="true"></i></button>
                         <button class="btn btn-danger btn-sm"><i class="fa fa-times" aria-hidden="true"></i></button>
                       </td>
                     </tr>
+                    {% endfor %}
                   </tbody>
                 </table>
               </div>
@@ -90,4 +58,189 @@
         </div>
   </div>
 </div>
+<div class="modal fade" id="addStudentModal" tabindex="-1" aria-labelledby="addStudentModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4>Add Student</h4>
+      </div>
+      <div class="modal-body">
+        <div class="row"> 
+          <div class="col-md-4">
+            <small style="color : #5c5c5c;">Student ID</small>
+            <input type="text" id="student_id" name="student_id" class="form-control form-control-sm">
+          </div>
+          <div class="col-md-4">
+            <small style="color : #5c5c5c;">Username</small>
+            <input type="text" id="username" name="username" class="form-control form-control-sm">
+          </div>
+          <div class="col-md-4">
+            <small style="color : #5c5c5c;">Password</small>
+            <input type="password" id="password" name="password" class="form-control form-control-sm">
+          </div>
+          <div class="col-md-4">
+            <small style="color : #5c5c5c;">First Name</small>
+            <input type="text" id="firstname" name="firstname" class="form-control form-control-sm">
+          </div>
+          <div class="col-md-4">
+            <small style="color : #5c5c5c;">Middle Name</small>
+            <input type="text" id="middlename" name="middlename" class="form-control form-control-sm">
+          </div>
+          <div class="col-md-4">
+            <small style="color : #5c5c5c;">Last Name</small>
+            <input type="text" id="lastname" name="lastname" class="form-control form-control-sm">
+          </div>
+          <div class="col-md-4">
+            <small style="color : #5c5c5c;">Level</small>
+            <select class="form-control form-control-sm" id="add_level">
+              <option></option>
+              <option value="1">1st Year</option>
+              <option value="2">2nd Year</option>
+              <option value="3">3rd Year</option>
+              <option value="4">4th Year</option>
+            </select>
+          </div>
+          <div class="col-md-4">
+            <small style="color : #5c5c5c;">Course</small>
+            <select class="form-control form-control-sm" id="add_course">
+              <option></option>
+              {% for course in courses %}
+              <option>{{ course.course_code }}</option>
+              {% endfor %}
+            </select>
+          </div>
+          <div class="col-md-4">
+            <small style="color : #5c5c5c;">Program Code</small>
+            <input type="text" id="add_program_code" name="add_program_code" class="form-control form-control-sm" readonly>
+          </div>
+          <div class="col-md-6">
+            <small style="color : #5c5c5c;">Section</small>
+            <select class="form-control form-control-sm" id="add_section">
+              <option></option>
+            </select>
+          </div>
+          <div class="col-md-6">
+            <small style="color : #5c5c5c;">Status</small>
+            <select class="form-control form-control-sm" id="add_status">
+              <option></option>
+              <option value="regular">Regular</option>
+              <option value="irregular">Irregular</option>
+            </select>
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+        <button type="button" id="btnSave" class="btn btn-success text-white">Save</button>
+      </div>
+      {% csrf_token %}
+    </div>
+  </div>
+</div>
+<script>
+  $(document).ready(function () {
+
+    $('#status').change(function () {
+      $.ajax({
+        url: '{% url 'search_status' %}',
+        method: 'POST',
+        data: {
+          status: $(this).val()
+        },
+        headers: {
+          'X-CSRFToken': $('input[name="csrfmiddlewaretoken"]').val()
+        },
+        success: function (data) {
+          console.log($('#status').val());
+          console.log(data);
+          $('#tblStudents').empty();
+
+          // Generate HTML markup for new rows
+          var rowsHtml = '';
+          for (var i = 0; i < data.length; i++) {
+            rowsHtml += '<tr>';
+            rowsHtml += '<th scope="row">' + data[i].userid + '</th>';
+            rowsHtml += '<td>' + data[i].firstname + ' ' + data[i].middlename + ' ' + data[i].lastname + '</td>';
+            rowsHtml += '<td>' + data[i].program_code + '</td>';
+            rowsHtml += '<td><button class="btn btn-success btn-sm mr-1 btnModify" data-id="' + data[i].userid + '"><i class="fa fa-pencil" aria-hidden="true"></i></button><button class="btn btn-danger btn-sm" data-id="' + data[i].userid + '"><i class="fa fa-times" aria-hidden="true"></i></button></td>';
+            rowsHtml += '</tr>';
+          }
+          // Append new rows to table body
+          $('#tblStudents').append(rowsHtml);
+          }
+      });
+    });
+
+    $('#add_course').change(function () {
+      $.ajax({
+        url: '{% url 'populate_programcode' %}',
+        method: 'POST',
+        data: {
+          course_code: $(this).val()
+        },
+        headers: {
+          'X-CSRFToken': $('input[name="csrfmiddlewaretoken"]').val()
+        },
+        success: function (data) {
+          $('#add_program_code').val(data);
+        }
+      });
+    });
+
+    $('#btnSave').click(function () {
+      $.ajax({
+        url: '{% url 'add_student' %}',
+        method: 'POST',
+        data: {
+          userid: $('#student_id').val(),
+          username: $('#username').val(),
+          password: $('#password').val(),
+          firstname: $('#firstname').val(),
+          middlename: $('#middlename').val(),
+          lastname: $('#lastname').val(),
+          level: $('#add_level').val(),
+          course: $('#add_course').val(),
+          program: $('#add_program_code').val(),
+          section: $('#add_section').val(),
+          status: $('#add_status').val()
+        },
+        headers: {
+          'X-CSRFToken': $('input[name="csrfmiddlewaretoken"]').val()
+        },
+        success: function (data) {
+          if (data == 'success') {
+            location.reload();
+          }
+        }
+      });
+    });
+
+    $('.btnModify').click(function () {
+      window.location.href = 'http://localhost:8000/add_student_schedule?student_id=' + $(this).data("id");
+    });
+
+    $('#add_level').change(function () {
+      $.ajax({
+        url: '{% url 'populate_section' %}',
+        method: 'POST',
+        data: {
+          level: $(this).val()
+        },
+        headers: {
+          'X-CSRFToken': $('input[name="csrfmiddlewaretoken"]').val()
+        },
+        success: function (data) {
+          console.log(data.sections);
+          $('#add_section').empty();
+          $('#add_section').append($('<option></option>'))
+          $.each(data.sections, function(index, value) {
+            var option = $('<option></option>').attr('value', value.fields.section_code).text(value.fields.section_code);
+      
+            $('#add_section').append(option);
+          });
+        }
+      });
+    });
+  });
+</script>
 {% endblock content %}

@@ -15,17 +15,17 @@ def room (request):
         rooms = RoomModel.objects.all().values('id', 'room')
         user = LoginUser.objects
         subject = SubjectModel.objects
-        faculty = FacultyModel.objects.all().values('instructor_id', 'subject_code', 'room', 'days', 'time_in', 'time_out')
+        faculty = FacultyModel.objects.all().values('instructor_id', 'program_code', 'subject_code', 'room', 'days', 'time_in', 'time_out')
         room = RoomModel.objects
         schedules = []
         for fac in faculty:
             instructor = user.filter(userid=fac['instructor_id']).first()
-            subj = subject.filter(id=fac['subject_code']).first()
-            classroom = room.filter(id=fac['room']).first()
+            subj = subject.filter(subject_code=fac['subject_code']).first()
+            classroom = room.filter(room=fac['room']).first()
             schedules.append({
                 'instructor': instructor.firstname + ' ' + instructor.lastname,
                 'subject': subj.subject_code,
-                'program_code': subj.program_code,
+                'program_code': fac['program_code'],
                 'days': fac['days'],
                 'time_in': fac['time_in'],
                 'time_out': fac['time_out'],
