@@ -115,6 +115,13 @@ def change_password (request):
         return render(request, 'pages/change_password.html', { 'details': details })
     else:
         return redirect('/')
+    
+def delete_user (request):
+    if request.method == 'POST':
+        user = LoginUser.objects.get(userid=request.POST.get('userid')).delete()
+        student = StudentModel.objects.get(student_id=request.POST.get('userid')).delete()
+        
+        return HttpResponse('deleted')
 
 def logout (request):
     request.session.flush()

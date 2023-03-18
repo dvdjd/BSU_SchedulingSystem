@@ -83,7 +83,8 @@ def add_instructor_schedule (request):
             subjects = SubjectModel.objects.all()
             rooms = RoomModel.objects.all()
             courses = CourseModel.objects.all()
-            return render(request, 'pages/add_instructor_schedule.html', {'request': request, 'details': details, 'schedules': schedules, 'instructors': user, 'courses': courses, 'sections': sections, 'subjects': subjects, 'rooms': rooms })
+            students = StudentModel.objects.filter(status='irregular')
+            return render(request, 'pages/add_instructor_schedule.html', {'request': request, 'details': details, 'schedules': schedules, 'instructors': user, 'courses': courses, 'sections': sections, 'subjects': subjects, 'rooms': rooms, 'students': students})
         else:
             return redirect('/')
         
@@ -130,9 +131,53 @@ def add_student_schedule (request):
             if student.status == 'regular':
                 schedules = FacultyModel.objects.filter(section_code=student.section_code)
             else:
-                schedules = StudentScheduleModel.objects.filter(student_id=request.GET.get('student_id'))
+                schedules = []
+                irreg_scheds = StudentScheduleModel.objects.filter(student_id=request.GET.get('student_id'))
+                
+                for sched in irreg_scheds:
+                    faculty_sched = FacultyModel.objects.filter(id=sched.faculty_schedule_id).first()
+                    schedules.append({
+                        'id': sched.id,
+                        'subject_code': faculty_sched.subject_code,
+                        'room': faculty_sched.room,
+                        'section_code': faculty_sched.section_code,
+                        'days': faculty_sched.days,
+                        'time_in': faculty_sched.time_in,
+                        'time_out': faculty_sched.time_out,
+                    })
                 
             
             return render(request, 'pages/add_student_schedule.html', {'request': request, 'details': details, 'schedules': schedules, 'student': student, 'users': users })
         else:
             return redirect('/')
+
+def populate_irreg_student (request):
+    if request.method == 'POST':
+        students = StudentModel.objects.filter(student_id=request.POST.get('student_id'))
+        student_details = []
+        
+        for student in students:
+            user = LoginUser.objects.filter(userid=student.student_id).first()
+            student_details.append({
+                'firstname': user.firstname,
+                'lastname': user.lastname,
+                'level': student.level,
+                'course': student.course_code,
+                'program': student.program_code,
+                'section': student.section_code
+            })
+        return JsonResponse(student_details, safe=False)
+    
+def save_irreg_student (request):
+    if request.method == 'POST':
+        schedule = StudentScheduleModel(student_id=request.POST.get('student_id'), faculty_schedule_id=request.POST.get('sched_id'))
+        schedule.save()
+        
+        return HttpResponse('success')
+
+def delete_student_schedule (request):
+    if request.method == 'POST':
+        schedule = StudentScheduleModel.objects.get(id=request.POST.get('id'))
+        schedule.delete()
+        
+        return HttpResponse('success')

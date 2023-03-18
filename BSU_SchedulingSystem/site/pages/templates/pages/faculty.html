@@ -5,51 +5,7 @@
 <div class="row justify-content-md-center">
   <div class="col-md-10 mt-4">
     <h3>Faculty Schedule</h3>
-      <div class="row justify-content-md-center">
-        <div class="col-md-10 py-3 bg-light" style="border: 1px solid black; border-radius: 5px;">
-          <h4>Search by Instructor</h4>
-          <div class="row">
-            <div class="col-md-4">
-              <small style="color : #5c5c5c;">Level</small>
-              <select class="form-control form-control-sm">
-                <option value=""></option>
-                <option value="1">1st Year</option>
-                <option value="2">2nd Year</option>
-                <option value="3">3rd Year</option>
-                <option value="4">4th Year</option>
-              </select>
-            </div>
-            <div class="col-md-4">
-              <small style="color : #5c5c5c;">Instructor</small>
-              <select class="form-control form-control-sm">
-                <option value=""></option>
-              </select>
-            </div>
-            <div class="col-md-4">
-              <small style="color : #5c5c5c;">Search</small>
-              <button type="button" id="frameContainer" class="btn btn-success btn-block">Search</button>
-            </div>
-          </div>
-        </div>
-      </div>
       <div class="row justify-content-md-center mt-2">
-        {% comment %} <div class="col-md-4 py-3 bg-light" style="border: 1px solid black; border-radius: 5px;">
-          <h4>Courses to Load</h4>
-          <table class="table table-bordered table-hover text-center">
-            <thead>
-              <tr>
-                <th scope="col" style="color:#fff; background:#8b1001;">Course</th>
-                <th class="bg-success" scope="col" style="color:#fff;">Schedule</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <th scope="row">BSCS</th>
-                <td>Bachelor of Science in Computer Science</td>
-              </tr>
-            </tbody>
-          </table>
-        </div> {% endcomment %}
         <div class="col-md-10 py-3 bg-light ml-1" style="border: 1px solid black; border-radius: 5px;">
           <h4>Faculty Schedule</h4>
           <ul class="nav justify-content-end" style="margin-top: -55px">
@@ -75,15 +31,17 @@
                   </tr>
                 </thead>
                 <tbody>
+                  {% for schedule in schedules %}
                   <tr>
-                    <th scope="row">Math 111</th>
-                    <td>Social Issues</td>
-                    <td>3</td>
-                    <td>CS 1101</td>
-                    <td>302 (M 2:00PM-4:00PM)</td>
-                    <td>1st Year</td>
-                    <td>Juan Dela Cruz </td>
+                    <th scope="row">{{ schedule.subject_code }}</th>
+                    <td>{{ schedule.subject_name }}</td>
+                    <td>{{ schedule.units }}</td>
+                    <td>{{ schedule.section }}</td>
+                    <td>{{ schedule.room }} ({{ schedule.day|capfirst }} {{ schedule.time_in }}-{{ schedule.time_out }})</td>
+                    <td>{{ schedule.level }}</td>
+                    <td>{{ schedule.first_name }} {{ schedule.middle_name }} {{ schedule.last_name }}</td>
                   </tr>
+                  {% endfor %}
                 </tbody>
               </table>
             </div>

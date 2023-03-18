@@ -46,7 +46,7 @@
                       <td>{{ student.program_code }}</td>
                       <td>
                         <button class="btn btn-success btn-sm btnModify" data-id="{{ student.userid }}"><i class="fa fa-pencil" aria-hidden="true"></i></button>
-                        <button class="btn btn-danger btn-sm"><i class="fa fa-times" aria-hidden="true"></i></button>
+                        <button class="btn btn-danger btn-sm btnDelete" data-id="{{ student.userid }}"><i class="fa fa-times" aria-hidden="true"></i></button>
                       </td>
                     </tr>
                     {% endfor %}
@@ -162,7 +162,7 @@
             rowsHtml += '<th scope="row">' + data[i].userid + '</th>';
             rowsHtml += '<td>' + data[i].firstname + ' ' + data[i].middlename + ' ' + data[i].lastname + '</td>';
             rowsHtml += '<td>' + data[i].program_code + '</td>';
-            rowsHtml += '<td><button class="btn btn-success btn-sm mr-1 btnModify" data-id="' + data[i].userid + '"><i class="fa fa-pencil" aria-hidden="true"></i></button><button class="btn btn-danger btn-sm" data-id="' + data[i].userid + '"><i class="fa fa-times" aria-hidden="true"></i></button></td>';
+            rowsHtml += '<td><button class="btn btn-success btn-sm mr-1 btnModify" data-id="' + data[i].userid + '"><i class="fa fa-pencil" aria-hidden="true"></i></button><button class="btn btn-danger btn-sm btnDelete" data-id="' + data[i].userid + '"><i class="fa fa-times" aria-hidden="true"></i></button></td>';
             rowsHtml += '</tr>';
           }
           // Append new rows to table body
@@ -215,8 +215,24 @@
       });
     });
 
-    $('.btnModify').click(function () {
+    $(document).on('click', '.btnModify', function () {
       window.location.href = 'http://localhost:8000/add_student_schedule?student_id=' + $(this).data("id");
+    });
+
+    $(document).on('click', '.btnDelete', function () {
+      $.ajax({
+        url: '{% url 'delete_user' %}',
+        method: 'POST',
+        data: {
+          userid: $(this).data('id')
+        },
+        headers: {
+          'X-CSRFToken': $('input[name="csrfmiddlewaretoken"]').val()
+        },
+        success: function (data) {
+          location.reload();
+        }
+      });
     });
 
     $('#add_level').change(function () {

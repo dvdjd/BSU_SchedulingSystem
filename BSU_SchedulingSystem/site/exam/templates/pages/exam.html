@@ -59,7 +59,9 @@
                         <th scope="col" style="color:#fff; background:#8b1001;">Subject Code</th>
                         <th scope="col" style="color:#fff; background:#8b1001;">Subject Name</th>
                         <th scope="col" style="color:#fff; background:#8b1001;">Schedule</th>
+                        {% if details.usertype == 'admin' %}
                         <th scope="col" style="color:#fff; background:#8b1001;">Actions</th>
+                        {% endif %}
                       </tr>
                     </thead>
                     <tbody id="tblSchedule">
@@ -72,7 +74,9 @@
                         <td>{{ exam_schedule.subject_code }}</td>
                         <td>{{ exam_schedule.subject_description }}</td>
                         <td>{{ exam_schedule.schedule }}</td>
+                        {% if details.usertype == 'admin' %}
                         <td><button class="btn btn-success btn-sm mr-1"><i class="fa fa-pencil" aria-hidden="true"></i></button></td>
+                        {% endif %}
                       </tr>
                       {% endfor %}
                     </tbody>

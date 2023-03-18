@@ -11,6 +11,7 @@
         <h4>{{course.0.course_name}}</h4>
         <div class="row">
           <div class="col-md-4">
+            <input type="hidden" id="course_filter" name="course_filter" value="{{ request.GET.course_code }}">
             <small style="color : #5c5c5c;">Curriculum Year</small>
             <select class="form-control form-control-sm" id="curriculum_year">
               <option></option>
@@ -168,7 +169,8 @@ $(document).ready(function () {
       data: {
         year: $('#curriculum_year').val(),
         level: $('#level').val(),
-        period: $('#period').val()
+        period: $('#period').val(),
+        course: $('#course_filter').val()
       },
       headers: {
         'X-CSRFToken': $('input[name="csrfmiddlewaretoken"]').val()

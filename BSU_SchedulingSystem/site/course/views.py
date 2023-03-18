@@ -54,7 +54,7 @@ def course_schedule (request):
     
 def search_course (request):
     if request.method == 'POST':
-        curriculums = CurriculumModel.objects.filter(Q(curriculum_year=request.POST.get('year')) & Q(level=request.POST.get('level')) & Q(period=request.POST.get('period')))
+        curriculums = CurriculumModel.objects.filter(Q(curriculum_year=request.POST.get('year')) & Q(level=request.POST.get('level')) & Q(period=request.POST.get('period')) & Q(course_code__course_code=request.POST.get('course')))
         
         course_curriculum = []
                 

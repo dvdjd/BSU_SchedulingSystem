@@ -55,7 +55,7 @@
         <div class="row"> 
           <div class="col-md-4">
             <small style="color : #5c5c5c;">Instructor ID</small>
-            <input type="text" id="student_id" name="instructor_id" class="form-control form-control-sm">
+            <input type="text" id="instructor_id" name="instructor_id" class="form-control form-control-sm">
           </div>
           <div class="col-md-4">
             <small style="color : #5c5c5c;">Username</small>
@@ -91,7 +91,7 @@
   $(document).ready(function () {
     $('#btnSave').click(function () {
       $.ajax({
-        url: '{% url 'add_student' %}',
+        url: '{% url 'add_instructor' %}',
         method: 'POST',
         data: {
           userid: $('#instructor_id').val(),

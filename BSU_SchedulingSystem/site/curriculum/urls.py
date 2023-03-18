@@ -14,4 +14,7 @@ urlpatterns = [
     path('update_instructor_schedule', views.update_instructor_schedule, name='update_instructor_schedule'),
     path('delete_instructor_schedule', views.delete_instructor_schedule, name='delete_instructor_schedule'),
     path('add_student_schedule', views.add_student_schedule, name='add_student_schedule'),
+    path('populate_irreg_student', views.populate_irreg_student, name='populate_irreg_student'),
+    path('save_irreg_student', views.save_irreg_student, name='save_irreg_student'),
+    path('delete_student_schedule', views.delete_student_schedule, name='delete_student_schedule'),
 ]

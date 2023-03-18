@@ -204,6 +204,7 @@
                     <td>{{ schedule.days|capfirst }}</td>
                     <td>{{ schedule.time_in|date:"g:i A" }} - {{ schedule.time_out|date:"g:i A" }}</td>
                     <td>
+                      <button class="btn btn-primary btn-sm btnSchedIrreg" data-id="{{ schedule.id }}" title="Add This Schedule to Irregular Student"  data-toggle="modal" data-target="#irregScheduleModal"><i class="fa fa-eye" aria-hidden="true"></i></button>
                       <button class="btn btn-success btn-sm btnModifySchedule" data-id="{{ schedule.id }}"  data-toggle="modal" data-target="#modifyScheduleModal"><i class="fa fa-pencil" aria-hidden="true"></i></button>
                       <button class="btn btn-danger btn-sm btnDeleteSchedule" data-id="{{ schedule.id }}"><i class="fa fa-times" aria-hidden="true"></i></button>
                     </td>
@@ -215,6 +216,57 @@
           </div>
         </div>
       </div>
+  </div>
+</div>
+<div class="modal fade" id="irregScheduleModal" tabindex="-1" aria-labelledby="irregScheduleModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-body">
+        <div class="row"> 
+          <div class="col-md-4">
+            <small style="color : #5c5c5c;">Student ID</small>
+            <input type="hidden" name="schedid" id="schedid">
+            <select class="form-control form-control-sm" id="irregid">
+              <option></option>
+              {% for student in students %}
+              <option>{{ student.student_id }}</option>
+              {% endfor %}
+            </select>
+          </div>
+          <div class="col-md-4">
+            <small style="color : #5c5c5c;">First Name</small>
+            <input type="text" name="irregfirstName" id="irregfirstName" class="form-control form-control-sm" readonly >
+          </div>
+          <div class="col-md-4">
+            <small style="color : #5c5c5c;">Last Name</small>
+            <input type="text" name="irreglastName" id="irreglastName" class="form-control form-control-sm" readonly >
+          </div>
+        </div>
+        <div class="row"> 
+          <div class="col-md-3">
+            <small style="color : #5c5c5c;">Level</small>
+            <input type="text" name="irreglevel" id="irreglevel" class="form-control form-control-sm" readonly >
+          </div>
+          <div class="col-md-3">
+            <small style="color : #5c5c5c;">Course Code</small>
+            <input type="text" name="irregcourse" id="irregcourse" class="form-control form-control-sm" readonly >
+          </div>
+          <div class="col-md-3">
+            <small style="color : #5c5c5c;">Program Code</small>
+            <input type="text" name="irregprogram" id="irregprogram" class="form-control form-control-sm" readonly >
+          </div>
+          <div class="col-md-3">
+            <small style="color : #5c5c5c;">Section Code</small>
+            <input type="text" name="irregsection" id="irregsection" class="form-control form-control-sm" readonly >
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+        <button type="button" id="btnConfirmSched" class="btn btn-success text-white">Confirm</button>
+      </div>
+      {% csrf_token %}
+    </div>
   </div>
 </div>
 <div class="modal fade" id="modifyScheduleModal" tabindex="-1" aria-labelledby="modifyScheduleModalLabel" aria-hidden="true">
@@ -414,6 +466,49 @@
 </div>
 <script>
   $(document).ready(function () {
+    $(".btnSchedIrreg").click(function () {
+      let id = $('#schedid').val($('.btnSchedIrreg').data('id'));
+    });
+
+    $('#irregid').change(function () {
+      $.ajax({
+        url: '{% url 'populate_irreg_student' %}',
+        method: 'POST',
+        data: {
+          student_id: $(this).val(),
+        },
+        headers: {
+          'X-CSRFToken': $('input[name="csrfmiddlewaretoken"]').val()
+        },
+        success: function (data) {
+          console.log(data);
+          $('#irregfirstName').val(data[0].firstname);
+          $('#irreglastName').val(data[0].lastname);
+          $('#irreglevel').val(data[0].level);
+          $('#irregcourse').val(data[0].course);
+          $('#irregprogram').val(data[0].program);
+          $('#irregsection').val(data[0].section);
+        }
+      });
+    });
+
+    $('#btnConfirmSched').click(function () {
+      $.ajax({
+        url: '{% url 'save_irreg_student' %}',
+        method: 'POST',
+        data: {
+          student_id: $('#irregid').val(),
+          sched_id: $('#schedid').val(),
+        },
+        headers: {
+          'X-CSRFToken': $('input[name="csrfmiddlewaretoken"]').val()
+        },
+        success: function (data) {
+          location.reload();
+        }
+      });
+    })
+
     $(".btnModifySchedule").click(function () {
       console.log($(this).data('id'));
       $('#id').val($(this).data('id'));

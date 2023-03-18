@@ -27,7 +27,6 @@ class StudentModel(models.Model):
 
 #For Irregular Students
 class StudentScheduleModel(models.Model):
-    instructor_id = models.CharField(max_length=20)
     student_id = models.CharField(max_length=20)
     faculty_schedule_id = models.CharField(max_length=20)
         
