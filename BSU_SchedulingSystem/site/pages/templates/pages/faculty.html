@@ -448,7 +448,7 @@
           let subject = '<p>' + data[i].subject_name + '</p>';
           let room = '<p>' + data[i].room + '</p>';
           $('#' + DayConversion(data[i].day) + '_' + TimeConversion(data[i].time_in)).append(subject, room);
-          $('#' + DayConversion(data[i].day) + '_' + TimeConversion(data[i].time_in)).attr('rowspan', TimeConversion(data[i].time_out)-TimeConversion(data[i].time_in));
+          $('#' + DayConversion(data[i].day) + '_' + TimeConversion(data[i].time_in)).attr('rowspan', TimeConversion(data[i].time_out)-TimeConversion(data[i].time_in) + 1);
         }
       }
     });

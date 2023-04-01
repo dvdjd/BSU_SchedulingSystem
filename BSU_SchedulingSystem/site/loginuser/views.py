@@ -110,11 +110,17 @@ def add_instructor (request):
             return redirect('/')
     
 def change_password (request):
-    if 'username' in request.session and request.session['username'] is not None:
-        details = GlobalSession.sessions(request)
-        return render(request, 'pages/change_password.html', { 'details': details })
+    if request.method == 'POST':
+        user = LoginUser.objects.get(userid=request.session.get('userid'))
+        user.password = request.POST.get('password')
+        user.save()
+        return HttpResponse('success')
     else:
-        return redirect('/')
+        if 'username' in request.session and request.session['username'] is not None:
+            details = GlobalSession.sessions(request)
+            return render(request, 'pages/change_password.html', { 'details': details })
+        else:
+            return redirect('/')
     
 def delete_user (request):
     if request.method == 'POST':
