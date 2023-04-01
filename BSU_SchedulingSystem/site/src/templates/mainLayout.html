@@ -43,10 +43,19 @@
         font-weight: 500;
         font-size: 20px;
       }
+
+      .__top_nav {
+        background-color: #fff;
+        position: fixed; 
+        width: 100%; 
+        top: 0; 
+        left: 0;
+        z-index: 999;
+      }
     </style>
     </head>
   <body style="background-color: #f3efee">
-    <nav class="navbar navbar-light" style="background-color: #fff;">
+    <nav class="navbar navbar-light __top_nav" style="">
       <ul class="nav justify-content-start">
         <li class="nav-item">
           <img src="{% static 'public/profileremovebgpreview-2@2x.png' %}" width="30" height="30" class="d-inline-block align-top" alt="">
@@ -118,7 +127,7 @@
         </div>
       </div>
     </div>
-    <div class="container-fluid" style="padding-left: 280px">
+    <div class="container-fluid" style="padding-left: 280px; margin-top: 4.7em;">
       <!-- Content Here -->
       {% block content %}{% endblock content %}
     </div>

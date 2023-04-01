@@ -10,15 +10,15 @@
           <h4>Faculty Schedule</h4>
           <ul class="nav justify-content-end" style="margin-top: -55px">
             <li class="nav-item">
-              <a class="nav-link __top-right_link" style="font-size: 12px; color: #000;" href="#">Tabular View</a>
+              <a class="nav-link __top-right_link" style="font-size: 12px; color: #000;" href="#" id="tabularView">Tabular View</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link __top-right_link" href="#" style="font-size: 12px; color: #000;">Calendar View</a>
+              <a class="nav-link __top-right_link" href="#" style="font-size: 12px; color: #000;" id="calendarView">Calendar View</a>
             </li>
           </ul>
           <div class="row">
             <div class="col-md-12">
-              <table class="table table-bordered table-hover text-center">
+              <table class="table table-bordered table-hover text-center" id="tblTabular">
                 <thead>
                   <tr>
                     <th scope="col" style="color:#fff; background:#8b1001;">Code</th>
@@ -48,7 +48,7 @@
           </div>
           <div class="row">
             <div class="col-md-12">
-              <table class="table table-bordered table-hover text-center">
+              <table class="table table-bordered text-center" id="tblCalendar">
                 <thead>
                   <tr>
                     <th class="bg-success" scope="col" style="color:#fff; width:10%;">Time</th>
@@ -72,251 +72,254 @@
                   </tr>
                   <tr>
                     <td class="p-1">6:30 AM</td>
-                    <td class="p-1" id="m_1"></td>
-                    <td class="p-1" id="t_1"></td>
-                    <td class="p-1" id="w_1"></td>
-                    <td class="p-1" id="th_1"></td>
-                    <td class="p-1" id="f_1"></td>
-                    <td class="p-1" id="s_1"></td>
+                    <td class="p-1" id="m_2"></td>
+                    <td class="p-1" id="t_2"></td>
+                    <td class="p-1" id="w_2"></td>
+                    <td class="p-1" id="th_2"></td>
+                    <td class="p-1" id="f_2"></td>
+                    <td class="p-1" id="s_2"></td>
                   </tr>
                   <tr>
                     <td class="p-1">7:00 AM</td>
-                    <td rowspan="5" class="bg-success align-middle p-1" id="m_1" scope="col" style="color:#fff;">
-                      <p class="text-center"><b>Computer Programming 1</b></p>
-                      <p class="text-center"><b>Room 101</b></p>
-                    </td>
-                    <td class="p-1" id="t_1"></td>
-                    <td class="p-1" id="w_1"></td>
-                    <td class="p-1" id="th_1"></td>
-                    <td class="p-1" id="f_1"></td>
-                    <td class="p-1" id="s_1"></td>
+                    <td class="p-1" id="m_3"></td>
+                    <td class="p-1" id="t_3"></td>
+                    <td class="p-1" id="w_3"></td>
+                    <td class="p-1" id="th_3"></td>
+                    <td class="p-1" id="f_3"></td>
+                    <td class="p-1" id="s_3"></td>
                   </tr>
                   <tr>
                     <td class="p-1">7:30 AM</td>
-                    <td class="p-1" id="t_1"></td>
-                    <td class="p-1" id="w_1"></td>
-                    <td class="p-1" id="th_1"></td>
-                    <td rowspan="7" class="bg-success align-middle p-1" id="f_1" scope="col" style="color:#fff;">
-                      <p class="text-center"><b>Introduction to Computing</b></p>
-                      <p class="text-center"><b>Computer Lab</b></p>
-                    </td>
-                    <td class="p-1" id="s_1"></td>
+                    <td class="p-1" id="m_4"></td>
+                    <td class="p-1" id="t_4"></td>
+                    <td class="p-1" id="w_4"></td>
+                    <td class="p-1" id="th_4"></td>
+                    <td class="p-1" id="f_4"></td>
+                    <td class="p-1" id="s_4"></td>
                   </tr>
                   <tr>
                     <td class="p-1">8:00 AM</td>
-                    <td class="p-1" id="t_1"></td>
-                    <td class="p-1" id="w_1"></td>
-                    <td class="p-1" id="th_1"></td>
-                    <td class="p-1" id="s_1"></td>
+                    <td class="p-1" id="m_5"></td>
+                    <td class="p-1" id="t_5"></td>
+                    <td class="p-1" id="w_5"></td>
+                    <td class="p-1" id="th_5"></td>
+                    <td class="p-1" id="f_5"></td>
+                    <td class="p-1" id="s_5"></td>
                   </tr>
                   <tr>
                     <td class="p-1">8:30 AM</td>
-                    <td class="p-1" id="t_1"></td>
-                    <td class="p-1" id="w_1"></td>
-                    <td class="p-1" id="th_1"></td>
-                    <td class="p-1" id="s_1"></td>
+                    <td class="p-1" id="m_6"></td>
+                    <td class="p-1" id="t_6"></td>
+                    <td class="p-1" id="w_6"></td>
+                    <td class="p-1" id="th_6"></td>
+                    <td class="p-1" id="f_6"></td>
+                    <td class="p-1" id="s_6"></td>
                   </tr>
                   <tr>
                     <td class="p-1">9:00 AM</td>
-                    <td class="p-1" id="t_1"></td>
-                    <td class="p-1" id="w_1"></td>
-                    <td class="p-1" id="th_1"></td>
-                    <td class="p-1" id="s_1"></td>
+                    <td class="p-1" id="m_7"></td>
+                    <td class="p-1" id="t_7"></td>
+                    <td class="p-1" id="w_7"></td>
+                    <td class="p-1" id="th_7"></td>
+                    <td class="p-1" id="f_7"></td>
+                    <td class="p-1" id="s_7"></td>
                   </tr>
                   <tr>
                     <td class="p-1">9:30 AM</td>
-                    <td class="p-1" id="m_1"></td>
-                    <td class="p-1" id="t_1"></td>
-                    <td class="p-1" id="w_1"></td>
-                    <td class="p-1" id="th_1"></td>
-                    <td class="p-1" id="s_1"></td>
+                    <td class="p-1" id="m_8"></td>
+                    <td class="p-1" id="t_8"></td>
+                    <td class="p-1" id="w_8"></td>
+                    <td class="p-1" id="th_8"></td>
+                    <td class="p-1" id="f_8"></td>
+                    <td class="p-1" id="s_8"></td>
                   </tr>
                   <tr>
-                    <td class="p-1" id="m_1">10:00 AM</td>
-                    <td class="p-1" id="t_1"></td>
-                    <td class="p-1" id="w_1"></td>
-                    <td class="p-1" id="th_1"></td>
-                    <td class="p-1"></td>
-                    <td class="p-1"></td>
+                    <td class="p-1">10:00 AM</td>
+                    <td class="p-1" id="m_9"></td>
+                    <td class="p-1" id="t_9"></td>
+                    <td class="p-1" id="w_9"></td>
+                    <td class="p-1" id="th_9"></td>
+                    <td class="p-1" id="f_9"></td>
+                    <td class="p-1" id="s_9"></td>
                   </tr>
                   <tr>
                     <td class="p-1">10:30 AM</td>
-                    <td class="p-1" id="m_1"></td>
-                    <td class="p-1" id="t_1"></td>
-                    <td class="p-1" id="w_1"></td>
-                    <td class="p-1" id="th_1"></td>
-                    <td class="p-1" id="s_1"></td>
+                    <td class="p-1" id="m_10"></td>
+                    <td class="p-1" id="t_10"></td>
+                    <td class="p-1" id="w_10"></td>
+                    <td class="p-1" id="th_10"></td>
+                    <td class="p-1" id="s_10"></td>
                   </tr>
                   <tr>
                     <td class="p-1">11:00 AM</td>
-                    <td class="p-1" id="m_1"></td>
-                    <td class="p-1" id="t_1"></td>
-                    <td class="p-1" id="w_1"></td>
-                    <td class="p-1" id="th_1"></td>
-                    <td class="p-1" id="f_1"></td>
-                    <td class="p-1" id="s_1"></td>
+                    <td class="p-1" id="m_11"></td>
+                    <td class="p-1" id="t_11"></td>
+                    <td class="p-1" id="w_11"></td>
+                    <td class="p-1" id="th_11"></td>
+                    <td class="p-1" id="f_11"></td>
+                    <td class="p-1" id="s_11"></td>
                   </tr>
                   <tr>
                     <td class="p-1">11:30 AM</td>
-                    <td class="p-1" id="m_1"></td>
-                    <td class="p-1" id="t_1"></td>
-                    <td class="p-1" id="w_1"></td>
-                    <td class="p-1" id="th_1"></td>
-                    <td class="p-1" id="f_1"></td>
-                    <td class="p-1" id="s_1"></td>
+                    <td class="p-1" id="m_12"></td>
+                    <td class="p-1" id="t_12"></td>
+                    <td class="p-1" id="w_12"></td>
+                    <td class="p-1" id="th_12"></td>
+                    <td class="p-1" id="f_12"></td>
+                    <td class="p-1" id="s_12"></td>
                   </tr>
                   <tr>
                     <td class="p-1">12:00 PM</td>
-                    <td class="p-1" id="m_1"></td>
-                    <td class="p-1" id="t_1"></td>
-                    <td class="p-1" id="w_1"></td>
-                    <td class="p-1" id="th_1"></td>
-                    <td class="p-1" id="f_1"></td>
-                    <td class="p-1" id="s_1"></td>
+                    <td class="p-1" id="m_13"></td>
+                    <td class="p-1" id="t_13"></td>
+                    <td class="p-1" id="w_13"></td>
+                    <td class="p-1" id="th_13"></td>
+                    <td class="p-1" id="f_13"></td>
+                    <td class="p-1" id="s_13"></td>
                   </tr>
                   <tr>
                     <td class="p-1">12:30 PM</td>
-                    <td class="p-1" id="m_1"></td>
-                    <td class="p-1" id="t_1"></td>
-                    <td class="p-1" id="w_1"></td>
-                    <td class="p-1" id="th_1"></td>
-                    <td class="p-1" id="f_1"></td>
-                    <td class="p-1" id="s_1"></td>
+                    <td class="p-1" id="m_14"></td>
+                    <td class="p-1" id="t_14"></td>
+                    <td class="p-1" id="w_14"></td>
+                    <td class="p-1" id="th_14"></td>
+                    <td class="p-1" id="f_14"></td>
+                    <td class="p-1" id="s_14"></td>
                   </tr>
                   <tr>
                     <td class="p-1">1:00 PM</td>
-                    <td class="p-1" id="m_1"></td>
-                    <td class="p-1" id="t_1"></td>
-                    <td class="p-1" id="w_1"></td>
-                    <td class="p-1" id="th_1"></td>
-                    <td class="p-1" id="f_1"></td>
-                    <td class="p-1" id="s_1"></td>
+                    <td class="p-1" id="m_15"></td>
+                    <td class="p-1" id="t_15"></td>
+                    <td class="p-1" id="w_15"></td>
+                    <td class="p-1" id="th_15"></td>
+                    <td class="p-1" id="f_15"></td>
+                    <td class="p-1" id="s_15"></td>
                   </tr>
                   <tr>
                     <td class="p-1">1:30 PM</td>
-                    <td class="p-1" id="m_1"></td>
-                    <td class="p-1" id="t_1"></td>
-                    <td class="p-1" id="w_1"></td>
-                    <td class="p-1" id="th_1"></td>
-                    <td class="p-1" id="f_1"></td>
-                    <td class="p-1" id="s_1"></td>
+                    <td class="p-1" id="m_16"></td>
+                    <td class="p-1" id="t_16"></td>
+                    <td class="p-1" id="w_16"></td>
+                    <td class="p-1" id="th_16"></td>
+                    <td class="p-1" id="f_16"></td>
+                    <td class="p-1" id="s_16"></td>
                   </tr>
                   <tr>
                     <td class="p-1">2:00 PM</td>
-                    <td class="p-1" id="m_1"></td>
-                    <td class="p-1" id="t_1"></td>
-                    <td class="p-1" id="w_1"></td>
-                    <td class="p-1" id="th_1"></td>
-                    <td class="p-1" id="f_1"></td>
-                    <td class="p-1" id="s_1"></td>
+                    <td class="p-1" id="m_17"></td>
+                    <td class="p-1" id="t_17"></td>
+                    <td class="p-1" id="w_17"></td>
+                    <td class="p-1" id="th_17"></td>
+                    <td class="p-1" id="f_17"></td>
+                    <td class="p-1" id="s_17"></td>
                   </tr>
                   <tr>
                     <td class="p-1">2:30 PM</td>
-                    <td class="p-1" id="m_1"></td>
-                    <td class="p-1" id="t_1"></td>
-                    <td class="p-1" id="w_1"></td>
-                    <td class="p-1" id="th_1"></td>
-                    <td class="p-1" id="f_1"></td>
-                    <td class="p-1" id="s_1"></td>
+                    <td class="p-1" id="m_18"></td>
+                    <td class="p-1" id="t_18"></td>
+                    <td class="p-1" id="w_18"></td>
+                    <td class="p-1" id="th_18"></td>
+                    <td class="p-1" id="f_18"></td>
+                    <td class="p-1" id="s_18"></td>
                   </tr>
                   <tr>
                     <td class="p-1">3:00 PM</td>
-                    <td class="p-1" id="m_1"></td>
-                    <td class="p-1" id="t_1"></td>
-                    <td class="p-1" id="w_1"></td>
-                    <td class="p-1" id="th_1"></td>
-                    <td class="p-1" id="f_1"></td>
-                    <td class="p-1" id="s_1"></td>
+                    <td class="p-1" id="m_19"></td>
+                    <td class="p-1" id="t_19"></td>
+                    <td class="p-1" id="w_19"></td>
+                    <td class="p-1" id="th_19"></td>
+                    <td class="p-1" id="f_19"></td>
+                    <td class="p-1" id="s_19"></td>
                   </tr>
                   <tr>
                     <td class="p-1">3:30 PM</td>
-                    <td class="p-1" id="m_1"></td>
-                    <td class="p-1" id="t_1"></td>
-                    <td class="p-1" id="w_1"></td>
-                    <td class="p-1" id="th_1"></td>
-                    <td class="p-1" id="f_1"></td>
-                    <td class="p-1" id="s_1"></td>
+                    <td class="p-1" id="m_20"></td>
+                    <td class="p-1" id="t_20"></td>
+                    <td class="p-1" id="w_20"></td>
+                    <td class="p-1" id="th_20"></td>
+                    <td class="p-1" id="f_20"></td>
+                    <td class="p-1" id="s_20"></td>
                   </tr>
                   <tr>
                     <td class="p-1">4:00 PM</td>
-                    <td class="p-1" id="m_1"></td>
-                    <td class="p-1" id="t_1"></td>
-                    <td class="p-1" id="w_1"></td>
-                    <td class="p-1" id="th_1"></td>
-                    <td class="p-1" id="f_1"></td>
-                    <td class="p-1" id="s_1"></td>
+                    <td class="p-1" id="m_21"></td>
+                    <td class="p-1" id="t_21"></td>
+                    <td class="p-1" id="w_21"></td>
+                    <td class="p-1" id="th_21"></td>
+                    <td class="p-1" id="f_21"></td>
+                    <td class="p-1" id="s_21"></td>
                   </tr>
                   <tr>
                     <td class="p-1">4:30 PM</td>
-                    <td class="p-1" id="m_1"></td>
-                    <td class="p-1" id="t_1"></td>
-                    <td class="p-1" id="w_1"></td>
-                    <td class="p-1" id="th_1"></td>
-                    <td class="p-1" id="f_1"></td>
-                    <td class="p-1" id="s_1"></td>
+                    <td class="p-1" id="m_22"></td>
+                    <td class="p-1" id="t_22"></td>
+                    <td class="p-1" id="w_22"></td>
+                    <td class="p-1" id="th_22"></td>
+                    <td class="p-1" id="f_22"></td>
+                    <td class="p-1" id="s_22"></td>
                   </tr>
                   <tr>
                     <td class="p-1">5:00 PM</td>
-                    <td class="p-1" id="m_1"></td>
-                    <td class="p-1" id="t_1"></td>
-                    <td class="p-1" id="w_1"></td>
-                    <td class="p-1" id="th_1"></td>
-                    <td class="p-1" id="f_1"></td>
-                    <td class="p-1" id="s_1"></td>
+                    <td class="p-1" id="m_23"></td>
+                    <td class="p-1" id="t_23"></td>
+                    <td class="p-1" id="w_23"></td>
+                    <td class="p-1" id="th_23"></td>
+                    <td class="p-1" id="f_23"></td>
+                    <td class="p-1" id="s_23"></td>
                   </tr>
                   <tr>
                     <td class="p-1">5:30 PM</td>
-                    <td class="p-1" id="m_1"></td>
-                    <td class="p-1" id="t_1"></td>
-                    <td class="p-1" id="w_1"></td>
-                    <td class="p-1" id="th_1"></td>
-                    <td class="p-1" id="f_1"></td>
-                    <td class="p-1" id="s_1"></td>
+                    <td class="p-1" id="m_24"></td>
+                    <td class="p-1" id="t_24"></td>
+                    <td class="p-1" id="w_24"></td>
+                    <td class="p-1" id="th_24"></td>
+                    <td class="p-1" id="f_24"></td>
+                    <td class="p-1" id="s_24"></td>
                   </tr>
                   <tr>
                     <td class="p-1">6:00 PM</td>
-                    <td class="p-1" id="m_1"></td>
-                    <td class="p-1" id="t_1"></td>
-                    <td class="p-1" id="w_1"></td>
-                    <td class="p-1" id="th_1"></td>
-                    <td class="p-1" id="f_1"></td>
-                    <td class="p-1" id="s_1"></td>
+                    <td class="p-1" id="m_25"></td>
+                    <td class="p-1" id="t_25"></td>
+                    <td class="p-1" id="w_25"></td>
+                    <td class="p-1" id="th_25"></td>
+                    <td class="p-1" id="f_25"></td>
+                    <td class="p-1" id="s_25"></td>
                   </tr>
                   <tr>
                     <td class="p-1">6:30 PM</td>
-                    <td class="p-1" id="m_1"></td>
-                    <td class="p-1" id="t_1"></td>
-                    <td class="p-1" id="w_1"></td>
-                    <td class="p-1" id="th_1"></td>
-                    <td class="p-1" id="f_1"></td>
-                    <td class="p-1" id="s_1"></td>
+                    <td class="p-1" id="m_26"></td>
+                    <td class="p-1" id="t_26"></td>
+                    <td class="p-1" id="w_26"></td>
+                    <td class="p-1" id="th_26"></td>
+                    <td class="p-1" id="f_26"></td>
+                    <td class="p-1" id="s_26"></td>
                   </tr>
                   <tr>
                     <td class="p-1">7:00 PM</td>
-                    <td class="p-1" id="m_1"></td>
-                    <td class="p-1" id="t_1"></td>
-                    <td class="p-1" id="w_1"></td>
-                    <td class="p-1" id="th_1"></td>
-                    <td class="p-1" id="f_1"></td>
-                    <td class="p-1" id="s_1"></td>
+                    <td class="p-1" id="m_27"></td>
+                    <td class="p-1" id="t_27"></td>
+                    <td class="p-1" id="w_27"></td>
+                    <td class="p-1" id="th_27"></td>
+                    <td class="p-1" id="f_27"></td>
+                    <td class="p-1" id="s_27"></td>
                   </tr>
                   <tr>
                     <td class="p-1">7:30 PM</td>
-                    <td class="p-1" id="m_1"></td>
-                    <td class="p-1" id="t_1"></td>
-                    <td class="p-1" id="w_1"></td>
-                    <td class="p-1" id="th_1"></td>
-                    <td class="p-1" id="f_1"></td>
-                    <td class="p-1" id="s_1"></td>
+                    <td class="p-1" id="m_28"></td>
+                    <td class="p-1" id="t_28"></td>
+                    <td class="p-1" id="w_28"></td>
+                    <td class="p-1" id="th_28"></td>
+                    <td class="p-1" id="f_28"></td>
+                    <td class="p-1" id="s_28"></td>
                   </tr>
                   <tr>
                     <td class="p-1">8:00 PM</td>
-                    <td class="p-1" id="m_1"></td>
-                    <td class="p-1" id="t_1"></td>
-                    <td class="p-1" id="w_1"></td>
-                    <td class="p-1" id="th_1"></td>
-                    <td class="p-1" id="f_1"></td>
-                    <td class="p-1" id="s_1"></td>
+                    <td class="p-1" id="m_29"></td>
+                    <td class="p-1" id="t_29"></td>
+                    <td class="p-1" id="w_29"></td>
+                    <td class="p-1" id="th_29"></td>
+                    <td class="p-1" id="f_29"></td>
+                    <td class="p-1" id="s_29"></td>
                   </tr>
                 </tbody>
               </table>
@@ -326,4 +329,131 @@
       </div>
   </div>
 </div>
+{% csrf_token %}
+<script>
+  $(document).ready(function () {
+    $("#tblCalendar").hide();
+    $("#tabularView").css("color", "#8b1001");
+    $("#calendarView").click(function () {
+      $("#tabularView").css("color", "#000");
+      $(this).css("color", "#8b1001");
+      $("#tblCalendar").show();
+      $("#tblTabular").hide();
+    });
+
+    $("#tabularView").click(function () {
+      $("#calendarView").css("color", "#000");
+      $(this).css("color", "#8b1001");
+      $("#tblTabular").show();
+      $("#tblCalendar").hide();
+    });
+
+  });
+
+  function DayConversion(day) {
+    let day_convert = '';
+    if (day == 'monday') {
+      day_convert = 'm';
+    } else if (day == 'tuesday') {
+      day_convert = 't';
+    } else if (day == 'wednesday') {
+      day_convert = 'w';
+    } else if (day == 'thursday') {
+      day_convert = 'th';
+    } else if (day == 'friday') {
+      day_convert = 'f';
+    } else if (day == 'saturday') {
+      day_convert = 's';
+    }
+
+    return day_convert;
+  }
+
+  function TimeConversion(time) {
+    let time_convert = '';
+    if (time == '06:00:00') {
+      time_convert = '1';
+    } else if (time == '06:30:00') {
+      time_convert = '2';
+    } else if (time == '07:00:00') {
+      time_convert = '3';
+    } else if (time == '07:30:00') {
+      time_convert = '4';
+    } else if (time == '08:00:00') {
+      time_convert = '5';
+    } else if (time == '08:30:00') {
+      time_convert = '6';
+    } else if (time == '09:00:00') {
+      time_convert = '7';
+    } else if (time == '09:30:00') {
+      time_convert = '8';
+    } else if (time == '10:00:00') {
+      time_convert = '9';
+    } else if (time == '10:30:00') {
+      time_convert = '10';
+    } else if (time == '11:00:00') {
+      time_convert = '11';
+    } else if (time == '11:30:00') {
+      time_convert = '12';
+    } else if (time == '12:00:00') {
+      time_convert = '13';
+    } else if (time == '12:30:00') {
+      time_convert = '14';
+    } else if (time == '13:00:00') {
+      time_convert = '15';
+    } else if (time == '13:30:00') {
+      time_convert = '16';
+    } else if (time == '14:00:00') {
+      time_convert = '17';
+    } else if (time == '14:30:00') {
+      time_convert = '18';
+    } else if (time == '15:00:00') {
+      time_convert = '19';
+    } else if (time == '15:30:00') {
+      time_convert = '20';
+    } else if (time == '16:00:00') {
+      time_convert = '21';
+    } else if (time == '16:30:00') {
+      time_convert = '22';
+    } else if (time == '17:00:00') {
+      time_convert = '23';
+    } else if (time == '17:30:00') {
+      time_convert = '24';
+    } else if (time == '18:00:00') {
+      time_convert = '25';
+    } else if (time == '18:30:00') {
+      time_convert = '26';
+    } else if (time == '19:00:00') {
+      time_convert = '27';
+    } else if (time == '19:30:00') {
+      time_convert = '28';
+    } else if (time == '20:00:00') {
+      time_convert = '29';
+    }
+
+    return time_convert;
+  }
+
+  function calendarDetatils () {
+    $.ajax({
+      url: '{% url 'faculty_calendar_details' %}',
+      method: 'POST',
+      headers: {
+        'X-CSRFToken': $('input[name="csrfmiddlewaretoken"]').val()
+      },
+      success: function (data) {
+        console.log(data);
+        for (let i = 0; i < data.length; i++) {
+          $('#' + DayConversion(data[i].day) + '_' + TimeConversion(data[i].time_in)).attr('class', 'bg-success text-white');
+          let subject = '<p>' + data[i].subject_name + '</p>';
+          let room = '<p>' + data[i].room + '</p>';
+          $('#' + DayConversion(data[i].day) + '_' + TimeConversion(data[i].time_in)).append(subject, room);
+          $('#' + DayConversion(data[i].day) + '_' + TimeConversion(data[i].time_in)).attr('rowspan', TimeConversion(data[i].time_out)-TimeConversion(data[i].time_in) + 1);
+        }
+      }
+    });
+  }
+
+  calendarDetatils();
+</script>
 {% endblock content %}
