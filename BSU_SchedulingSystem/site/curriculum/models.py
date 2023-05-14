@@ -58,6 +58,14 @@ class CurriculumModel(models.Model):
     course_code = models.ForeignKey(CourseModel,on_delete=models.CASCADE)
     program_code = models.CharField(max_length=20)
     lecture = models.IntegerField()
-    lab = models.IntegerField()
+    lab = models.IntegerField() 
     units = models.IntegerField()
+    
+class InstructorModel(models.Model):
+    instructor_id = models.CharField(max_length=50)
+    first_name = models.CharField(max_length=50)
+    last_name = models.CharField(max_length=50)
+    type = models.CharField(max_length=15)
+    time_in = models.TimeField(null=True)
+    time_out = models.TimeField(null=True)
     

@@ -1,10 +1,10 @@
 {% extends 'mainLayout.html' %}
 {% load static %}
-{% block title %}Add Instructor{% endblock title %}
+{% block title %}Add Schedule{% endblock title %}
 {% block content %}
 <div class="row justify-content-md-center">
   <div class="col-md-10 mt-4">
-    <h3>Schedule List</h3>
+    <h3>Instructor's Subject List</h3>
       <div class="row justify-content-md-center">
         <div class="col-md-10 py-3 bg-light" style="border: 1px solid black; border-radius: 5px;">
           <div class="row py-3">
@@ -22,7 +22,7 @@
                 </div> {% endcomment %}
                 <div class="col-lg-12">
                   <button type="button" id="addSchedule" style="width : 100%" class="btn btn-success float-right" data-toggle="modal" data-target="#scheduleModal">
-                    Add Instructor
+                    Add Subject
                   </button>
                 </div>
               </div>
@@ -34,49 +34,57 @@
                 <div class="modal-body">
                   <div class="row"> 
                     <div class="col-md-4">
-                      <small style="color : #5c5c5c;">Instructor ID</small>
-                      <input type="text" name="instuctorid" id="instuctorid" class="form-control form-control-sm" >
+                      <small style="color : #5c5c5c;">College</small>
+                      <select name="college" id="college" class="form-control form-control-sm" >
+                        <option></option>
+                      </select>
                     </div>
                     <div class="col-md-4">
-                      <small style="color : #5c5c5c;">First Name</small>
-                      <input type="text" name="firstName" id="firstName" class="form-control form-control-sm" >
+                        <small style="color : #5c5c5c;">Academic Year</small>
+                        <select name="academic_year" id="academic_year" class="form-control form-control-sm" >
+                          <option></option>
+                        </select>
                     </div>
                     <div class="col-md-4">
-                      <small style="color : #5c5c5c;">Last Name</small>
-                      <input type="text" name="lastName" id="lastName" class="form-control form-control-sm" >
+                        <small style="color : #5c5c5c;">Section</small>
+                        <select name="section" id="section" class="form-control form-control-sm" >
+                          <option></option>
+                        </select>
                     </div>
                   </div>
                   <br>
                   <div class="row">
-                    <div class="col-md-6">
-                      <small style="color : #5c5c5c;">Type : </small>
-                      <div class="row">
-                        <div class="col-sm-4">
-                          <div class="form-check form-control-sm">
-                            <input class="form-check-input" type="checkbox" name="fulltime" value="fulltime" id="fulltime">
-                            <label class="form-check-label" for="flexCheckDefault">
-                              Full-time
-                            </label>
-                          </div>
-                        </div>
-                        <div class="col-sm-4">
-                          <div class="form-check form-control-sm">
-                            <input class="form-check-input" type="checkbox" name="partime" value="partime" id="partime">
-                            <label class="form-check-label" for="flexCheckDefault">
-                              Part-time
-                            </label>
-                          </div>
-                        </div>
-                      </div>
+                    <div class="col-md-4">
+                        <small style="color : #5c5c5c;">Semester</small>
+                        <select name="semester" id="semester" class="form-control form-control-sm" >
+                          <option></option>
+                        </select>
                     </div>
-                    <div class="col-md-3">
-                      <small style="color : #5c5c5c;">Time Availability (IN)</small>
-                      <input type="time" id="timein" name="timeIn" class="form-control form-control-sm" disabled>
+                    <div class="col-md-4">
+                        <small style="color : #5c5c5c;">Subject Code</small>
+                        <select name="subject_code" id="subject_code" class="form-control form-control-sm" >
+                          <option></option>
+                        </select>
                     </div>
-                    <div class="col-md-3">
-                      <small style="color : #5c5c5c;">(OUT)</small>
-                      <input type="time" id="timeout" name="timeOut" class="form-control form-control-sm" disabled>
+                    <div class="col-md-4">
+                        <small style="color : #5c5c5c;">Subject Name</small>
+                        <input type="text" name="subject_name" id="subject_name" class="form-control form-control-sm" readonly>
                     </div>
+                  </div>
+                  <br>
+                  <div class="row">
+                    <div class="col-md-4">
+                        <small style="color : #5c5c5c;">Unit</small>
+                        <input type="number" name="unit" id="unit" class="form-control form-control-sm">
+                    </div>
+                    <div class="col-md-4">
+                        <small style="color : #5c5c5c;">Hours</small>
+                        <input type="number" name="hours" id="hours" class="form-control form-control-sm">
+                    </div>
+                    <div class="col-md-4">
+                      <small style="color : #5c5c5c;">Campus</small>
+                      <input type="text" name="campus" id="campus" class="form-control form-control-sm">
+                  </div>
                   </div>
                 </div>
                 <div class="modal-footer">
@@ -92,9 +100,12 @@
               <table class="table table-bordered table-hover text-center">
                 <thead>
                   <tr>
-                    <th scope="col" style="color:#fff; background:#8b1001;">Instructor ID</th>
-                    <th scope="col" style="color:#fff; background:#8b1001;">Name</th>
-                    <th scope="col" style="color:#fff; background:#8b1001;">Type</th>
+                    <th scope="col" style="color:#fff; background:#8b1001;">College</th>
+                    <th scope="col" style="color:#fff; background:#8b1001;">Academic Year</th>
+                    <th scope="col" style="color:#fff; background:#8b1001;">Section</th>
+                    <th scope="col" style="color:#fff; background:#8b1001;">Unit</th>
+                    <th scope="col" style="color:#fff; background:#8b1001;">Campus</th>
+                    <th scope="col" style="color:#fff; background:#8b1001;">Semester</th>
                     <th scope="col" style="color:#fff; background:#8b1001;">Action</th>
                   </tr>
                 </thead>
@@ -108,7 +119,7 @@
                     {% else %}
                     <td>Part-time</td>
                     {% endif %}
-                    <td><button class="btn btn-success btn-sm addInstructorSchedule" data-id="{{ instructor.instructor_id }}"><i class="fa fa-plus" aria-hidden="true"></i></button></td>
+                    <td><button class="btn btn-success btn-sm addInstructorSchedule"><i class="fa fa-plus" aria-hidden="true"></i></button></td>
                   </tr>
                   {% endfor %}
                   
@@ -122,10 +133,6 @@
 </div>
 <script>
   $(document).ready(function () {
-    $(".addInstructorSchedule").click(function () {
-      window.location.href = '/add_subject?instructor_id=' + $(this).data("id");
-    });
-
     $("#addSchedule").click(function () {
       $('#scheduleModal').modal('toggle');
     });

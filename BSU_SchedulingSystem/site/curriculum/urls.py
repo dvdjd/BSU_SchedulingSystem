@@ -3,7 +3,9 @@ from . import views
 
 urlpatterns = [
     path('curriculum', views.curriculum, name='curriculum'),
-    # path('add_schedule', views.add_schedule, name='add_schedule'),
+    path('generate_schedule', views.generate_schedule, name='generate_schedule'),
+    path('add_schedule', views.add_schedule, name='add_schedule'),
+    path('add_subject', views.add_subject, name='add_subject'),
     path('populate_programcode', views.populate_programcode, name='populate_programcode'),
     path('populate_name', views.populate_name, name='populate_name'),
     path('save_curriculum', views.save_curriculum, name='save_curriculum'),

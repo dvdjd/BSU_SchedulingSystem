@@ -33,7 +33,7 @@
                       <td>{{ instructor.firstname }} {{ instructor.middlename }} {{ instructor.lastname }}</td>
                       <td>
                         <button class="btn btn-success btn-sm btnSchedules" data-id="{{ instructor.userid }}"><i class="fa fa-pencil" aria-hidden="true"></i></button>
-                        <button class="btn btn-danger btn-sm"><i class="fa fa-times" aria-hidden="true"></i></button>
+                        <button class="btn btn-danger btn-sm btnDelete" data-id="{{ instructor.userid }}"><i class="fa fa-times" aria-hidden="true"></i></button>
                       </td>
                     </tr>
                     {% endfor %}

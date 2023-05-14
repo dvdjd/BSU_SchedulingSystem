@@ -1,5 +1,5 @@
 from django.shortcuts import render, redirect
-from .models import CourseModel, AcademicProgramModel, SectionModel, SubjectModel
+from .models import CourseModel, AcademicProgramModel, SectionModel, SubjectModel, InstructorModel
 from room.models import RoomModel
 from pages.models import FacultyModel
 from student.models import StudentModel, StudentScheduleModel
@@ -18,13 +18,29 @@ def curriculum (request):
     else:
         return redirect('/')
     
-# def add_schedule (request):
-#     if 'username' in request.session and request.session['username'] is not None:
-#         details = GlobalSession.sessions(request)
-#         instructors = LoginUser.objects.filter(usertype='instructor')
-#         return render(request, 'pages/add_schedule.html', {'request': request, 'details': details, 'instructors': instructors})
-#     else:
-#         return redirect('/')
+def generate_schedule (request):
+    return render(request, 'pages/generate_schedule.html')
+
+def add_subject (request):
+    return render(request, 'pages/add_subject.html')
+    
+def add_schedule (request):
+    # if 'username' in request.session and request.session['username'] is not None:
+    #     details = GlobalSession.sessions(request)
+    #     instructors = LoginUser.objects.filter(usertype='instructor')
+    if request.method == 'POST':
+        if request.POST.get('type') == 'fulltime':
+            instructor = InstructorModel(instructor_id=request.POST.get('instructor_id'), first_name=request.POST.get('first_name'), last_name=request.POST.get('last_name'), type=request.POST.get('type'))
+        else:
+            instructor = InstructorModel(instructor_id=request.POST.get('instructor_id'), first_name=request.POST.get('first_name'), last_name=request.POST.get('last_name'), type=request.POST.get('type'), time_in=request.POST.get('time_in'), time_out=request.POST.get('time_out'))
+        
+        instructor.save()
+        return HttpResponse('success')
+    else:
+        instructors = InstructorModel.objects.all()
+        return render(request, 'pages/add_schedule.html', { 'request': request, 'instructors': instructors })
+    # else:
+    #     return redirect('/')
     
 def populate_name (request):
     if request.method == 'POST':

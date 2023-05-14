@@ -12,4 +12,4 @@ class ExamModel(models.Model):
     room = models.CharField(max_length=20)
     days = models.CharField(max_length=100)
     time_in = models.TimeField()
-    time_out = models.TimeField() 
+    time_out = models.TimeField()
