@@ -21,7 +21,7 @@
                       </select>
                     </div> {% endcomment %}
                     <div class="col-md-6">
-                        <button type="button" id="addSchedule" style="width : 100%" class="btn btn-primary float-right" data-toggle="modal" data-target="#scheduleModal">
+                        <button type="button" id="btnGenerateSchedule" style="width : 100%" class="btn btn-primary float-right" data-toggle="modal" data-target="#scheduleModal">
                           Generate
                         </button>
                       </div>
@@ -220,8 +220,264 @@
 {% csrf_token %}
 <script>
   $(document).ready(function () {
-    
+    const subjects = [
+      {
+          name: 'Mathematics',
+          units: 3
+      },
+      {
+          name: 'Physics',
+          units: 1
+      },
+      {
+          name: 'English',
+          units: 1
+      },
+      {
+          name: 'History',
+          units: 2
+      },
+      {
+          name: 'Chemistry',
+          units: 3
+      },
+      {
+          name: 'Lab Room',
+          units: 5
+      },
+    ];
 
+    let timeSlots = [
+      {
+        day: 'm_',
+        time: [1, 3, 5, 7, 9, 11, 13, 15, 17, 19, 21, 23, 25, 27, 29]
+      },
+      {
+        day: 't_',
+        time: [1, 3, 5, 7, 9, 11, 13, 15, 17, 19, 21, 23, 25, 27, 29]
+      },
+      {
+        day: 'w_',
+        time: [1, 3, 5, 7, 9, 11, 13, 15, 17, 19, 21, 23, 25, 27, 29]
+      },
+      {
+        day: 'th_',
+        time: [1, 3, 5, 7, 9, 11, 13, 15, 17, 19, 21, 23, 25, 27, 29]
+      },
+      {
+        day: 'f_',
+        time: [1, 3, 5, 7, 9, 11, 13, 15, 17, 19, 21, 23, 25, 27, 29]
+      },
+      {
+        day: 's_',
+        time: [1, 3, 5, 7, 9, 11, 13, 15, 17, 19, 21, 23, 25, 27, 29]
+      },
+
+    ];
+
+    const prof = [
+      {
+          name: "A",
+          type: 'Full Time',
+          subject: ['Mathematics', 'Physics'],
+          availability: []
+      },
+      {
+          name: "B",
+          type: 'Part Time',
+          subject: ['English'],
+          availability: [
+            {
+              day: 't_',
+              time: [9, 11]
+            }
+          ]
+      },
+      {
+          name: "C",
+          type: 'Part Time',
+          subject: ['History'],
+          availability: [
+            {
+              day: 'm_',
+              time: [
+                      15, 17, 19,
+                    ]
+            }
+          ]
+      },
+      {
+          name: "D",
+          type: 'Part Time',
+          subject: ['Chemistry'],
+          availability: [
+              {
+                day: 'm_',
+                time: [7, 9, 11, 13]
+              },
+              {
+                day: 'w_',
+                time: [17, 19]
+              }
+          ]
+      },
+      {
+          name: "E",
+          type: 'Full Time',
+          subject: ['Lab Room'],
+          availability: []
+      },
+    ]
+    $('#btnGenerateSchedule').click(function () {
+
+      let partTimers = []
+
+      for(let i = 0; i < prof.length; i++){  //Get all part timer and store to another array
+        if(prof[i].type == 'Part Time'){
+            partTimers.push(prof[i])
+        }
+      }
+
+      for(let a = prof.length - 1; a >= 0; a--){  // Remove all part timer from prof array
+        if(prof[a].type == 'Part Time'){
+            prof.splice(a, 1)
+        }
+      }
+
+      const sortedPartTimers = partTimers.sort((a, b) => a.availability.length - b.availability.length); // sort part timer array then store it in another array sortedPartTimers
+      let schedule = []
+
+      for(let i = 0; i < sortedPartTimers.length; i++){ //loop through sortedPartTimers
+        let tempSubject = []
+        for(let x = 0; x < sortedPartTimers[i].availability.length; x++){
+          
+          for(let y = timeSlots.length - 1; y >= 0 ; y--){
+              if(sortedPartTimers[i].availability[x].day == timeSlots[y].day){
+                let timeArr = []
+                for(let j = 0; j < sortedPartTimers[i].availability[x].time.length; j++){
+                  for(let k = timeSlots[y].time.length; k >= 0; k--){
+                    if(sortedPartTimers[i].availability[x].time[j] == timeSlots[y].time[k]){
+                      timeArr.push(sortedPartTimers[i].availability[x].time[j])
+                      timeSlots[y].time.splice(k, 1)
+                    }
+                  }
+                }
+                tempSubject.push(
+                  {
+                    day: timeSlots[y].day,
+                    time: timeArr
+                  }
+                )
+                  //timeSlots.splice(y, 1)
+              }
+          }
+        }
+        for(let j = 0; j < sortedPartTimers[i].subject.length; j++){ //loop through subject
+            schedule.push(
+                {
+                    subject: sortedPartTimers[i].subject[j],
+                    profesor: sortedPartTimers[i].name,
+                    units: returnNoUnits(sortedPartTimers[i].subject[j]),
+                    schedule: tempSubject
+                }
+            )
+        }
+        tempSubject = []
+      }
+      for(let i = 0; i < schedule.length; i++){
+        for(let j = 0; j < schedule[i].schedule.length; j++){
+          for(let k = 0; k < schedule[i].schedule[j].time.length; k++){
+            //console.log(`${schedule[i].schedule[j].day}_${schedule[i].schedule[j].time[k]}`)
+            if(k == 0){
+              $(`#${schedule[i].schedule[j].day}${schedule[i].schedule[j].time[k]}`).html(`<p style="margin-bottom : 0px;">${schedule[i].subject}</p><p style="font-size : 12px;">Profesor ${schedule[i].profesor}</p>`)
+              $(`#${schedule[i].schedule[j].day}${schedule[i].schedule[j].time[k]}`).attr(`rowspan`, schedule[i].schedule[j].time.length)
+            }
+            else{
+              $(`#${schedule[i].schedule[j].day}${schedule[i].schedule[j].time[k]}`).remove()
+            }
+          }
+        }
+      }
+      console.log(timeSlots)
+      console.log(prof)
+
+      let schedule2 = []
+      for(let i = 0; i < prof.length; i++){ //loop through sortedPartTimers
+        let tempSubject = []
+        for(let j = 0; j < prof[i].subject.length; j++){ //loop through subject
+          schedule2.push(
+            {
+              subject: prof[i].subject[j],
+              profesor: prof[i].name,
+              units: returnNoUnits(prof[i].subject[j]),
+              schedule: tempSubject
+            }
+          )
+        }
+        tempSubject = []
+      }
+      console.log(schedule2)
+      let finalSched = []
+      for(let i = 0; i < schedule2.length; i++){
+        let tempSched = []
+        for(let j = 0; j < schedule2[i].units; j++){
+          let dayIndex = Math.floor(Math.random() * timeSlots.length); // get random index for the day array
+          let day = timeSlots[dayIndex]; // get the day object
+          let time = null;
+
+          while (day.time.length === 0) { // if the selected day has no available time slots, randomly select another day
+            timeSlots.splice(dayIndex, 1); // remove the empty day from the array
+            dayIndex = Math.floor(Math.random() * timeSlots.length); // get a new random index for the day array
+            day = timeSlots[dayIndex]; // get the new day object
+          }
+
+          // if the selected day has available time slots, randomly select a time slot
+          let timeIndex = Math.floor(Math.random() * day.time.length);
+          time = day.time[timeIndex];
+
+          console.log(`Random day: ${day.day} time: ${time}`);
+          tempSched.push(
+            {
+              day: day.day,
+              time: [time, time + 2]
+            }
+          )
+        }
+        finalSched.push(
+          {
+            subject: schedule2[i].subject,
+            profesor: schedule2.profesor,
+            units: schedule2.units,
+            schedule: tempSched
+          }
+        )
+      }
+
+      for(let i = 0; i < finalSched.length; i++){
+        for(let j = 0; j < finalSched[i].schedule.length; j++){
+          for(let k = 0; k < finalSched[i].schedule[j].time.length; k++){
+            if(k == 0){
+              $(`#${finalSched[i].schedule[j].day}${finalSched[i].schedule[j].time[k]}`).html(`<p style="margin-bottom : 0px;">${finalSched[i].subject}</p><p style="font-size : 12px;">Profesor ${schedule[i].profesor}</p>`)
+              $(`#${finalSched[i].schedule[j].day}${finalSched[i].schedule[j].time[k]}`).attr(`rowspan`, finalSched[i].schedule[j].time.length)
+            }
+            else{
+              $(`#${finalSched[i].schedule[j].day}${finalSched[i].schedule[j].time[k]}`).remove()
+            }
+          }
+        }
+      }
+    })
+
+    function returnNoUnits(subject){
+      let unit = 0
+      for(let i = 0; i < subject.length; i++){
+        if(subject == subjects[i].name){
+          unit = subjects[i].units
+          break
+        }
+      }
+      return unit
+    }
   });
 
   function DayConversion(day) {
@@ -308,5 +564,6 @@
     return time_convert;
   }
 
+  //---------------------------------------------------------------
 </script>
 {% endblock content %}
