@@ -220,57 +220,58 @@
 {% csrf_token %}
 <script>
   $(document).ready(function () {
-    const subjects = [
-      {
-          name: 'Mathematics',
-          units: 3
-      },
-      {
-          name: 'Physics',
-          units: 1
-      },
-      {
-          name: 'English',
-          units: 1
-      },
-      {
-          name: 'History',
-          units: 2
-      },
-      {
-          name: 'Chemistry',
-          units: 3
-      },
-      {
-          name: 'Lab Room',
-          units: 3
-      },
-    ];
+    $('#btnGenerateSchedule').click(function () {
+      const subjects = [
+        {
+            name: 'Mathematics',
+            units: 3
+        },
+        {
+            name: 'Physics',
+            units: 1
+        },
+        {
+            name: 'English',
+            units: 1
+        },
+        {
+            name: 'History',
+            units: 2
+        },
+        {
+            name: 'Chemistry',
+            units: 3
+        },
+        {
+            name: 'Lab Room',
+            units: 3
+        },
+      ];
 
     let timeSlots = [
       {
         day: 'm_',
-        time: [1, 3, 5, 7, 9, 11, 13, 15, 17, 19, 21, 23]
+        time: [1, 3, 5, 7, 9, 11, 13, 15, 17, 19, 21, 23, 25, 26, 27, 28, 29]
       },
       {
         day: 't_',
-        time: [1, 3, 5, 7, 9, 11, 13, 15, 17, 19, 21, 23]
+        time: [1, 3, 5, 7, 9, 11, 13, 15, 17, 19, 21, 23, 25, 26, 27, 28, 29]
       },
       {
         day: 'w_',
-        time: [1, 3, 5, 7, 9, 11, 13, 15, 17, 19, 21, 23]
+        time: [1, 3, 5, 7, 9, 11, 13, 15, 17, 19, 21, 23, 25, 26, 27, 28, 29]
       },
       {
         day: 'th_',
-        time: [1, 3, 5, 7, 9, 11, 13, 15, 17, 19, 21, 23]
+        time: [1, 3, 5, 7, 9, 11, 13, 15, 17, 19, 21, 23, 25, 26, 27, 28, 29]
       },
       {
         day: 'f_',
-        time: [1, 3, 5, 7, 9, 11, 13, 15, 17, 19, 21, 23]
+        time: [1, 3, 5, 7, 9, 11, 13, 15, 17, 19, 21, 23, 25, 26, 27, 28, 29]
       },
       {
         day: 's_',
-        time: [1, 3, 5, 7, 9, 11, 13, 15, 17, 19, 21, 23]
+        time: [1, 3, 5, 7, 9, 11, 13, 15, 17, 19, 21, 23, 25, 26, 27, 28, 29]
       },
 
     ];
@@ -328,8 +329,7 @@
           availability: []
       },
     ]
-    $('#btnGenerateSchedule').click(function () {
-      //restartTable()
+      restartTable()
       let partTimers = []
 
       for(let i = 0; i < prof.length; i++){  //Get all part timer and store to another array
@@ -365,7 +365,9 @@
                 tempSubject.push(
                   {
                     day: timeSlots[y].day,
-                    time: timeArr
+                    time: timeArr,
+                    start: timeArr[0],
+                    end: timeArr[timeArr.length - 1],
                   }
                 )
                   //timeSlots.splice(y, 1)
@@ -384,7 +386,7 @@
         }
         tempSubject = []
       }
-      console.log(timeSlots)
+      //console.log(timeSlots)
       for(let i = 0; i < schedule.length; i++){
         for(let j = 0; j < schedule[i].schedule.length; j++){
           for(let k = 0; k < schedule[i].schedule[j].time.length; k++){
@@ -414,7 +416,7 @@
           }
         }
       }
-      //console.log(timeSlots)
+      console.log(timeSlots)
       // console.log(prof)
 
       //------------------------------Full Timer-------------------------------
@@ -435,93 +437,116 @@
         tempSubject = []
       }
       let finalSched = []
+      //console.log(schedule2)
       for(let i = 0; i < schedule2.length; i++){
+        let SchedTemp = []
         let tempSched = []
-        let dayIndex = Math.floor(Math.random() * timeSlots.length); // get random index for the day array
-        let day = timeSlots[dayIndex]; // get the day object
-        let time = null;
-
-        while (day.time.length === 0) { // if the selected day has no available time slots, randomly select another day
-          timeSlots.splice(dayIndex, 1); // remove the empty day from the array
-          dayIndex = Math.floor(Math.random() * timeSlots.length); // get a new random index for the day array
-          day = timeSlots[dayIndex]; // get the new day object
-        }
-
-        //const oddNumbers = [1, 3, 5, 7, 9, 11, 17, 15, 17, 19, 21, 25];
-        //console.log(oddNumbers)
-        let randomConsecutive = []
-        let num = 1
-        while(num != 0){
-          randomConsecutive = getRandomConsecutiveElements(day.time, schedule2[i].units + 1);
-          console.log(randomConsecutive);
-          let num2 = 0
-          for(let i = 0; i < randomConsecutive.length; i++){
-            if(i != randomConsecutive.length - 1){
-              if(randomConsecutive[i] + 2 != randomConsecutive[i + 1]){
-                num2 = num2 + 1
+        let availTimeSlots = []
+        let tempRand = []
+        let check = 0
+        while(check == 0){
+          check = 1
+          tempSched = dayRandom(timeSlots)
+          tempRand = getRandomConsecutiveElements(tempSched.time, schedule2[i].units + 1)
+          if(checkTimeSlot(tempSched, schedule2[i].units) == true){
+            for(let j = 0; j < tempRand.length - 1; j++){
+              if(tempRand[j] + 2 !=  tempRand[j + 1]){
+                check = 0
               }
             }
           }
-          num = num2
         }
-        console.log(day.time);
-        console.log(`Final ${randomConsecutive}`);
-        // console.log(schedule2[i].subject)
-        // console.log(schedule2[i].units)
-        // console.log(day)
-        // console.log(getRandomConsecutiveElements(day.time, schedule2[i].units + 1))
-        // console.log(day)
-        // console.log('-----------------------------------------------------')
-
-        // if the selected day has available time slots, randomly select a time slot
-        // let timeIndex = Math.floor(Math.random() * day.time.length);
-        // time = day.time[timeIndex];
-        // let timeArr = timeSlots[i].time.filter(element=> element !== time)
-        // //for(let x = 0; x < timeArr.length; x++){
-        //   for(let y = 0; y < timeSlots.length; y++){
-
-        //     // console.log(day.day)
-        //     //timeSlots[y].time.length = 0
-        //     // console.log(timeArr)
-        //     // console.log(`Day : ${timeSlots[y].day} Time : ${timeSlots[y].time}`)
-        //     if(day.day == timeSlots[y].day){
-        //       // timeSlots[y].time.length = 0
-        //       // timeSlots[y].time.push(timeArr[x])
-        //       console.log(timeArr)
-        //       console.log(`Day : ${timeSlots[y].day} Time : ${timeSlots[y].time}`)
-        //       console.log(day.day)
-        //       console.log(timeSlots[y].day)
-        //     }
-        //   }
-        // //}
-        // // console.log(timeArr)
-        // // console.log(`Subject : ${schedule2[i].subject} Profesor : ${schedule2[i].profesor} Random day: ${day.day} time: ${time}`);
-        // let timeTemp = [time]
-        // for(let j = 1; j < schedule2[i].units + 1; j++){
-        //   timeTemp.push(time + (2 * j))
-        // }
-        //console.log(timeTemp)
-        tempSched.push(
+        // console.log(tempSched)
+        // //console.log(checkTimeSlot(tempSched, schedule2[i].units))
+        // console.log(tempRand)
+        // console.log(removeTimeSlots(tempSched.time, tempRand))
+        // let index = returnIndex(timeSlots, tempSched)
+        // timeSlots[index].time = removeTimeSlots(tempSched.time, tempRand)
+        // console.log(timeSlots)
+        SchedTemp.push(
           {
-            day: day.day,
-            time: randomConsecutive
+            day: tempSched.day,
+            time: tempRand,
+            start: tempRand[0],
+            end: tempRand[tempRand.length - 1],
           }
         )
         finalSched.push(
           {
             subject: schedule2[i].subject,
             profesor: schedule2[i].profesor,
-            units: schedule2.units,
-            schedule: tempSched
+            units: schedule2[i].units,
+            schedule: SchedTemp
           }
         )
+      }
+      
+      console.log(schedule.concat(finalSched))
+      
+      function returnIndex(array, values){
+        let index = 0
+        for(let i = 0; i < array.length; i++){
+          if(array[i] == values){
+            index = i
+            break
+          }
+        }
+        return index
+      }
+      function dayRandom(timeSlots){
+        const randomIndex = Math.floor(Math.random() * timeSlots.length);
+        const randomElement = timeSlots[randomIndex];
+
+        return randomElement
+      }
+
+      function checkTimeSlot(day, units){
+        let val = false
+        if(day.time.length != 0 && day.time.length >= units + 1){
+          val= true
+        }
+
+        return val
+      }
+
+      function removeTimeSlots(original, generated){
+        let new_time_slot = []
+        for(let i = 0; i < original.length; i++){
+          if (!generated.includes(original[i])) {
+            new_time_slot.push(original[i])
+          }
+        }
+        return new_time_slot
+      }
+
+      function test(arr, num){
+        let check2 = []
+            for(let x = 0; x < arr.length; x++){
+                if(arr[x] + 2 == arr[x + 1]){
+                    check2.push(arr[x])
+                    if(check2.length == num){
+                        break
+                    }
+                }
+                else{
+                    check2.push(arr[x])
+                    if(check2.length == num){
+                        break
+                    }
+                    else{
+                        check2 = []
+                        //break
+                    }
+                }
+            }
+            return check2
       }
       function getRandomConsecutiveElements(array, units) {
         const startIndex = Math.floor(Math.random() * (array.length - 2));
         //const consecutiveElements = array.splice(startIndex, 5);
         let temp = []
         let consecutiveElements = array.filter(element=> element == startIndex)
-        console.log(consecutiveElements)
+        //console.log(consecutiveElements)
         if(consecutiveElements.length == 0){
           consecutiveElements[0] = 1
         }
@@ -564,8 +589,8 @@
 
 
 
-      console.log(timeSlots)
-      console.log(schedule2)
+      // console.log(timeSlots)
+      // console.log(schedule2)
       for(let i = 0; i < finalSched.length; i++){
         for(let j = 0; j < finalSched[i].schedule.length; j++){
           for(let k = 0; k < finalSched[i].schedule[j].time.length; k++){
@@ -592,31 +617,31 @@
           }
         }
       }
+
+      function returnNoUnits(subject){
+        let unit = 0
+        for(let i = 0; i < subject.length; i++){
+          if(subject == subjects[i].name){
+            unit = subjects[i].units
+            break
+          }
+        }
+        return unit
+      }
+      function restartTable(){
+        let days = ['m_', 't_', 'w_', 'th_', 'f_', 's_']
+        for(let j = 0; j < days.length; j++){
+          for(let i = 1; i <= 29; i = i + 2){
+            $(`#${days[j]}${i}`).show()
+            $(`#${days[j]}${i}`).empty()
+            $(`#${days[j]}${i}`).removeAttr('rowspan')
+          }
+        }
+      }
     })
-
-    function restartTable(){
-      let days = ['m_', 't_', 'w_', 'th_', 'f_', 's_']
-      for(let j = 0; j < days.length; j++){
-        for(let i = 1; i <= 29; i = i + 2){
-          $(`#${days[j]}${i}`).show()
-          $(`#${days[j]}${i}`).empty()
-          $(`#${days[j]}${i}`).removeAttr('rowspan')
-        }
-      }
-    }
-
-    function returnNoUnits(subject){
-      let unit = 0
-      for(let i = 0; i < subject.length; i++){
-        if(subject == subjects[i].name){
-          unit = subjects[i].units
-          break
-        }
-      }
-      return unit
-    }
   });
 
+  
   function DayConversion(day) {
     let day_convert = '';
     if (day == 'monday') {
