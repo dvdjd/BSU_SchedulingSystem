@@ -48,7 +48,7 @@
                   </div>
                   <br>
                   <div class="row">
-                    <div class="col-md-6">
+                    <div class="col-md-3">
                       <small style="color : #5c5c5c;">Type : </small>
                       <div class="row">
                         <div class="col-sm-4">
@@ -70,12 +70,131 @@
                       </div>
                     </div>
                     <div class="col-md-3">
+                      <small style="color : #5c5c5c;">Days</small>
+                      <select name="days" id="days" class="form-control form-control-sm" disabled>
+                        <option></option>
+                        <option value="m_">Monday</option>
+                        <option value="t_">Tuesday</option>
+                        <option value="w_">Wednesday</option>
+                        <option value="th_">Thursday</option>
+                        <option value="f_">Friday</option>
+                        <option value="s_">Saturday</option>
+                      </select>
+                    </div>
+                    <div class="col-md-3">
                       <small style="color : #5c5c5c;">Time Availability (IN)</small>
-                      <input type="time" id="timein" name="timeIn" class="form-control form-control-sm" disabled>
+                      <select name="timein" id="timein" class="form-control form-control-sm" disabled>
+                        <option></option>
+                        <option value="1">6:00 AM</option>
+                        <option value="3">7:00 AM</option>
+                        <option value="5">8:00 AM</option>
+                        <option value="7">9:00 AM</option>
+                        <option value="9">10:00 AM</option>
+                        <option value="11">11:00 AM</option>
+                        <option value="13">12:00 PM</option>
+                        <option value="15">1:00 PM</option>
+                        <option value="17">2:00 PM</option>
+                        <option value="19">3:00 PM</option>
+                        <option value="21">4:00 PM</option>
+                        <option value="23">5:00 PM</option>
+                        <option value="25">6:00 PM</option>
+                        <option value="27">7:00 PM</option>
+                        <option value="29">8:00 PM</option>
+                      </select>
                     </div>
                     <div class="col-md-3">
                       <small style="color : #5c5c5c;">(OUT)</small>
-                      <input type="time" id="timeout" name="timeOut" class="form-control form-control-sm" disabled>
+                      <select name="timeout" id="timeout" class="form-control form-control-sm" disabled>
+                        <option></option>
+                        <option value="1">6:00 AM</option>
+                        <option value="3">7:00 AM</option>
+                        <option value="5">8:00 AM</option>
+                        <option value="7">9:00 AM</option>
+                        <option value="9">10:00 AM</option>
+                        <option value="11">11:00 AM</option>
+                        <option value="13">12:00 PM</option>
+                        <option value="15">1:00 PM</option>
+                        <option value="17">2:00 PM</option>
+                        <option value="19">3:00 PM</option>
+                        <option value="21">4:00 PM</option>
+                        <option value="23">5:00 PM</option>
+                        <option value="25">6:00 PM</option>
+                        <option value="27">7:00 PM</option>
+                        <option value="29">8:00 PM</option>
+                      </select>
+                    </div>
+                    <div class="col-md-4">
+                      <small style="color : #5c5c5c;">College</small>
+                      <select name="college" id="college" class="form-control form-control-sm" >
+                        <option></option>
+                        {% for program in programs %}
+                        <option>{{ program.program_code }}</option>
+                        {% endfor %}
+                      </select>
+                    </div>
+                    <div class="col-md-4">
+                      <small style="color : #5c5c5c;">Academic Year</small>
+                      <select name="academic_year" id="academic_year" class="form-control form-control-sm" >
+                        <option></option>
+                        <option value="1">1st Year</option>
+                        <option value="2">2nd Year</option>
+                        <option value="3">3rd Year</option>
+                        <option value="4">4th Year</option>
+                      </select>
+                    </div>
+                    <div class="col-md-4">
+                      <small style="color : #5c5c5c;">Section</small>
+                      <select name="section" id="section" class="form-control form-control-sm" >
+                        <option></option>
+                        {% for section in sections %}
+                        <option>{{ section.section_code }}</option>
+                        {% endfor %}
+                      </select>
+                    </div>
+                  </div>
+                  <br>
+                  <div class="row">
+                    <div class="col-md-4">
+                        <small style="color : #5c5c5c;">Semester</small>
+                        <select name="semester" id="semester" class="form-control form-control-sm" >
+                          <option></option>
+                          <option value="1">1st Semester</option>
+                          <option value="2">2nd Semester</option>
+                          <option value="3">Summer</option>
+                        </select>
+                    </div>
+                    <div class="col-md-4">
+                        <small style="color : #5c5c5c;">Subject Code</small>
+                        <select name="subject_code" id="subject_code" class="form-control form-control-sm" >
+                          <option></option>
+                          {% for subject in subjects %}
+                          <option>{{ subject.subject_code }}</option>
+                          {% endfor %}
+                        </select>
+                    </div>
+                    <div class="col-md-4">
+                        <small style="color : #5c5c5c;">Subject Name</small>
+                        <input type="text" name="subject_name" id="subject_name" class="form-control form-control-sm" readonly>
+                    </div>
+                  </div>
+                  <br>
+                  <div class="row">
+                    <div class="col-md-4">
+                        <small style="color : #5c5c5c;">Units</small>
+                        <input type="number" name="units" id="units" class="form-control form-control-sm">
+                    </div>
+                    <div class="col-md-4">
+                        <small style="color : #5c5c5c;">Room</small>
+                        <select name="room" id="room" class="form-control form-control-sm" >
+                          <option></option>
+                          {% for room in rooms %}
+                          <option>{{ room.room }}</option>
+                          {% endfor %}
+                        </select>
+                    </div>
+                    <div class="col-md-4">
+                      <small style="color : #5c5c5c;">Campus</small>
+                      <input type="text" name="campus" id="campus" class="form-control form-control-sm">
                     </div>
                   </div>
                 </div>
@@ -95,6 +214,14 @@
                     <th scope="col" style="color:#fff; background:#8b1001;">Instructor ID</th>
                     <th scope="col" style="color:#fff; background:#8b1001;">Name</th>
                     <th scope="col" style="color:#fff; background:#8b1001;">Type</th>
+                    <th scope="col" style="color:#fff; background:#8b1001;">College</th>
+                    <th scope="col" style="color:#fff; background:#8b1001;">Year</th>
+                    <th scope="col" style="color:#fff; background:#8b1001;">Section</th>
+                    <th scope="col" style="color:#fff; background:#8b1001;">Semester</th>
+                    <th scope="col" style="color:#fff; background:#8b1001;">Subject</th>
+                    <th scope="col" style="color:#fff; background:#8b1001;">Units</th>
+                    <th scope="col" style="color:#fff; background:#8b1001;">Room</th>
+                    <th scope="col" style="color:#fff; background:#8b1001;">Campus</th>
                     <th scope="col" style="color:#fff; background:#8b1001;">Action</th>
                   </tr>
                 </thead>
@@ -108,7 +235,15 @@
                     {% else %}
                     <td>Part-time</td>
                     {% endif %}
-                    <td><button class="btn btn-success btn-sm addInstructorSchedule" data-id="{{ instructor.instructor_id }}"><i class="fa fa-plus" aria-hidden="true"></i></button></td>
+                    <td>{{ instructor.college }}</td>
+                    <td>{{ instructor.academic_year }}</td>
+                    <td>{{ instructor.section }}</td>
+                    <td>{{ instructor.semester }}</td>
+                    <td>{{ instructor.subject_code }}</td>
+                    <td>{{ instructor.units }}</td>
+                    <td>{{ instructor.room }}</td>
+                    <td>{{ instructor.campus }}</td>
+                    <td><button class="btn btn-danger btn-sm btnRemove" data-id="{{ instructor.instructor_id }}"><i class="fa fa-times" aria-hidden="true"></i></button></td>
                   </tr>
                   {% endfor %}
                   
@@ -122,8 +257,25 @@
 </div>
 <script>
   $(document).ready(function () {
-    $(".addInstructorSchedule").click(function () {
-      window.location.href = '/add_subject?instructor_id=' + $(this).data("id");
+
+    $("#subject_code").change(function () {
+      $.ajax({
+        url: 'populate_subject',
+        method: 'POST',
+        data: {
+          subject_code: $(this).val()
+        },
+        headers: {
+          'X-CSRFToken': $('input[name="csrfmiddlewaretoken"]').val()
+        },
+        success: function (data) {
+          $("#subject_name").val(data);
+        }
+      });
+    });
+
+    $(".btnRemove").click(function () {
+      alert("removed");
     });
 
     $("#addSchedule").click(function () {
@@ -132,9 +284,21 @@
 
     $('#partime').click(function() {
       if($(this).is(':checked')) {
+        $('#fulltime').prop('checked', false);
+        $('#days').prop('disabled', false);
         $('#timein').prop('disabled', false);
         $('#timeout').prop('disabled', false);
       } else {
+        $('#days').prop('disabled', true);
+        $('#timein').prop('disabled', true);
+        $('#timeout').prop('disabled', true);
+      }
+    });
+
+    $('#fulltime').click(function() {
+      if($(this).is(':checked')) {
+        $('#partime').prop('checked', false);
+        $('#days').prop('disabled', true);
         $('#timein').prop('disabled', true);
         $('#timeout').prop('disabled', true);
       }
@@ -154,14 +318,24 @@
               first_name: $('#firstName').val(),
               last_name: $('#lastName').val(),
               type: 'parttime',
+              days: $('#days').val(),
               time_in: $('#timein').val(),
-              timeout: $('#timeout').val()
+              timeout: $('#timeout').val(),
+              college: $('#college').val(),
+              year: $('#academic_year').val(),
+              section: $('#section').val(),
+              semester: $('#semester').val(),
+              subject_code: $('#subject_code').val(),
+              units: $('#units').val(),
+              room: $('#room').val(),
+              campus: $('#campus').val()
             },
             headers: {
               'X-CSRFToken': $('input[name="csrfmiddlewaretoken"]').val()
             },
             success: function (data) {
               alert(data)
+              location.reload()
             }
           });
         }
@@ -174,14 +348,24 @@
             first_name: $('#firstName').val(),
             last_name: $('#lastName').val(),
             type: 'fulltime',
+            days: $('#days').val(),
             time_in: $('#timein').val(),
-            timeout: $('#timeout').val()
+            timeout: $('#timeout').val(),
+            college: $('#college').val(),
+            year: $('#academic_year').val(),
+            section: $('#section').val(),
+            semester: $('#semester').val(),
+            subject_code: $('#subject_code').val(),
+            units: $('#units').val(),
+            room: $('#room').val(),
+            campus: $('#campus').val()
           },
           headers: {
             'X-CSRFToken': $('input[name="csrfmiddlewaretoken"]').val()
           },
           success: function (data) {
             alert(data)
+            location.reload()
           }
         });
       }

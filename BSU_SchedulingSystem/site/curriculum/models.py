@@ -66,6 +66,16 @@ class InstructorModel(models.Model):
     first_name = models.CharField(max_length=50)
     last_name = models.CharField(max_length=50)
     type = models.CharField(max_length=15)
-    time_in = models.TimeField(null=True)
-    time_out = models.TimeField(null=True)
+    days = models.CharField(null=True, max_length=50)
+    time_in = models.IntegerField(null=True)
+    time_out = models.IntegerField(null=True)
+    college = models.CharField(max_length=10)
+    academic_year = models.CharField(max_length=10)
+    section = models.CharField(max_length=20)
+    semester = models.IntegerField()
+    subject_code = models.CharField(max_length=50)
+    units = models.IntegerField()
+    room = models.CharField(max_length=50)
+    campus = models.CharField(max_length=50)
+    
     

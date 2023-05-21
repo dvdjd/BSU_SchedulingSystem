@@ -37,18 +37,28 @@
                       <small style="color : #5c5c5c;">College</small>
                       <select name="college" id="college" class="form-control form-control-sm" >
                         <option></option>
+                        {% for program in programs %}
+                        <option>{{ program.program_code }}</option>
+                        {% endfor %}
                       </select>
                     </div>
                     <div class="col-md-4">
                         <small style="color : #5c5c5c;">Academic Year</small>
                         <select name="academic_year" id="academic_year" class="form-control form-control-sm" >
                           <option></option>
+                          <option value="1">1st Year</option>
+                          <option value="2">2nd Year</option>
+                          <option value="3">3rd Year</option>
+                          <option value="4">4th Year</option>
                         </select>
                     </div>
                     <div class="col-md-4">
                         <small style="color : #5c5c5c;">Section</small>
                         <select name="section" id="section" class="form-control form-control-sm" >
                           <option></option>
+                          {% for section in sections %}
+                          <option>{{ section.section_code }}</option>
+                          {% endfor %}
                         </select>
                     </div>
                   </div>
@@ -58,12 +68,18 @@
                         <small style="color : #5c5c5c;">Semester</small>
                         <select name="semester" id="semester" class="form-control form-control-sm" >
                           <option></option>
+                          <option value="1">1st Semester</option>
+                          <option value="2">2nd Semester</option>
+                          <option value="3">Summer</option>
                         </select>
                     </div>
                     <div class="col-md-4">
                         <small style="color : #5c5c5c;">Subject Code</small>
                         <select name="subject_code" id="subject_code" class="form-control form-control-sm" >
                           <option></option>
+                          {% for subject in subjects %}
+                          <option>{{ subject.subject_code }}</option>
+                          {% endfor %}
                         </select>
                     </div>
                     <div class="col-md-4">
@@ -78,13 +94,18 @@
                         <input type="number" name="unit" id="unit" class="form-control form-control-sm">
                     </div>
                     <div class="col-md-4">
-                        <small style="color : #5c5c5c;">Hours</small>
-                        <input type="number" name="hours" id="hours" class="form-control form-control-sm">
+                        <small style="color : #5c5c5c;">Room</small>
+                        <select name="room" id="room" class="form-control form-control-sm" >
+                          <option></option>
+                          {% for room in rooms %}
+                          <option>{{ room.room }}</option>
+                          {% endfor %}
+                        </select>
                     </div>
                     <div class="col-md-4">
                       <small style="color : #5c5c5c;">Campus</small>
                       <input type="text" name="campus" id="campus" class="form-control form-control-sm">
-                  </div>
+                    </div>
                   </div>
                 </div>
                 <div class="modal-footer">
@@ -137,63 +158,22 @@
       $('#scheduleModal').modal('toggle');
     });
 
-    $('#partime').click(function() {
-      if($(this).is(':checked')) {
-        $('#timein').prop('disabled', false);
-        $('#timeout').prop('disabled', false);
-      } else {
-        $('#timein').prop('disabled', true);
-        $('#timeout').prop('disabled', true);
-      }
-    });
-
-    $('#btnConfirm').click(function () {
-      if ($('#partime').is(':checked')) {
-        if ($('#timein').val() == '' || $('#timeout').val() == '') {
-          alert('Please input Time In and Time out.');
+    
+    $("#subject_code").change(function () {
+      $.ajax({
+        url: 'populate_subject',
+        method: 'POST',
+        data: {
+          subject_code: $(this).val()
+        },
+        headers: {
+          'X-CSRFToken': $('input[name="csrfmiddlewaretoken"]').val()
+        },
+        success: function (data) {
+          $("#subject_name").val(data);
         }
-        else {
-          $.ajax({
-            url: 'add_schedule',
-            method: 'POST',
-            data: {
-              instructor_id: $('#instuctorid').val(),
-              first_name: $('#firstName').val(),
-              last_name: $('#lastName').val(),
-              type: 'parttime',
-              time_in: $('#timein').val(),
-              timeout: $('#timeout').val()
-            },
-            headers: {
-              'X-CSRFToken': $('input[name="csrfmiddlewaretoken"]').val()
-            },
-            success: function (data) {
-              alert(data)
-            }
-          });
-        }
-      } else {
-        $.ajax({
-          url: 'add_schedule',
-          method: 'POST',
-          data: {
-            instructor_id: $('#instuctorid').val(),
-            first_name: $('#firstName').val(),
-            last_name: $('#lastName').val(),
-            type: 'fulltime',
-            time_in: $('#timein').val(),
-            timeout: $('#timeout').val()
-          },
-          headers: {
-            'X-CSRFToken': $('input[name="csrfmiddlewaretoken"]').val()
-          },
-          success: function (data) {
-            alert(data)
-          }
-        });
-      }
+      });
     });
-
 
   });
 
