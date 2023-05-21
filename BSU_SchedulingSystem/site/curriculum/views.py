@@ -19,28 +19,45 @@ def curriculum (request):
         return redirect('/')
     
 def generate_schedule (request):
-    return render(request, 'pages/generate_schedule.html')
+    if 'username' in request.session and request.session['username'] is not None:
+        details = GlobalSession.sessions(request)
+        programs = AcademicProgramModel.objects.all()
+        return render(request, 'pages/generate_schedule.html', {'request': request, 'details': details, })
+    else:
+        return redirect('/')
 
 def add_subject (request):
-    return render(request, 'pages/add_subject.html')
+    if 'username' in request.session and request.session['username'] is not None:
+        details = GlobalSession.sessions(request)
+        programs = AcademicProgramModel.objects.all()
+        sections = SectionModel.objects.all()
+        subjects = SubjectModel.objects.all()
+        rooms = RoomModel.objects.all()
+        return render(request, 'pages/add_subject.html', {'request': request, 'details': details, 'programs': programs, 'sections': sections, 'subjects': subjects, 'rooms': rooms })
+    else:
+        return redirect('/')
     
 def add_schedule (request):
-    # if 'username' in request.session and request.session['username'] is not None:
-    #     details = GlobalSession.sessions(request)
-    #     instructors = LoginUser.objects.filter(usertype='instructor')
+    
     if request.method == 'POST':
         if request.POST.get('type') == 'fulltime':
-            instructor = InstructorModel(instructor_id=request.POST.get('instructor_id'), first_name=request.POST.get('first_name'), last_name=request.POST.get('last_name'), type=request.POST.get('type'))
+            instructor = InstructorModel(instructor_id=request.POST.get('instructor_id'), first_name=request.POST.get('first_name'), last_name=request.POST.get('last_name'), type=request.POST.get('type'), college=request.POST.get('college'), academic_year=request.POST.get('year'), section=request.POST.get('section'), semester=request.POST.get('semester'), subject_code=request.POST.get('subject_code'), units=request.POST.get('units'), room=request.POST.get('room'), campus=request.POST.get('campus'))
         else:
-            instructor = InstructorModel(instructor_id=request.POST.get('instructor_id'), first_name=request.POST.get('first_name'), last_name=request.POST.get('last_name'), type=request.POST.get('type'), time_in=request.POST.get('time_in'), time_out=request.POST.get('time_out'))
+            instructor = InstructorModel(instructor_id=request.POST.get('instructor_id'), first_name=request.POST.get('first_name'), last_name=request.POST.get('last_name'), type=request.POST.get('type'), college=request.POST.get('college'), time_in=request.POST.get('time_in'), time_out=request.POST.get('time_out'), academic_year=request.POST.get('year'), section=request.POST.get('section'), semester=request.POST.get('semester'), subject_code=request.POST.get('subject_code'), units=request.POST.get('units'), room=request.POST.get('room'), campus=request.POST.get('campus'))
         
         instructor.save()
         return HttpResponse('success')
     else:
-        instructors = InstructorModel.objects.all()
-        return render(request, 'pages/add_schedule.html', { 'request': request, 'instructors': instructors })
-    # else:
-    #     return redirect('/')
+        if 'username' in request.session and request.session['username'] is not None:
+            details = GlobalSession.sessions(request)
+            instructors = InstructorModel.objects.all()
+            programs = AcademicProgramModel.objects.all()
+            sections = SectionModel.objects.all()
+            subjects = SubjectModel.objects.all()
+            rooms = RoomModel.objects.all()
+            return render(request, 'pages/add_schedule.html', { 'request': request, 'details': details, 'instructors': instructors, 'programs': programs, 'sections': sections, 'subjects': subjects, 'rooms': rooms })
+        else:
+            return redirect('/')
     
 def populate_name (request):
     if request.method == 'POST':
@@ -197,3 +214,10 @@ def delete_student_schedule (request):
         schedule.delete()
         
         return HttpResponse('success')
+
+def populate_subject (request):
+    if request.method == 'POST':
+        subject = SubjectModel.objects.filter(subject_code=request.POST.get('subject_code'))
+        return HttpResponse(subject[0].subject_description)
+    else:
+        return HttpResponse('this is get')
