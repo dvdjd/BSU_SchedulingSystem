@@ -21,6 +21,9 @@ def curriculum (request):
 def generate_schedule (request):
     return render(request, 'pages/generate_schedule.html')
 
+def search_schedule (request):
+    return render(request, 'pages/search_schedule.html')
+
 def add_subject (request):
     return render(request, 'pages/add_subject.html')
     
