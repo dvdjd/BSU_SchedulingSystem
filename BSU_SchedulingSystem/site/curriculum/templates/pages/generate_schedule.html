@@ -10,13 +10,6 @@
         <div class="row py-3">
           <div class="col-md-12">
             <div class="row justify-content-md-center">
-              {% comment %} <div class="col-md-6">
-                <select class="form-control form-control-sm" style="height : 39px;">
-                  <option>Type</option>
-                  <option>Student</option>
-                  <option>Faculty</option>
-                </select>
-              </div> {% endcomment %}
               <div class="col-md-2">
                 <select class="form-control form-control-sm" style="height : 39px;" id="year">
                   <option>Year</option>
@@ -37,14 +30,17 @@
               <div class="col-md-2">
                 <select class="form-control form-control-sm" style="height : 39px;" id="section">
                   <option>Section</option>
-                  <option>Mabango</option>
-                  <option>Matamis</option>
-                  <option>Matabang</option>
+                  {% for section in sections %}
+                  <option>{{ section.section_code }}</option>
+                  {% endfor %}
                 </select>
               </div>
               <div class="col-md-3">
                 <button type="button" id="btnGenerateSchedule" style="width : 100%" class="btn btn-primary float-right" data-toggle="modal" data-target="#scheduleModal">
                   Generate
+                </button>
+                <button type="button" id="btnGenerateScheduleLoading" style="width : 100%" class="btn btn-primary float-right" data-toggle="modal" data-target="#scheduleModal" disabled>
+                  Loading...
                 </button>
               </div>
               <div class="col-md-3">
@@ -273,143 +269,211 @@
 <script>
   $(document).ready(function () {
     let scheduleFinal = []
+    $('#btnGenerateScheduleLoading').hide()
 
     $('#btnPublishSchedule').click(function () {
       console.log(scheduleFinal)
+      for(let i = 0; i < scheduleFinal.length; i++){
+        $.ajax({
+          url: `save_schedule`,
+          method: 'post',
+          data: {
+            subject: scheduleFinal[i].subject,
+            profesor: scheduleFinal[i].profesor,
+            units: scheduleFinal[i].units,
+            day: scheduleFinal[i].day,
+            semester: scheduleFinal[i].semester,
+            section: scheduleFinal[i].section,
+            year: scheduleFinal[i].year,
+            start: scheduleFinal[i].start,
+            end: scheduleFinal[i].end
+          },
+          headers: {
+            'X-CSRFToken': $('input[name="csrfmiddlewaretoken"]').val()
+          },
+          success: function(data){
+            console.log('insert success')
+          }
+       })
+      }
+      alert('publish success')
+      location.reload()
     })
     $('#btnGenerateSchedule').click(function () {
+      $(this).hide()
+      $('#btnGenerateScheduleLoading').show()
       scheduleFinal = []
-      const subjects = [
+      let subjects = [];
+
+      $.ajax({
+        url: 'get_subjects',
+        method: 'POST',
+        data: {
+          year: $('#year').val(),
+          semester: $('#semester').val(),
+          section: $('#section').val()
+        },
+        headers: {
+          'X-CSRFToken': $('input[name="csrfmiddlewaretoken"]').val()
+        },
+        success: function (data) {
+          for (let i = 0; i < data.subjects.length; i++) {
+            subjects.push({
+              name: data.subjects[i].fields.subject_code,
+              units: data.subjects[i].fields.units
+            })
+          }
+        }
+      })
+
+      let timeSlots = [
         {
-            name: 'Mathematics',
-            units: 3
+          day: 'm_',
+          time: [1, 3, 5, 7, 9, 11, 13, 15, 17, 19, 21, 23]
         },
         {
-            name: 'Physics',
-            units: 1
+          day: 't_',
+          time: [1, 3, 5, 7, 9, 11, 13, 15, 17, 19, 21, 23]
         },
         {
-            name: 'English',
-            units: 1
+          day: 'w_',
+          time: [1, 3, 5, 7, 9, 11, 13, 15, 17, 19, 21, 23]
         },
         {
-            name: 'History',
-            units: 2
+          day: 'th_',
+          time: [1, 3, 5, 7, 9, 11, 13, 15, 17, 19, 21, 23]
         },
         {
-            name: 'Chemistry',
-            units: 3
+          day: 'f_',
+          time: [1, 3, 5, 7, 9, 11, 13, 15, 17, 19, 21, 23]
         },
         {
-            name: 'Lab Room',
-            units: 3
+          day: 's_',
+          time: [1, 3, 5, 7, 9, 11, 13, 15, 17, 19, 21, 23]
         },
-        {
-            name: 'Statistics',
-            units: 3
-        },
-        {
-            name: 'Biology',
-            units: 3
-        },
+
       ];
 
-    let timeSlots = [
-      {
-        day: 'm_',
-        time: [1, 3, 5, 7, 9, 11, 13, 15, 17, 19, 21, 23]
-      },
-      {
-        day: 't_',
-        time: [1, 3, 5, 7, 9, 11, 13, 15, 17, 19, 21, 23]
-      },
-      {
-        day: 'w_',
-        time: [1, 3, 5, 7, 9, 11, 13, 15, 17, 19, 21, 23]
-      },
-      {
-        day: 'th_',
-        time: [1, 3, 5, 7, 9, 11, 13, 15, 17, 19, 21, 23]
-      },
-      {
-        day: 'f_',
-        time: [1, 3, 5, 7, 9, 11, 13, 15, 17, 19, 21, 23]
-      },
-      {
-        day: 's_',
-        time: [1, 3, 5, 7, 9, 11, 13, 15, 17, 19, 21, 23]
-      },
+      let prof = [
 
-    ];
+      // {
+      //     name: "A",
+      //     type: 'Full Time',
+      //     subject: ['Mathematics', 'Physics', 'Statistics'],
+      //     availability: []
+      // },
+      // {
+      //     name: "B",
+      //     type: 'Part Time',
+      //     subject: ['English'],
+      //     availability: [
+      //       {
+      //         day: 't_',
+      //         time: [15, 17]
+      //       },
+      //     ]
+      // },
+      // {
+      //     name: "B",
+      //     type: 'Part Time',
+      //     subject: ['Biology'],
+      //     availability: [
+      //       {
+      //         day: 'f_',
+      //         time: [9, 11, 13, 15]
+      //       },
+      //     ]
+      // },
+      // {
+      //     name: "C",
+      //     type: 'Part Time',
+      //     subject: ['History'],
+      //     availability: [
+      //       {
+      //         day: 'm_',
+      //         time: [
+      //                 15, 17, 19,
+      //               ]
+      //       }
+      //     ]
+      // },
+      // {
+      //     name: "D",
+      //     type: 'Part Time',
+      //     subject: ['Chemistry'],
+      //     availability: [
+      //         {
+      //           day: 'm_',
+      //           time: [7, 9, 11, 13]
+      //         },
+      //         {
+      //           day: 'w_',
+      //           time: [17, 19]
+      //         },
+      //     ]
+      // },
+      // {
+      //     name: "E",
+      //     type: 'Full Time',
+      //     subject: ['Lab Room'],
+      //     availability: []
+      // },
+      
+      ]
+    
+      $.ajax({
+        url: 'get_subjects',
+        method: 'POST',
+        data: {
+          year: $('#year').val(),
+          semester: $('#semester').val(),
+          section: $('#section').val()
+        },
+        headers: {
+          'X-CSRFToken': $('input[name="csrfmiddlewaretoken"]').val()
+        },
+        success: function (data) {
+          console.log(data)
+          let type = ''
+          let availability = []
+          let time = []
 
-    const prof = [
-      {
-          name: "A",
-          type: 'Full Time',
-          subject: ['Mathematics', 'Physics', 'Statistics'],
-          availability: []
-      },
-      {
-          name: "B",
-          type: 'Part Time',
-          subject: ['English'],
-          availability: [
-            {
-              day: 't_',
-              time: [15, 17]
-            },
-          ]
-      },
-      {
-          name: "B",
-          type: 'Part Time',
-          subject: ['Biology'],
-          availability: [
-            {
-              day: 'f_',
-              time: [9, 11, 13, 15]
-            },
-          ]
-      },
-      {
-          name: "C",
-          type: 'Part Time',
-          subject: ['History'],
-          availability: [
-            {
-              day: 'm_',
-              time: [
-                      15, 17, 19,
-                    ]
+          for (let i = 0; i < data.subjects.length; i++) {
+            if (data.subjects[i].fields.type == 'fulltime') {
+              type = 'Full Time'
+              
+            } else {
+              for (let j = data.subjects[i].fields.time_in; j <= data.subjects[i].fields.time_out; j++) {
+                if (j % 2 != 0) {
+                  time.push(j)
+                }
+              }
+              availability.push({
+                day: data.subjects[i].fields.days,
+                time: time
+              })
+              type = 'Part Time'
             }
-          ]
-      },
-      {
-          name: "D",
-          type: 'Part Time',
-          subject: ['Chemistry'],
-          availability: [
-              {
-                day: 'm_',
-                time: [7, 9, 11, 13]
-              },
-              {
-                day: 'w_',
-                time: [17, 19]
-              },
-          ]
-      },
-      {
-          name: "E",
-          type: 'Full Time',
-          subject: ['Lab Room'],
-          availability: []
-      },
-    ]
-      restartTable()
-      console.clear()
+            prof.push({
+              name: data.subjects[i].fields.first_name + ' ' + data.subjects[i].fields.last_name,
+              type: type,
+              subject: [data.subjects[i].fields.subject_code],
+              availability: availability
+            })
+            availability = []
+            time = []
+          }
+          console.log(subjects)
+          console.log(prof)
+        }
+      })
+      setTimeout(function() {
+        restartTable()
+      // console.clear()
       let partTimers = []
-
+      console.log('test')
+      console.log(subjects)
+      console.log(prof)
       for(let i = 0; i < prof.length; i++){  //Get all part timer and store to another array
         if(prof[i].type == 'Part Time'){
             partTimers.push(prof[i])
@@ -494,7 +558,7 @@
           }
         }
       }
-      console.log(timeSlots)
+      //console.log(timeSlots)
       // console.log(prof)
 
       //------------------------------Full Timer-------------------------------
@@ -784,6 +848,14 @@
           }
         }
       }
+      
+      $('#btnGenerateScheduleLoading').hide()
+      
+      $('#btnGenerateSchedule').show()
+      }, 2000);
+      
+
+      
 
       //return schedule.concat(finalSched)
     })

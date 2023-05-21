@@ -223,6 +223,41 @@
       $("#tblCalendar").hide();
     });
 
+    $.ajax({
+      url: 'faculty',
+      method: 'POST',
+      headers: {
+        'X-CSRFToken': $('input[name="csrfmiddlewaretoken"]').val()
+      },
+      success: function (data) {
+        console.log(data);
+        for(let i = 0; i < data.subjects.length; i++){
+          for(let j = data.subjects[i].fields.start; j <= data.subjects[i].fields.end; j = j + 2){
+            console.log(data.subjects[i].fields.start)
+            console.log(`${data.subjects[i].fields.days}${j}`)
+            if(j == data.subjects[i].fields.start){
+              $(`#${data.subjects[i].fields.days}${j}`).html(`<p style="margin-bottom : 0px;">${data.subjects[i].fields.subject_code}</p><p style="font-size : 12px;">Profesor ${data.subjects[i].fields.profesor}</p>`)
+              $(`#${data.subjects[i].fields.days}${j}`).attr(`rowspan`, data.subjects[i].fields.units + 1)
+            }
+            else{
+              $(`#${data.subjects[i].fields.days}${j}`).hide()
+            }
+          }
+          console.log(data.subjects[i])
+        }
+        function restartTable(){
+          let days = ['m_', 't_', 'w_', 'th_', 'f_', 's_']
+          for(let j = 0; j < days.length; j++){
+            for(let i = 1; i <= 23; i = i + 2){
+              $(`#${days[j]}${i}`).show()
+              $(`#${days[j]}${i}`).empty()
+              $(`#${days[j]}${i}`).removeAttr('rowspan')
+            }
+          }
+        }
+      }
+    });
+
   });
 
   function DayConversion(day) {
@@ -309,26 +344,26 @@
     return time_convert;
   }
 
-  function calendarDetatils () {
-    $.ajax({
-      url: '{% url 'faculty_calendar_details' %}',
-      method: 'POST',
-      headers: {
-        'X-CSRFToken': $('input[name="csrfmiddlewaretoken"]').val()
-      },
-      success: function (data) {
-        console.log(data);
-        for (let i = 0; i < data.length; i++) {
-          $('#' + DayConversion(data[i].day) + '_' + TimeConversion(data[i].time_in)).attr('class', 'bg-success text-white');
-          let subject = '<p>' + data[i].subject_name + '</p>';
-          let room = '<p>' + data[i].room + '</p>';
-          $('#' + DayConversion(data[i].day) + '_' + TimeConversion(data[i].time_in)).append(subject, room);
-          $('#' + DayConversion(data[i].day) + '_' + TimeConversion(data[i].time_in)).attr('rowspan', TimeConversion(data[i].time_out)-TimeConversion(data[i].time_in) + 1);
-        }
-      }
-    });
-  }
+  // function calendarDetatils () {
+  //   $.ajax({
+  //     url: '',
+  //     method: 'POST',
+  //     headers: {
+  //       'X-CSRFToken': $('input[name="csrfmiddlewaretoken"]').val()
+  //     },
+  //     success: function (data) {
+  //       console.log(data);
+  //       for (let i = 0; i < data.length; i++) {
+  //         $('#' + DayConversion(data[i].day) + '_' + TimeConversion(data[i].time_in)).attr('class', 'bg-success text-white');
+  //         let subject = '<p>' + data[i].subject_name + '</p>';
+  //         let room = '<p>' + data[i].room + '</p>';
+  //         $('#' + DayConversion(data[i].day) + '_' + TimeConversion(data[i].time_in)).append(subject, room);
+  //         $('#' + DayConversion(data[i].day) + '_' + TimeConversion(data[i].time_in)).attr('rowspan', TimeConversion(data[i].time_out)-TimeConversion(data[i].time_in) + 1);
+  //       }
+  //     }
+  //   });
+  // }
 
-  calendarDetatils();
+  // calendarDetatils();
 </script>
 {% endblock content %}

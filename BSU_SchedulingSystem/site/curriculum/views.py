@@ -1,5 +1,5 @@
 from django.shortcuts import render, redirect
-from .models import CourseModel, AcademicProgramModel, SectionModel, SubjectModel, InstructorModel
+from .models import CourseModel, AcademicProgramModel, SectionModel, SubjectModel, InstructorModel, SubjectScheduleModel
 from room.models import RoomModel
 from pages.models import FacultyModel
 from student.models import StudentModel, StudentScheduleModel
@@ -8,6 +8,7 @@ from global_session import GlobalSession
 from django.http import HttpResponse, JsonResponse
 from django.core import serializers
 import json, datetime
+from django.db.models import Q
 
 # Create your views here.
 def curriculum (request):
@@ -22,12 +23,30 @@ def generate_schedule (request):
     if 'username' in request.session and request.session['username'] is not None:
         details = GlobalSession.sessions(request)
         programs = AcademicProgramModel.objects.all()
-        return render(request, 'pages/generate_schedule.html', {'request': request, 'details': details, })
+        sections = SectionModel.objects.all()
+        return render(request, 'pages/generate_schedule.html', {'request': request, 'details': details, 'sections': sections})
     else:
         return redirect('/')
 
 def search_schedule (request):
-    return render(request, 'pages/search_schedule.html')
+    if request.method == 'POST':
+        subjects = SubjectScheduleModel.objects.filter(Q(academic_year=request.POST.get('year')) & Q(semester=request.POST.get('semester')) & Q(section=request.POST.get('section')))
+        subject_dict = serializers.serialize('python', subjects)
+        return JsonResponse({ 'subjects': subject_dict })
+    else:
+        if 'username' in request.session and request.session['username'] is not None:
+            details = GlobalSession.sessions(request)
+            programs = AcademicProgramModel.objects.all()
+            sections = SectionModel.objects.all()
+            return render(request, 'pages/search_schedule.html', {'request': request, 'details': details, 'sections': sections})
+        else:
+            return redirect('/')
+
+def delete_schedule  (request):
+    if request.method == 'POST':
+        subjects = SubjectScheduleModel.objects.filter(Q(academic_year=request.POST.get('year')) & Q(semester=request.POST.get('semester')) & Q(section=request.POST.get('section')))
+        subjects.delete()
+        return HttpResponse('success')
 
 def add_subject (request):
     if 'username' in request.session and request.session['username'] is not None:
@@ -46,7 +65,7 @@ def add_schedule (request):
         if request.POST.get('type') == 'fulltime':
             instructor = InstructorModel(instructor_id=request.POST.get('instructor_id'), first_name=request.POST.get('first_name'), last_name=request.POST.get('last_name'), type=request.POST.get('type'), college=request.POST.get('college'), academic_year=request.POST.get('year'), section=request.POST.get('section'), semester=request.POST.get('semester'), subject_code=request.POST.get('subject_code'), units=request.POST.get('units'), room=request.POST.get('room'), campus=request.POST.get('campus'))
         else:
-            instructor = InstructorModel(instructor_id=request.POST.get('instructor_id'), first_name=request.POST.get('first_name'), last_name=request.POST.get('last_name'), type=request.POST.get('type'), college=request.POST.get('college'), time_in=request.POST.get('time_in'), time_out=request.POST.get('time_out'), academic_year=request.POST.get('year'), section=request.POST.get('section'), semester=request.POST.get('semester'), subject_code=request.POST.get('subject_code'), units=request.POST.get('units'), room=request.POST.get('room'), campus=request.POST.get('campus'))
+            instructor = InstructorModel(instructor_id=request.POST.get('instructor_id'), first_name=request.POST.get('first_name'), last_name=request.POST.get('last_name'), type=request.POST.get('type'), college=request.POST.get('college'), days=request.POST.get('days'), time_in=request.POST.get('time_in'), time_out=request.POST.get('time_out'), academic_year=request.POST.get('year'), section=request.POST.get('section'), semester=request.POST.get('semester'), subject_code=request.POST.get('subject_code'), units=request.POST.get('units'), room=request.POST.get('room'), campus=request.POST.get('campus'))
         
         instructor.save()
         return HttpResponse('success')
@@ -75,6 +94,14 @@ def populate_programcode (request):
     if request.method == 'POST':
         course = CourseModel.objects.filter(course_code=request.POST.get('course_code'))
         return HttpResponse(course[0].program_code)
+    else:
+        return HttpResponse('this is get')
+
+def save_schedule (request):
+    if request.method == 'POST':
+        program = SubjectScheduleModel(profesor=request.POST.get('profesor'), days=request.POST.get('day'), start=request.POST.get('start'), end=request.POST.get('end'), subject_code=request.POST.get('subject'), academic_year=request.POST.get('year'), section=request.POST.get('section'), semester=request.POST.get('semester'), units=request.POST.get('units'))
+        program.save()
+        return HttpResponse('success')
     else:
         return HttpResponse('this is get')
     
@@ -224,3 +251,16 @@ def populate_subject (request):
         return HttpResponse(subject[0].subject_description)
     else:
         return HttpResponse('this is get')
+
+def get_subjects (request):
+    if request.method == 'POST':
+        subjects = InstructorModel.objects.filter(Q(academic_year=request.POST.get('year')) & Q(semester=request.POST.get('semester')) & Q(section=request.POST.get('section')))
+        subject_dict = serializers.serialize('python', subjects)
+        return JsonResponse({ 'subjects': subject_dict })
+
+def delete_subject (request):
+    if request.method == 'POST':
+        schedule = InstructorModel.objects.get(id=request.POST.get('id'))
+        schedule.delete()
+        
+        return HttpResponse('success')

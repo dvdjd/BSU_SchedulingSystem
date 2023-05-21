@@ -77,5 +77,14 @@ class InstructorModel(models.Model):
     units = models.IntegerField()
     room = models.CharField(max_length=50)
     campus = models.CharField(max_length=50)
-    
-    
+
+class SubjectScheduleModel(models.Model):
+    profesor = models.CharField(max_length=50)
+    days = models.CharField(null=True, max_length=50)
+    start = models.IntegerField(null=True)
+    end = models.IntegerField(null=True)
+    subject_code = models.CharField(max_length=50)
+    academic_year = models.CharField(max_length=10)
+    section = models.CharField(max_length=20)
+    semester = models.IntegerField()
+    units = models.IntegerField()
